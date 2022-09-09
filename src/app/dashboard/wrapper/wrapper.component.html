@@ -1,0 +1,45 @@
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav mode="side" opened="isExpanded">
+    <mat-nav-list>
+
+      <mat-list-item  class="menu-icon" (click)="isExpanded = !isExpanded">
+        <i class="fa-thin fa-bars"></i>
+      </mat-list-item>
+
+      <mat-list-item class="main-list-items" [routerLink]="'./schedule'" >
+        <i class="fa-thin fa-calendar-range"></i>
+        <span *ngIf="isExpanded">Schedule</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'./clients'">
+        <i class="fa-thin fa-user-astronaut"></i>
+        <span *ngIf="isExpanded">Clients</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'./artists'">
+        <i class="fa-thin fa-user-robot"></i>
+        <span *ngIf="isExpanded">Artists</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'./enquiries'">
+        <i class="fa-thin fa-envelope"></i>
+        <span *ngIf="isExpanded">Enquiries</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'./reports'">
+        <i class="fa-thin fa-chart-line"></i>
+        <span *ngIf="isExpanded">Reports</span>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <h4>[ INKED ]</h4>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

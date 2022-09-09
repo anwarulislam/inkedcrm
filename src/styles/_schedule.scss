@@ -1,0 +1,62 @@
+@import 'base';
+
+
+// numbers inside the date boxes
+.fc-daygrid-day-frame{
+  color: $main-color;
+}
+
+// the date boxes hover color
+.fc .fc-daygrid-day:hover {
+  background-color: $card-color !important;
+}
+
+.fc .fc-daygrid-day{
+ background-color: $back-color;
+
+  // grid lines inside the table
+  border-color:$font-icon-color !important;
+}
+
+// color of the box of today's date
+.fc .fc-daygrid-day.fc-day-today {
+  background-color:#414a4c !important;
+}
+
+
+// days at the top of the table
+.fc table{
+
+}
+
+
+// the main date at the top of the calendar and days in the table
+.fc {
+  color: $main-color;
+}
+
+
+// actual sizing of the grid
+.fc {
+  margin: 5rem;
+}
+
+
+// colors of the days of the week
+.fc-scrollgrid {
+  color: $main-color;
+}
+
+
+// colours of the table header cell borders
+.fc-col-header-cell {
+  border-color:$font-icon-color !important;
+}
+
+.fc-scrollgrid {
+  border-color:$font-icon-color !important;
+}
+
+.fc-daygrid fc-dayGridMonth-view fc-view {
+  border-color:$font-icon-color !important;
+}

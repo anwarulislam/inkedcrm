@@ -1,0 +1,34 @@
+@import 'base';
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+mat-sidenav, mat-toolbar {
+  background-color: $card-color;
+}
+
+mat-list-item:hover {
+  color: $main-color;
+}
+
+mat-list-item {
+  margin-top: 3rem;
+}
+.menu-icon {
+  margin-top: 2rem;
+}
+
+i {
+  font-size: 3rem;
+  padding: 3rem;
+}
+
+.main-list-items {
+  margin-top: 7rem;
+  margin-right: 2rem;
+}
+
+mat-toolbar h4 {
+  padding: 1rem;
+}

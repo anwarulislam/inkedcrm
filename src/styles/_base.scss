@@ -1,0 +1,40 @@
+$main-color: #63883b;
+$theme-color-2: #4d7058;
+$theme-color-3: #9ca397;
+$theme-color-4: #808d6e;
+$theme-color-5: #5d946f;
+$theme-color-6: #7e9172;
+$theme-color-1-10: rgba(99, 136, 59, 0.1);
+$theme-color-2-10: rgba(77, 112, 88, 0.1);
+$theme-color-3-10: rgba(156, 163, 151, 0.1);
+$theme-color-4-10: rgba(128, 141, 110, 0.1);
+$theme-color-5-10: rgba(93, 148, 111, 0.1);
+$theme-color-6-10: rgba(126, 145, 114, 0.1);
+$font-icon-color: #8f8f8f;
+$back-color: #1A1B18;
+$card-color: #212220;
+
+
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;  // 10px/16px = 62.5% -> 1rem = 10px
+}
+
+body {
+  font-family: 'Nunito','sans-serif' !important;
+  color: $font-icon-color;
+  font-weight: 300;
+  line-height: 1.6;
+  font-size: 2rem;
+  background-color: $back-color;
+}
+
