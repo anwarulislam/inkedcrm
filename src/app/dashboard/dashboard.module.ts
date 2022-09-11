@@ -28,6 +28,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import timeGridPlugin from '@fullcalendar/timegrid';
 
+// events service
+import {EventService} from "../services/event.service";
+
 
 FullCalendarModule.registerPlugins ([
   dayGridPlugin,
@@ -60,6 +63,9 @@ FullCalendarModule.registerPlugins ([
 
     //schedule imports
     FullCalendarModule,
+  ],
+  providers:[
+    EventService
   ]
 })
 
