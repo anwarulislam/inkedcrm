@@ -23,6 +23,8 @@
     "@fullcalendar/angular": "^5.11.2",
     "@fullcalendar/daygrid": "^5.11.3",
     "@fullcalendar/interaction": "^5.11.3",
+    "@fullcalendar/list": "^5.11.3",
+    "@fullcalendar/timegrid": "^5.11.3",
     "fullcalendar": "^5.11.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

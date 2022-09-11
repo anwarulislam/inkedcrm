@@ -9,6 +9,7 @@ import {ArtistsComponent} from "./artists/artists.component";
 import {ClientsComponent} from "./clients/clients.component";
 import {EnquiriesComponent} from "./enquiries/enquiries.component";
 import {ReportsComponent} from "./reports/reports.component";
+import {MarketingComponent} from "./marketing/marketing.component";
 
 
 const routes: Routes = [
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path: 'reports',
         component: ReportsComponent
+      },
+      {
+        path: 'marketing',
+        component: MarketingComponent
       },
     ]
   }

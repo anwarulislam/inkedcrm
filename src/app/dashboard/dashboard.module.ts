@@ -17,6 +17,7 @@ import { EnquiriesComponent } from './enquiries/enquiries.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
+import { MarketingComponent } from './marketing/marketing.component';
 
 
 // scheduler imports to be made its own module
@@ -24,12 +25,15 @@ import { WrapperComponent } from './wrapper/wrapper.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-
+import listPlugin from '@fullcalendar/list';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
 
 FullCalendarModule.registerPlugins ([
   dayGridPlugin,
-  interactionPlugin
+  interactionPlugin,
+  listPlugin,
+  timeGridPlugin
 ]);
 
 @NgModule({
@@ -39,7 +43,8 @@ FullCalendarModule.registerPlugins ([
     EnquiriesComponent,
     ReportsComponent,
     ScheduleComponent,
-    WrapperComponent
+    WrapperComponent,
+    MarketingComponent
   ],
   imports: [
     CommonModule,

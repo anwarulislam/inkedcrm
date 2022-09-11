@@ -1,6 +1,9 @@
 @import 'base';
 
 
+//-------------------------------------------------- start of grid month view styling ----------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+
 // numbers inside the date boxes
 .fc-daygrid-day-frame{
   color: $main-color;
@@ -60,3 +63,5 @@
 .fc-daygrid fc-dayGridMonth-view fc-view {
   border-color:$font-icon-color !important;
 }
+
+

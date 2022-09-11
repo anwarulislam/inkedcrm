@@ -1,0 +1,79 @@
+@import "base";
+
+//styling the buttons on top of the calendar
+.fc-prev-button {
+  background-color: $back-color !important;
+  color: $main-color !important;
+  border-color:$main-color !important;
+}
+
+.fc-prev-button:hover {
+  background-color: $main-color!important;
+  color: $card-color!important;
+}
+
+.fc-next-button {
+  background-color: $back-color !important;
+  color: $main-color !important;
+  border-color:$main-color !important;
+}
+
+.fc-next-button:hover {
+  background-color: $main-color!important;
+  color: $card-color!important;
+}
+
+.fc-today-button {
+  background-color: $main-color!important;
+  color: $card-color!important;
+}
+
+.fc-today-button:hover {
+  background-color: $back-color !important;
+  color: $main-color !important;
+  border-color:$main-color !important;
+}
+
+.fc-dayGridMonth-button {
+  background-color: $main-color!important;
+  color: $card-color!important;
+}
+
+.fc-dayGridMonth-button:hover {
+  background-color: $back-color !important;
+  color: $main-color !important;
+  border-color:$main-color !important;
+}
+
+.fc-timeGridWeek-button {
+  background-color: $main-color!important;
+  color: $card-color!important;
+}
+
+.fc-timeGridWeek-button:hover {
+  background-color: $back-color !important;
+  color: $main-color !important;
+  border-color:$main-color !important;
+}
+
+.fc-timeGridDay-button {
+  background-color: $main-color!important;
+  color: $card-color!important;
+}
+
+.fc-timeGridDay-button:hover {
+  background-color: $back-color !important;
+  color: $main-color !important;
+  border-color:$main-color !important;
+}
+
+.fc-listWeek-button {
+  background-color: $main-color!important;
+  color: $card-color!important;
+}
+
+.fc-listWeek-button:hover {
+  background-color: $back-color !important;
+  color: $main-color !important;
+  border-color:$main-color !important;
+}

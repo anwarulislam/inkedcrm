@@ -13,8 +13,13 @@ mat-list-item:hover {
 }
 
 mat-list-item {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
+
+.active-link{
+ color: $main-color;
+}
+
 .menu-icon {
   margin-top: 2rem;
 }

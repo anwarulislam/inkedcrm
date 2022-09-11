@@ -11,7 +11,12 @@ export class ScheduleComponent implements OnInit {
   constructor() { }
 
   calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth'
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+    },
   };
 
   ngOnInit(): void {
