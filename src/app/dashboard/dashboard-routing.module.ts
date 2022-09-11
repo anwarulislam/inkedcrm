@@ -7,9 +7,9 @@ import { WrapperComponent } from "./wrapper/wrapper.component";
 import { ScheduleComponent } from "./schedule/schedule.component";
 import {ArtistsComponent} from "./artists/artists.component";
 import {ClientsComponent} from "./clients/clients.component";
-import {EnquiriesComponent} from "./enquiries/enquiries.component";
 import {ReportsComponent} from "./reports/reports.component";
 import {MarketingComponent} from "./marketing/marketing.component";
+import {TemplatesComponent} from "./templates/templates.component";
 
 
 const routes: Routes = [
@@ -30,16 +30,16 @@ const routes: Routes = [
         component: ClientsComponent
       },
       {
-        path: 'enquiries',
-        component: EnquiriesComponent
-      },
-      {
         path: 'reports',
         component: ReportsComponent
       },
       {
         path: 'marketing',
         component: MarketingComponent
+      },
+      {
+        path: 'templates',
+        component: TemplatesComponent
       },
     ]
   }

@@ -21,11 +21,6 @@
         <span *ngIf="isExpanded">Artists</span>
       </mat-list-item>
 
-      <mat-list-item [routerLink]="'./enquiries'" routerLinkActive="active-link">
-        <i class="fa-thin fa-envelope"></i>
-        <span *ngIf="isExpanded">Enquiries</span>
-      </mat-list-item>
-
       <mat-list-item [routerLink]="'./reports'" routerLinkActive="active-link">
         <i class="fa-thin fa-chart-line"></i>
         <span *ngIf="isExpanded">Reports</span>
@@ -34,6 +29,11 @@
       <mat-list-item [routerLink]="'./marketing'" routerLinkActive="active-link">
         <i class="fa-thin fa-chart-simple"></i>
         <span *ngIf="isExpanded">Marketing</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'./templates'" routerLinkActive="active-link">
+        <i class="fa-thin fa-files"></i>
+        <span *ngIf="isExpanded">Templates</span>
       </mat-list-item>
 
     </mat-nav-list>

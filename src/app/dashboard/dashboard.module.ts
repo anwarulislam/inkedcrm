@@ -13,11 +13,11 @@ import { MatToolbarModule} from "@angular/material/toolbar";
 // pages
 import { ArtistsComponent } from './artists/artists.component';
 import { ClientsComponent } from './clients/clients.component';
-import { EnquiriesComponent } from './enquiries/enquiries.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { MarketingComponent } from './marketing/marketing.component';
+import { TemplatesComponent } from './templates/templates.component';
 
 
 // scheduler imports to be made its own module
@@ -40,11 +40,11 @@ FullCalendarModule.registerPlugins ([
   declarations: [
     ArtistsComponent,
     ClientsComponent,
-    EnquiriesComponent,
     ReportsComponent,
     ScheduleComponent,
     WrapperComponent,
-    MarketingComponent
+    MarketingComponent,
+    TemplatesComponent
   ],
   imports: [
     CommonModule,
