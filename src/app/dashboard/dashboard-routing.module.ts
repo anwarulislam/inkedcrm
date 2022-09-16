@@ -7,9 +7,9 @@ import { WrapperComponent } from "./wrapper/wrapper.component";
 import { ScheduleComponent } from "./schedule/schedule.component";
 import {ArtistsComponent} from "./artists/artists.component";
 import {ClientsComponent} from "./clients/clients.component";
-import {ReportsComponent} from "./reports/reports.component";
 import {MarketingComponent} from "./marketing/marketing.component";
 import {TemplatesComponent} from "./templates/templates.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 
 const routes: Routes = [
@@ -30,8 +30,8 @@ const routes: Routes = [
         component: ClientsComponent
       },
       {
-        path: 'reports',
-        component: ReportsComponent
+        path: 'dashboard',
+        component: DashboardComponent
       },
       {
         path: 'marketing',

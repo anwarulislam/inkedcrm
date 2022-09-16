@@ -4,6 +4,7 @@
 //-------------------------------------------------- start of grid month view styling ----------------------------------
 //----------------------------------------------------------------------------------------------------------------------
 
+
 // numbers inside the date boxes
 .fc-daygrid-day-frame{
   color: $main-color;
@@ -18,18 +19,12 @@
  background-color: $back-color;
 
   // grid lines inside the table
-  border-color:$font-icon-color !important;
+  border-color:$table-line-colors !important;
 }
 
 // color of the box of today's date
 .fc .fc-daygrid-day.fc-day-today {
   background-color:$card-color!important;
-}
-
-
-// days at the top of the table
-.fc table{
-
 }
 
 
@@ -53,15 +48,23 @@
 
 // colours of the table header cell borders
 .fc-col-header-cell {
-  border-color:$font-icon-color !important;
+  border-color:$table-line-colors !important;
 }
 
 .fc-scrollgrid {
-  border-color:$font-icon-color !important;
+  border-color:$table-line-colors !important;
 }
 
 .fc-daygrid fc-dayGridMonth-view fc-view {
-  border-color:$font-icon-color !important;
+  border-color:$table-line-colors !important;
+}
+
+.fc-timegrid-axis {
+  border-color: $table-line-colors!important;
 }
 
 
+// colors of all the lines inside the grid
+.fc-theme-standard td, .fc-theme-standard th{
+  border-color: $table-line-colors!important;
+}

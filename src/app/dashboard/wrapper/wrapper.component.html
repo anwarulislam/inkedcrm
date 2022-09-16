@@ -6,7 +6,13 @@
         <i class="fa-thin fa-bars"></i>
       </mat-list-item>
 
-      <mat-list-item class="main-list-items" [routerLink]="'./schedule'" routerLinkActive="active-link" >
+
+      <mat-list-item class="main-list-items" [routerLink]="'./dashboard'" routerLinkActive="active-link">
+        <i class="fa-thin fa-house"></i>
+        <span *ngIf="isExpanded">Dashboard</span>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'./schedule'" routerLinkActive="active-link" >
         <i class="fa-thin fa-calendar-range"></i>
         <span *ngIf="isExpanded">Schedule</span>
       </mat-list-item>
@@ -19,11 +25,6 @@
       <mat-list-item [routerLink]="'./artists'" routerLinkActive="active-link">
         <i class="fa-thin fa-user-robot"></i>
         <span *ngIf="isExpanded">Artists</span>
-      </mat-list-item>
-
-      <mat-list-item [routerLink]="'./reports'" routerLinkActive="active-link">
-        <i class="fa-thin fa-chart-line"></i>
-        <span *ngIf="isExpanded">Reports</span>
       </mat-list-item>
 
       <mat-list-item [routerLink]="'./marketing'" routerLinkActive="active-link">

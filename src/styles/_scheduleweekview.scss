@@ -2,8 +2,6 @@
 
 //----------------------------------------- styling for the grid week view ---------------------------------------------
 
-
-
 .fc .fc-timegrid-slot-minor{
   border: none!important;
 }
@@ -14,7 +12,7 @@
 
 // colour for all three grids
 .fc-theme-standard td {
-  border-color: $font-icon-color!important;
+  border-color: $table-line-colors!important;
 }
 
 .fc .fc-timegrid-col.fc-day-today {

@@ -13,11 +13,11 @@ import { MatToolbarModule} from "@angular/material/toolbar";
 // pages
 import { ArtistsComponent } from './artists/artists.component';
 import { ClientsComponent } from './clients/clients.component';
-import { ReportsComponent } from './reports/reports.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { MarketingComponent } from './marketing/marketing.component';
 import { TemplatesComponent } from './templates/templates.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 // scheduler imports to be made its own module
@@ -39,15 +39,16 @@ FullCalendarModule.registerPlugins ([
   timeGridPlugin
 ]);
 
+// @ts-ignore
 @NgModule({
   declarations: [
     ArtistsComponent,
     ClientsComponent,
-    ReportsComponent,
     ScheduleComponent,
     WrapperComponent,
     MarketingComponent,
-    TemplatesComponent
+    TemplatesComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
@@ -70,4 +71,3 @@ FullCalendarModule.registerPlugins ([
 })
 
 export class DashboardModule { }
-
