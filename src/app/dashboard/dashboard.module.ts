@@ -1,24 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule} from "@angular/router";
-import { HttpClientModule}  from '@angular/common/http';
-import { DashboardRoutingModule} from "./dashboard-routing.module";
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 // material imports
-import { MatSidenavModule} from "@angular/material/sidenav";
-import { MatListModule} from "@angular/material/list";
-import { MatIconModule} from "@angular/material/icon";
-import { MatToolbarModule} from "@angular/material/toolbar";
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 // pages
-import { ArtistsComponent } from './artists/artists.component';
-import { ClientsComponent } from './clients/clients.component';
-import { ScheduleComponent } from './schedule/schedule.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { MarketingComponent } from './marketing/marketing.component';
 import { TemplatesComponent } from './templates/templates.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
 
 // scheduler imports to be made its own module
 
@@ -29,26 +25,23 @@ import listPlugin from '@fullcalendar/list';
 import timeGridPlugin from '@fullcalendar/timegrid';
 
 // events service
-import {EventService} from "../services/event.service";
+import { EventService } from '../services/event.service';
+import { SharedModule } from '../shared/shared.module';
 
-
-FullCalendarModule.registerPlugins ([
+FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin,
   listPlugin,
-  timeGridPlugin
+  timeGridPlugin,
 ]);
 
 // @ts-ignore
 @NgModule({
   declarations: [
-    ArtistsComponent,
-    ClientsComponent,
-    ScheduleComponent,
     WrapperComponent,
     MarketingComponent,
     TemplatesComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
@@ -64,10 +57,10 @@ FullCalendarModule.registerPlugins ([
 
     //schedule imports
     FullCalendarModule,
-  ],
-  providers:[
-    EventService
-  ]
-})
 
-export class DashboardModule { }
+    //shared Module
+    SharedModule,
+  ],
+  providers: [EventService],
+})
+export class DashboardModule {}

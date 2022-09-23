@@ -1,11 +1,19 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 @include mat.core();
 
 /* You can add global styles to this file, and also import other style files */
 
-@import 'base';
-@import 'wrapper';
-@import 'schedule';
-@import 'buttons';
-@import 'scheduleweekview';
+@import "base";
+@import "wrapper";
+@import "schedule";
+@import "buttons";
+@import "scheduleweekview";
 @import "events";
+
+table {
+  width: 100% !important;
+}
+
+.cursor {
+  cursor: pointer !important;
+}

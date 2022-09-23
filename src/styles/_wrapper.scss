@@ -1,23 +1,24 @@
-@import 'base';
+@import "base";
 
 mat-sidenav-container {
   height: 100vh;
 }
 
-mat-sidenav, mat-toolbar {
+mat-sidenav,
+mat-toolbar {
   background-color: $card-color;
 }
 
 mat-list-item:hover {
-  color: $main-color;
+  color: $main-color !important;
 }
 
 mat-list-item {
   margin-top: 2rem;
 }
 
-.active-link{
- color: $main-color;
+.active-link {
+  color: $main-color !important;
 }
 
 .menu-icon {
@@ -26,7 +27,6 @@ mat-list-item {
 
 i {
   font-size: 3rem;
-  padding: 3rem;
 }
 
 .main-list-items {

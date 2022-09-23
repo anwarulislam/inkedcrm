@@ -1,0 +1,410 @@
+<mat-sidenav-container
+  (backdropClick)="closeSidenav()"
+  class="sidenav-container"
+  autosize
+>
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="'side'"
+    [opened]="true"
+    [ngClass]="isExpanded ? 'sidenav' : 'sidenav-1'"
+  >
+    <mat-nav-list>
+      <a
+        [matTooltip]="isExpanded ? 'MINIMIZE MENU' : 'MAXIMIZE MENU'"
+        matTooltipClass="tooltip-css"
+        mat-list-item
+        class="menu-icon"
+        (click)="isExpanded = !isExpanded"
+      >
+        <i class="fa-thin fa-bars"></i>
+      </a>
+
+      <a
+        mat-list-item
+        class="main-list-items"
+        routerLink="/dashboard"
+        routerLinkActive="active-link"
+      >
+        <i class="fa-thin fa-house align-middle pr-2"></i> &nbsp;
+        <span *ngIf="isExpanded">{{ "Dashboard" | translate }}</span>
+      </a>
+
+      <a
+        mat-list-item
+        routerLink="/schedule/schedule-dashboard"
+        routerLinkActive="active-link"
+      >
+        <i class="fa-thin fa-calendar-range align-middle pr-2"></i> &nbsp;
+        <span *ngIf="isExpanded">{{ "Schedule" | translate }}</span>
+      </a>
+
+      <a
+        mat-list-item
+        routerLink="/client/client-dashboard"
+        routerLinkActive="active-link"
+      >
+        <i class="fa-thin fa-user-astronaut align-middle pr-2"></i> &nbsp;
+        <span *ngIf="isExpanded">{{ "Clients" | translate }}</span>
+      </a>
+
+      <a
+        mat-list-item
+        routerLink="/artist/artists-dashboard"
+        routerLinkActive="active-link"
+      >
+        <i class="fa-thin fa-user-robot align-middle pr-2"></i> &nbsp;
+        <span *ngIf="isExpanded">{{ "Artists" | translate }}</span>
+      </a>
+
+      <a
+        mat-list-item
+        routerLink="/dashboard/marketing"
+        routerLinkActive="active-link"
+      >
+        <i class="fa-thin fa-chart-simple align-middle pr-2"></i> &nbsp;
+        <span *ngIf="isExpanded">{{ "Marketing" | translate }}</span>
+      </a>
+
+      <a
+        mat-list-item
+        routerLink="/dashboard/templates"
+        routerLinkActive="active-link"
+      >
+        <i class="fa-thin fa-files pr-2"></i>
+        <span *ngIf="isExpanded">{{ "Templates" | translate }}</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav
+    fixedInViewport
+    #drawer1
+    class="side-drawer"
+    mode="over"
+    position="end"
+  >
+    <div class="container-fluid">
+      <form
+        *ngIf="dialogData?.type == 'Client'"
+        [formGroup]="addClientForm"
+        action=""
+      >
+        <div class="row mt-3 align-items-center">
+          <div class="col-md-9">
+            <ng-template [ngIf]="dialogData?.edit">
+              <h2 class="m-0">Update {{ dialogData?.type }} Data</h2>
+            </ng-template>
+            <ng-template [ngIf]="!dialogData?.edit">
+              <h2 class="m-0">Add {{ dialogData?.type }} Data</h2>
+            </ng-template>
+          </div>
+          <div class="col-md-3 text-right">
+            <mat-icon (click)="closeSidenav()" class="align-middle cursor"
+              >close</mat-icon
+            >
+          </div>
+
+          <div class="col-12 mt-3 mb-5 p-0">
+            <mat-divider style="color: white"></mat-divider>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" />
+              <mat-error
+                *ngIf="addClientForm.controls['firstName'].hasError('required')"
+              >
+                First Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" />
+              <mat-error
+                *ngIf="addClientForm.controls['lastName'].hasError('required')"
+              >
+                Last Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Contact Number</mat-label>
+              <input matInput formControlName="tel" />
+              <mat-error
+                *ngIf="addClientForm.controls['tel'].hasError('required')"
+              >
+                Contact Number is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" />
+              <mat-error
+                *ngIf="
+                  addClientForm.controls['email'].hasError('email') &&
+                  !addClientForm.controls['email'].hasError('required')
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+              <mat-error
+                *ngIf="addClientForm.controls['email'].hasError('required')"
+              >
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Instagram</mat-label>
+              <input matInput formControlName="instagram" />
+              <mat-error
+                *ngIf="addClientForm.controls['instagram'].hasError('required')"
+              >
+                Instagram is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Facebook</mat-label>
+              <input matInput formControlName="facebook" />
+              <mat-error
+                *ngIf="addClientForm.controls['facebook'].hasError('required')"
+              >
+                Facebook is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-12 text-right">
+            <ng-template [ngIf]="dialogData?.edit">
+              <button (click)="updateClient()" mat-raised-button>Update</button>
+            </ng-template>
+            <ng-template [ngIf]="!dialogData?.edit">
+              <button (click)="addClient()" mat-raised-button>Submit</button>
+            </ng-template>
+          </div>
+        </div>
+      </form>
+
+      <form
+        *ngIf="dialogData?.type == 'Artist'"
+        [formGroup]="addArtistForm"
+        action=""
+      >
+        <div class="row mt-3 align-items-center">
+          <div class="col-md-9">
+            <ng-template [ngIf]="dialogData?.edit">
+              <h2 class="m-0">Update {{ dialogData?.type }} Data</h2>
+            </ng-template>
+            <ng-template [ngIf]="!dialogData?.edit">
+              <h2 class="m-0">Add {{ dialogData?.type }} Data</h2>
+            </ng-template>
+          </div>
+          <div class="col-md-3 text-right">
+            <mat-icon (click)="closeSidenav()" class="align-middle cursor"
+              >close</mat-icon
+            >
+          </div>
+
+          <div class="col-12 mt-3 mb-5 p-0">
+            <mat-divider style="color: white"></mat-divider>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" />
+              <mat-error
+                *ngIf="addArtistForm.controls['firstName'].hasError('required')"
+              >
+                First Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" />
+              <mat-error
+                *ngIf="addArtistForm.controls['lastName'].hasError('required')"
+              >
+                Last Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>User Name</mat-label>
+              <input matInput formControlName="username" />
+              <mat-error
+                *ngIf="addArtistForm.controls['username'].hasError('required')"
+              >
+                User Name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Role</mat-label>
+              <input matInput formControlName="role" />
+              <mat-error
+                *ngIf="addArtistForm.controls['role'].hasError('required')"
+              >
+                Role is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" />
+              <mat-error
+                *ngIf="
+                  addArtistForm.controls['email'].hasError('email') &&
+                  !addArtistForm.controls['email'].hasError('required')
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+              <mat-error
+                *ngIf="addArtistForm.controls['email'].hasError('required')"
+              >
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                matInput
+                placeholder="Password"
+                formControlName="password"
+              />
+
+              <ion-icon
+                *ngIf="!showPassword"
+                (click)="toggleShow()"
+                matSuffix
+                name="eye-outline"
+              ></ion-icon>
+              <ion-icon
+                *ngIf="showPassword"
+                (click)="toggleShow()"
+                name="eye-off-outline"
+                matSuffix
+              ></ion-icon>
+
+              <mat-error
+                *ngIf="addArtistForm.controls['password'].hasError('required')"
+              >
+                Password is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-12 text-right">
+            <ng-template [ngIf]="dialogData?.edit">
+              <button (click)="updateArtist()" mat-raised-button>Update</button>
+            </ng-template>
+            <ng-template [ngIf]="!dialogData?.edit">
+              <button (click)="addArtist()" mat-raised-button>Submit</button>
+            </ng-template>
+          </div>
+        </div>
+      </form>
+
+      <ng-template [ngIf]="dialogData?.type == 'Calendar'">
+        <div class="row mt-3 align-items-center">
+          <div class="col-md-9">
+            <h2 class="m-0">Selected Date: {{ dialogData?.data | date }}</h2>
+          </div>
+          <div class="col-md-3 text-right">
+            <mat-icon (click)="closeSidenav()" class="align-middle cursor"
+              >close</mat-icon
+            >
+          </div>
+
+          <div class="col-12 mt-3 mb-5 p-0">
+            <mat-divider style="color: white"></mat-divider>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="pt-3 pb-3">
+      <!-- <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> -->
+      <select
+        class="p-1"
+        #langSelect
+        (change)="translate.use(langSelect.value)"
+      >
+        <option
+          *ngFor="let lang of translate.getLangs()"
+          [value]="lang"
+          [selected]="lang === translate.currentLang"
+        >
+          {{ lang | uppercase }}
+        </option>
+      </select>
+
+      <span class="example-spacer"></span>
+      <span>InkedCRM</span>
+      <span class="example-spacer"></span>
+
+      <span class="mr-4">
+        {{ "Hi, Zen" | translate }}
+      </span>
+
+      <button
+        mat-mini-fab
+        color="accent"
+        aria-label="Example icon button with a plus one icon"
+        [matMenuTriggerFor]="menu1"
+        [matTooltip]="'My Profile'"
+        matTooltipClass="tooltip-css"
+        matTooltipPosition="before"
+      >
+        <mat-icon>person</mat-icon>
+      </button>
+
+      <mat-menu #menu1="matMenu">
+        <button mat-menu-item>
+          <mat-icon class="align-middle">person</mat-icon> &nbsp; Profile
+        </button>
+        <button routerLink="/login" mat-menu-item>
+          <mat-icon class="align-middle cursor"> logout </mat-icon>
+          &nbsp; {{ "Logout" | translate }}
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
