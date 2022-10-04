@@ -4,7 +4,5 @@ export interface Customer {
   lastName?: string;
   tel?: number;
   email?: string;
-  instagram?: string;
-  facebook?: string;
   dateCreated?: string;
 }

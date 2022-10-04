@@ -1,9 +1,7 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Customer } from 'src/app/core/interface/customer';
 import { User } from 'src/app/core/interface/user';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
 import Swal from 'sweetalert2';
@@ -15,7 +13,6 @@ import Swal from 'sweetalert2';
 })
 export class ArtistDashboardComponent implements OnInit {
   displayedColumns: string[] = [
-    'id',
     'username',
     'firstName',
     'lastName',
@@ -30,89 +27,78 @@ export class ArtistDashboardComponent implements OnInit {
   constructor(private sidenavService: SideNavService) {
     const users: any = [
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'joe',
+        lastName: 'murphy',
         username: 'string',
         email: 'string',
         role: 'string',
       },
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'michael',
+        lastName: 'donegan',
         username: 'string',
         email: 'string',
         role: 'string',
       },
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'francis',
+        lastName: 'greene',
         username: 'string',
         email: 'string',
         role: 'string',
       },
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'paddy',
+        lastName: 'oneil',
         username: 'string',
         email: 'string',
         role: 'string',
       },
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'darragh',
+        lastName: 'oshea',
         username: 'string',
         email: 'string',
         role: 'string',
       },
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'ciaran',
+        lastName: 'ward',
         username: 'string',
         email: 'string',
         role: 'string',
       },
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'cathal',
+        lastName: 'murphy',
         username: 'string',
         email: 'string',
         role: 'string',
       },
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'cian',
+        lastName: 'donegan',
         username: 'string',
         email: 'string',
         role: 'string',
       },
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'ciara',
+        lastName: 'oshea',
         username: 'string',
         email: 'string',
         role: 'string',
       },
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'sara',
+        lastName: 'connor',
         username: 'string',
         email: 'string',
         role: 'string',
       },
       {
-        id: '001',
-        firstName: 'string',
-        lastName: 'string',
+        firstName: 'john',
+        lastName: 'donegan',
         username: 'string',
         email: 'string',
         role: 'string',

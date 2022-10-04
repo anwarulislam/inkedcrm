@@ -164,28 +164,6 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <div class="col-md-6">
-            <mat-form-field class="w-100" appearance="outline">
-              <mat-label>Instagram</mat-label>
-              <input matInput formControlName="instagram" />
-              <mat-error
-                *ngIf="addClientForm.controls['instagram'].hasError('required')"
-              >
-                Instagram is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="col-md-6">
-            <mat-form-field class="w-100" appearance="outline">
-              <mat-label>Facebook</mat-label>
-              <input matInput formControlName="facebook" />
-              <mat-error
-                *ngIf="addClientForm.controls['facebook'].hasError('required')"
-              >
-                Facebook is <strong>required</strong>
-              </mat-error>
-            </mat-form-field>
-          </div>
 
           <div class="col-md-12 text-right">
             <ng-template [ngIf]="dialogData?.edit">

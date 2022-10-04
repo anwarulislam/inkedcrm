@@ -2,7 +2,7 @@
   <div class="row mt-3 align-items-center">
     <div class="col-md-12">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Artists </mat-label>
+        <mat-label>Search </mat-label>
         <input matInput (keyup)="applyFilter($event)" #input />
       </mat-form-field>
     </div>
@@ -14,13 +14,6 @@
     <div class="col-md-12">
       <div class="mat-elevation-z8">
         <table aria-describedby="" mat-table [dataSource]="dataSource" matSort>
-          <!-- ID Column -->
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>
-              {{ "Sr. No" | translate }}
-            </th>
-            <td mat-cell *matCellDef="let row; let i = index">{{ i + 1 }}</td>
-          </ng-container>
 
           <!-- Firstname Column -->
           <ng-container matColumnDef="firstName">
