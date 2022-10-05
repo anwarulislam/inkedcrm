@@ -14,8 +14,6 @@
   >
     <mat-nav-list>
       <a
-        [matTooltip]="isExpanded ? 'MINIMIZE MENU' : 'MAXIMIZE MENU'"
-        matTooltipClass="tooltip-css"
         mat-list-item
         class="menu-icon"
         (click)="isExpanded = !isExpanded"
@@ -366,8 +364,6 @@
         color="accent"
         aria-label="Example icon button with a plus one icon"
         [matMenuTriggerFor]="menu1"
-        [matTooltip]="'My Profile'"
-        matTooltipClass="tooltip-css"
         matTooltipPosition="before"
       >
         <mat-icon>person</mat-icon>
