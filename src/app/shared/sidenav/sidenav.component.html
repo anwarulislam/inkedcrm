@@ -343,11 +343,11 @@
         (change)="translate.use(langSelect.value)"
       >
         <option
-          *ngFor="let lang of translate.getLangs()"
-          [value]="lang"
-          [selected]="lang === translate.currentLang"
+          *ngFor="let lang of langs"
+          [value]="lang.value"
+          [selected]="lang.value === translate.currentLang"
         >
-          {{ lang | uppercase }}
+          {{ lang.name}}<!-- | uppercase  -->
         </option>
       </select>
 
@@ -373,7 +373,13 @@
         <button mat-menu-item>
           <mat-icon class="align-middle">person</mat-icon> &nbsp; Profile
         </button>
-        <button routerLink="/login" mat-menu-item>
+        <button mat-menu-item>
+          <mat-icon class="align-middle">receipt</mat-icon> &nbsp; Billing
+        </button>
+        <button mat-menu-item>
+          <mat-icon class="align-middle">contact_support</mat-icon> &nbsp; Support
+        </button>
+        <button (click)="logout()" mat-menu-item>
           <mat-icon class="align-middle cursor"> logout </mat-icon>
           &nbsp; {{ "Logout" | translate }}
         </button>

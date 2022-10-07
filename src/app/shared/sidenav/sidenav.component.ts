@@ -12,6 +12,7 @@ import { SideNavService } from 'src/app/core/services/side-nav.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -23,6 +24,20 @@ export class SidenavComponent implements OnInit {
   dialogData: any;
   @ViewChild('drawer1') drawer1!: MatSidenav;
   showPassword = false;
+  langs:any=[
+      {name:'English',value:'en', },
+      {name:'Greek',value:'el',},
+      {name:'French',value:'fr',},
+      {name:'Spanish',value:'es', },
+      {name:'Portuguese(Portugal)',value:'pt-PT', },
+      {name:'Italian',value:'it', },
+      {name:'German',value:'de',},
+      {name:'Swedish',value:'sv', },
+      {name:'Russian',value:'ru', },
+      {name:'Hebrew',value:'iw',},
+      {name:'Norwegian',value:'no',},
+      {name:'Dutch',value:'nl',},
+  ]
 
   addClientForm = new FormGroup({
     id: new FormControl(),
@@ -57,13 +72,17 @@ export class SidenavComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private sidenavService: SideNavService,
     public translate: TranslateService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private _authService:AuthService
   ) {
-    translate.addLangs(['en', 'gr']);
+    for(const lang of this.langs){
+      translate.addLangs([lang.value]);
+    }
+    
     translate.setDefaultLang('en');
 
     const browserLang: any = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|gr/) ? browserLang : 'en');
+    // translate.use(browserLang.match(/english|gr/) ? browserLang : 'english');
   }
 
   ngOnInit(): void {
@@ -131,6 +150,10 @@ export class SidenavComponent implements OnInit {
 
   toggleShow(): void {
     this.showPassword = !this.showPassword;
+  }
+
+  logout(){
+    this._authService.logout();
   }
 
   closeSidenav() {

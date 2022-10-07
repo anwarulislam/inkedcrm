@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private _router:Router) { }
 
   // -----------------------------------------------------------------------------------------------------
   // @ Accessors
@@ -38,8 +39,14 @@ export class AuthService {
     localStorage.clear();
   }
 
+  isLogin():boolean{
+    return (localStorage.getItem('accessToken') == null || localStorage.getItem('accessToken') == undefined || localStorage.getItem('accessToken') == '')
+     ? false :true;
+  }
+
   logout() {
-    return
+    localStorage.clear();
+    this._router.navigateByUrl('/login');
   }
 
   signIn(data: any) {

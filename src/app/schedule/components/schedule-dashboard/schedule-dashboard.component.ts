@@ -17,11 +17,20 @@ export class ScheduleDashboardComponent implements OnInit {
     plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
     initialView: 'dayGridMonth',
     dateClick: this.handleDateClick.bind(this),
+    customButtons: {
+      myCustomButton: {
+      text: 'Add Event',
+      click: function() {
+             alert("Custom Button");
+      }
+    }
+  },  
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay',
     },
+   
   };
 
   handleDateClick(arg: { dateStr: string }) {
@@ -33,4 +42,8 @@ export class ScheduleDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  addEvent(){
+
+  }
 }

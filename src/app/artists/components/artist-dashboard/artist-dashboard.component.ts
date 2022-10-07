@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class ArtistDashboardComponent implements OnInit {
   displayedColumns: string[] = [
+    'image',
     'username',
     'firstName',
     'lastName',
@@ -28,6 +29,7 @@ export class ArtistDashboardComponent implements OnInit {
     const users: any = [
       {
         firstName: 'joe',
+        image:'assets/images/profileImage.png',
         lastName: 'murphy',
         username: 'string',
         email: 'string',
@@ -35,6 +37,7 @@ export class ArtistDashboardComponent implements OnInit {
       },
       {
         firstName: 'michael',
+        image:'assets/images/profileImage.png',
         lastName: 'donegan',
         username: 'string',
         email: 'string',
@@ -42,6 +45,7 @@ export class ArtistDashboardComponent implements OnInit {
       },
       {
         firstName: 'francis',
+        image:'assets/images/profileImage.png',
         lastName: 'greene',
         username: 'string',
         email: 'string',
@@ -49,6 +53,7 @@ export class ArtistDashboardComponent implements OnInit {
       },
       {
         firstName: 'paddy',
+        image:'assets/images/profileImage.png',
         lastName: 'oneil',
         username: 'string',
         email: 'string',
@@ -56,6 +61,7 @@ export class ArtistDashboardComponent implements OnInit {
       },
       {
         firstName: 'darragh',
+        image:'assets/images/profileImage.png',
         lastName: 'oshea',
         username: 'string',
         email: 'string',
@@ -63,6 +69,7 @@ export class ArtistDashboardComponent implements OnInit {
       },
       {
         firstName: 'ciaran',
+        image:'assets/images/profileImage.png',
         lastName: 'ward',
         username: 'string',
         email: 'string',
@@ -70,6 +77,7 @@ export class ArtistDashboardComponent implements OnInit {
       },
       {
         firstName: 'cathal',
+        image:'assets/images/profileImage.png',
         lastName: 'murphy',
         username: 'string',
         email: 'string',
@@ -77,6 +85,7 @@ export class ArtistDashboardComponent implements OnInit {
       },
       {
         firstName: 'cian',
+        image:'assets/images/profileImage.png',
         lastName: 'donegan',
         username: 'string',
         email: 'string',
@@ -84,6 +93,7 @@ export class ArtistDashboardComponent implements OnInit {
       },
       {
         firstName: 'ciara',
+        image:'assets/images/profileImage.png',
         lastName: 'oshea',
         username: 'string',
         email: 'string',
@@ -91,6 +101,7 @@ export class ArtistDashboardComponent implements OnInit {
       },
       {
         firstName: 'sara',
+        image:'assets/images/profileImage.png',
         lastName: 'connor',
         username: 'string',
         email: 'string',
@@ -98,6 +109,7 @@ export class ArtistDashboardComponent implements OnInit {
       },
       {
         firstName: 'john',
+        image:'assets/images/profileImage.png',
         lastName: 'donegan',
         username: 'string',
         email: 'string',

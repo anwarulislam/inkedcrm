@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,10 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  constructor() {}
+  constructor(
+    private _router:Router,
+    private _authService:AuthService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -22,5 +27,8 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  login() {}
+  login() {
+    this._authService.accessToken = 'Test token';
+    this._router.navigateByUrl('/dashboard')
+  }
 }
