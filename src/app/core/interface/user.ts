@@ -8,5 +8,4 @@ export interface User {
   role?: string;
   accessToken?: string;
   RefreshToken?: string;
-  dateCreated?: string;
 }

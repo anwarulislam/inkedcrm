@@ -152,7 +152,7 @@ export class ArtistDashboardComponent implements OnInit {
   deleteArtistDetail(id: any) {
     Swal.fire({
       title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      text: "You will not be able to undo this! We recommend changing their password",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
@@ -160,12 +160,13 @@ export class ArtistDashboardComponent implements OnInit {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Deleted!', 'Artist Detail has been deleted.', 'success');
+        Swal.fire('Deleted!', 'Your artist has been deleted.', 'success');
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
-        Swal.fire('Cancelled', 'Artist Detail is safe :)', 'error');
+        Swal.fire('Cancelled', 'Your Artist has not been deleted', 'error');
+        Swal.fire('Cancelled', 'Your Artist has not been deleted', 'error');
       }
     });
   }

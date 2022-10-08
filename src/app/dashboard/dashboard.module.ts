@@ -25,7 +25,7 @@ import listPlugin from '@fullcalendar/list';
 import timeGridPlugin from '@fullcalendar/timegrid';
 
 // events service
-import { EventService } from '../services/event.service';
+import { EventsService } from '../core/services/events.service';
 import { SharedModule } from '../shared/shared.module';
 
 FullCalendarModule.registerPlugins([
@@ -61,6 +61,6 @@ FullCalendarModule.registerPlugins([
     //shared Module
     SharedModule,
   ],
-  providers: [EventService],
+  providers: [EventsService],
 })
 export class DashboardModule {}

@@ -328,15 +328,6 @@
 
   <mat-sidenav-content>
     <mat-toolbar class="pt-3 pb-3">
-      <!-- <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button> -->
       <select
         class="p-1"
         #langSelect
@@ -370,17 +361,10 @@
       </button>
 
       <mat-menu #menu1="matMenu">
-        <button mat-menu-item>
-          <mat-icon class="align-middle">person</mat-icon> &nbsp; Profile
-        </button>
-        <button mat-menu-item>
-          <mat-icon class="align-middle">receipt</mat-icon> &nbsp; Billing
-        </button>
-        <button mat-menu-item>
-          <mat-icon class="align-middle">contact_support</mat-icon> &nbsp; Support
-        </button>
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Billing</button>
+        <button mat-menu-item>Support</button>
         <button (click)="logout()" mat-menu-item>
-          <mat-icon class="align-middle cursor"> logout </mat-icon>
           &nbsp; {{ "Logout" | translate }}
         </button>
       </mat-menu>

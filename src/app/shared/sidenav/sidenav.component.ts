@@ -25,18 +25,18 @@ export class SidenavComponent implements OnInit {
   @ViewChild('drawer1') drawer1!: MatSidenav;
   showPassword = false;
   langs:any=[
-      {name:'English',value:'en', },
-      {name:'Greek',value:'el',},
-      {name:'French',value:'fr',},
-      {name:'Spanish',value:'es', },
-      {name:'Portuguese(Portugal)',value:'pt-PT', },
-      {name:'Italian',value:'it', },
-      {name:'German',value:'de',},
-      {name:'Swedish',value:'sv', },
-      {name:'Russian',value:'ru', },
-      {name:'Hebrew',value:'iw',},
-      {name:'Norwegian',value:'no',},
-      {name:'Dutch',value:'nl',},
+      {name:'EN',value:'en', },
+      {name:'EL',value:'el',},
+      {name:'FR',value:'fr',},
+      {name:'ES',value:'es', },
+      {name:'PT',value:'pt-PT', },
+      {name:'IT',value:'it', },
+      {name:'DE',value:'de',},
+      {name:'SV',value:'sv', },
+      {name:'RU',value:'ru', },
+      {name:'HE',value:'he',},
+      {name:'NO',value:'no',},
+      {name:'NL',value:'nl',},
   ]
 
   addClientForm = new FormGroup({
@@ -78,7 +78,7 @@ export class SidenavComponent implements OnInit {
     for(const lang of this.langs){
       translate.addLangs([lang.value]);
     }
-    
+
     translate.setDefaultLang('en');
 
     const browserLang: any = translate.getBrowserLang();
