@@ -97,6 +97,7 @@ export class SidenavComponent implements OnInit {
 
     this.sidenavService.$dynamicForm.subscribe((res) => {
       if (res) {
+        console.log(res)
         this.dialogData = res;
         this.drawer1?.open();
         this.cdr.detectChanges();

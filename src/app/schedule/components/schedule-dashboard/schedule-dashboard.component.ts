@@ -16,17 +16,38 @@ export class ScheduleDashboardComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
     initialView: 'dayGridMonth',
-    dateClick: this.handleDateClick.bind(this),
+    titleFormat:{month:'long',year:'numeric',day:'2-digit'},
+    dayHeaderFormat:{ weekday: 'long' },//weekday: 'short',omitCommas:false,day:'numeric',dayPeriod:'short',dateStyle:'long
     customButtons: {
-      myCustomButton: {
-      text: 'Add Event',
-      click: function() {
-             alert("Custom Button");
+      addNewEventButton: {
+        text: 'Add New Event',
+        click: this.addEvent.bind(this)
       }
-    }
-  },  
+    },
+    slotLabelFormat: [
+      {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+      }
+    ],
+    
+    
+    dateClick: this.handleDateClick.bind(this),
+    events: [
+      { 
+        title: 'BCH237',
+        start: '2022-10-12T10:30:00',
+        end: '2022-10-12T11:30:00',
+        allDay:true,
+        extendedProps: {
+          department: 'BioChemistry'
+        },
+        description: 'Lecture'
+      },
+    ],
     headerToolbar: {
-      left: 'prev,next today',
+      left: 'prev,next today addNewEventButton',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay',
     },
@@ -41,9 +62,11 @@ export class ScheduleDashboardComponent implements OnInit {
     this.sidenavService.$dynamicForm.next(params);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+   
+  }
 
   addEvent(){
-
+    alert('Add@@@@')
   }
 }
