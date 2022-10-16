@@ -60,6 +60,9 @@
               >
 
               <mat-menu #menu="matMenu">
+                <button (click)="openDialog(row)" mat-menu-item>
+                  <mat-icon class="align-middle">meeting_room</mat-icon> Appointments
+                </button>
                 <button (click)="addArtist(true, row)" mat-menu-item>
                   <mat-icon class="align-middle">edit</mat-icon> Edit
                 </button>

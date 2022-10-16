@@ -12,7 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogClose, MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -22,6 +22,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -49,6 +52,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FormsModule,
     MatMenuModule,
     MatCardModule,
+    MatCheckboxModule,
     FullCalendarModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -58,12 +62,14 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    HighchartsChartModule,
   ],
   exports: [
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
     MatFormFieldModule,
+    MatCheckboxModule,
     MatGridListModule,
     MatButtonModule,
     MatIconModule,
@@ -81,6 +87,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FullCalendarModule,
     HttpClientModule,
     TranslateModule,
+    HighchartsChartModule,
   ],
 })
 export class SharedModule {}

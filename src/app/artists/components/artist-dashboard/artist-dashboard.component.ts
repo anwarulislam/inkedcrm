@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/core/interface/user';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
 import Swal from 'sweetalert2';
+import { AppointmentsComponent } from '../appointments/appointments.component';
 
 @Component({
   selector: 'app-artist-dashboard',
@@ -25,7 +27,7 @@ export class ArtistDashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private sidenavService: SideNavService) {
+  constructor(private sidenavService: SideNavService,public _dialog: MatDialog) {
     const users: any = [
       {
         firstName: 'joe',
@@ -168,6 +170,20 @@ export class ArtistDashboardComponent implements OnInit {
         Swal.fire('Cancelled', 'Your Artist has not been deleted', 'error');
         Swal.fire('Cancelled', 'Your Artist has not been deleted', 'error');
       }
+    });
+  }
+
+  openDialog(artist:any): void {
+    const dialogRef = this._dialog.open(AppointmentsComponent, {
+      width: '650px',
+      height:'700px',
+      panelClass:'white-background-dialog',
+      data: {artist:artist},
+    });
+
+    dialogRef.afterClosed().subscribe((result:any) => {
+      console.log('The dialog was closed');
+      console.log(result)
     });
   }
 }

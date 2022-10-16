@@ -14,8 +14,9 @@ const routes: Routes = [
     component: WrapperComponent,
     children: [
       {
-        path: 'dashboard',
+        path: '',
         component: DashboardComponent,
+        pathMatch:'full'
       },
       {
         path: 'marketing',

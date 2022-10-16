@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="row mt-3 align-items-center">
+      <div class="col-md-12">
+        <div class="mat-elevation-z8">
+            <mat-card-title>
+                <div class="row">
+                    <div class="col-6">
+                        <h5 class="float-left margin0">29/10/2022</h5>
+                    </div>
+                    <div class="col-6">
+                        <h5 class="float-right margin0">Apppointments This Month</h5>
+                    </div>
+                </div>
+                <hr class="margin0">
+            </mat-card-title>
+
+            <ng-container *ngFor="let i of iterator">
+                <mat-card class="artist-cards mb-3" (click)="openDialog({})">
+                    <mat-card-content>
+                     <div class="row">
+                        <div class="col-1">
+                            <img src="assets/images/profileImage.png" class="round-img" alt="">
+                        </div>
+                        <div class="col-4">
+                            <span>Artist name</span>
+                        </div>
+                        <div class="col-7">
+                            <span class="float-right">30/10/2022</span>
+                        </div>
+                     </div>
+    
+                     <div class="row mb-3">
+                        <div class="col-1">
+                            &nbsp;
+                        </div>
+                        <div class="col-4">
+                            <span>Customer Name</span>
+                        </div>
+                        <div class="col-7">
+                            <span class="float-right">Zen Donegan</span>
+                        </div>
+                     </div>
+    
+                     <div class="row mb-2">
+                        <div class="col-1">
+                            &nbsp;
+                        </div>
+                        <div class="col-4">
+                            <span>Telephone</span>
+                        </div>
+                        <div class="col-7">
+                            <span class="float-right">030342342</span>
+                        </div>
+                     </div>
+    
+                    </mat-card-content>
+                   
+                </mat-card>
+            </ng-container>
+            
+
+            <mat-dialog-actions class="float-right">
+                <button mat-button color="primary" (click)="closeDialog()" class="float-right">Close</button>
+            </mat-dialog-actions>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+ 
