@@ -188,7 +188,7 @@ export class DashboardComponent implements OnInit {
         data:[45,345,200,234,2345,345,43,654]
       },
     ]
- };
+  };
 
   lineOption: Highcharts.Options = {
     series: [{
@@ -197,11 +197,33 @@ export class DashboardComponent implements OnInit {
     }]
   };
 
-  pieOptioon: Highcharts.Options = {
-    series: [{
-      data: [1, 2, 3],
-      type: 'pie'
-    }]
+  pieOptioon: any = {
+    chart: {
+      type: "pie",
+      backgroundColor:'#000000',
+   },
+   title: {
+      color:'#333333',
+      text: "Week's Clients Report"
+   },
+   
+   xAxis:{
+      categories:['Clients']
+   },
+   yAxis: {          
+      title:{
+         text:"Clients"
+      } 
+   },
+   tooltip: {
+      valueSuffix:""
+   },
+   series: [
+     {
+       name:'Clients',
+       data:[45,54,452,2342,2342,234,456,6767]
+     },
+   ]
   };
   
   constructor(private sidenavService: SideNavService,public _dialog: MatDialog) {
