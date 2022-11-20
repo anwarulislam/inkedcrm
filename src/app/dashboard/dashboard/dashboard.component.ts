@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/core/interface/user';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
 import * as Highcharts from 'highcharts';
+import { AppointmentsComponent } from 'src/app/artists/components/appointments/appointments.component';
 
 
 @Component({
@@ -190,6 +191,24 @@ export class DashboardComponent implements OnInit {
     ]
   };
 
+  donutChartData:any = [
+    {
+      label: '',
+      value: 5,
+      color: 'red',
+    },
+    {
+      label: '	',
+      value: 13,
+      color: 'black',
+    },
+    {
+      label: '',
+      value: 5,
+      color: 'blue',
+    },
+  ];
+
   lineOption: Highcharts.Options = {
     series: [{
       data: [1, 2, 3],
@@ -197,33 +216,68 @@ export class DashboardComponent implements OnInit {
     }]
   };
 
-  pieOptioon: any = {
-    chart: {
-      type: "pie",
-      backgroundColor:'#000000',
-   },
-   title: {
-      color:'#333333',
-      text: "Week's Clients Report"
-   },
-   
-   xAxis:{
-      categories:['Clients']
-   },
-   yAxis: {          
-      title:{
-         text:"Clients"
-      } 
-   },
-   tooltip: {
-      valueSuffix:""
-   },
-   series: [
-     {
-       name:'Clients',
-       data:[45,54,452,2342,2342,234,456,6767]
-     },
-   ]
+    pieOptioon: any = {
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Browser market shares in May, 2020'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+      pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+          }
+      }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [{
+            name: 'Chrome',
+            y: 70.67,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Edge',
+            y: 14.77
+        },  {
+            name: 'Firefox',
+            y: 4.86
+        }, {
+            name: 'Safari',
+            y: 2.63
+        }, {
+            name: 'Internet Explorer',
+            y: 1.53
+        },  {
+            name: 'Opera',
+            y: 1.40
+        }, {
+            name: 'Sogou Explorer',
+            y: 0.84
+        }, {
+            name: 'QQ',
+            y: 0.51
+        }, {
+            name: 'Other',
+            y: 2.6
+        }]
+    }]
   };
   
   constructor(private sidenavService: SideNavService,public _dialog: MatDialog) {
@@ -282,6 +336,20 @@ export class DashboardComponent implements OnInit {
 
   view(){
 
+  }
+
+  openDialog(artist:any): void {
+    const dialogRef = this._dialog.open(AppointmentsComponent, {
+      width: '650px',
+      height:'700px',
+      panelClass:'white-background-dialog',
+      data: {artist:artist},
+    });
+
+    dialogRef.afterClosed().subscribe((result:any) => {
+      console.log('The dialog was closed');
+      console.log(result)
+    });
   }
 
 

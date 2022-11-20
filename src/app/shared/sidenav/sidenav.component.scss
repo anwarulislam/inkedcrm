@@ -41,3 +41,8 @@ a:hover {
   background: #f3f2f3 !important;
   color: #303237 !important;
 }
+
+
+::ng-deep.mat-dialog-container {
+  padding: 0px !important;
+}

@@ -322,6 +322,51 @@
             <mat-divider style="color: white"></mat-divider>
           </div>
         </div>
+        
+        <ng-container *ngFor="let i of iterator">
+          <mat-card class="artist-cards mb-3">
+              <mat-card-content>
+               <div class="row">
+                  <div class="col-1">
+                      <img src="assets/images/profileImage.png" class="round-img" alt="">
+                  </div>
+                  <div class="col-4">
+                      <span>Artist name</span>
+                  </div>
+                  <div class="col-7">
+                      <span class="float-right">30/10/2022</span>
+                  </div>
+               </div>
+
+               <div class="row mb-3">
+                  <div class="col-1">
+                      &nbsp;
+                  </div>
+                  <div class="col-4">
+                      <span>Customer Name</span>
+                  </div>
+                  <div class="col-7">
+                      <span class="float-right">Zen Donegan</span>
+                  </div>
+               </div>
+
+               <div class="row mb-2">
+                  <div class="col-1">
+                      &nbsp;
+                  </div>
+                  <div class="col-4">
+                      <span>Telephone</span>
+                  </div>
+                  <div class="col-7">
+                      <span class="float-right">030342342</span>
+                  </div>
+               </div>
+
+              </mat-card-content>
+             
+          </mat-card>
+      </ng-container>
+
       </ng-template>
     </div>
   </mat-sidenav>
@@ -371,4 +416,5 @@
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
+
 </mat-sidenav-container>

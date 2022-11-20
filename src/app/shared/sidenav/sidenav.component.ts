@@ -22,6 +22,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class SidenavComponent implements OnInit {
   dialogData: any;
+  iterator:any=[1,2,3,4,5,6,7,8,9,10];
   @ViewChild('drawer1') drawer1!: MatSidenav;
   showPassword = false;
   langs:any=[
@@ -85,6 +86,8 @@ export class SidenavComponent implements OnInit {
     // translate.use(browserLang.match(/english|gr/) ? browserLang : 'english');
   }
 
+  
+
   ngOnInit(): void {
     this.isHandset$.subscribe((res) => {
       console.log(res);
@@ -126,6 +129,27 @@ export class SidenavComponent implements OnInit {
         }
 
         if (this.dialogData?.type == 'Artist') {
+          this.addArtistForm.controls['id'].setValue(this.dialogData?.data?.id);
+
+          this.addArtistForm.controls['firstName'].setValue(
+            this.dialogData?.data?.firstName
+          );
+          this.addArtistForm.controls['lastName'].setValue(
+            this.dialogData?.data?.lastName
+          );
+          this.addArtistForm.controls['username'].setValue(
+            this.dialogData?.data?.username
+          );
+          this.addArtistForm.controls['email'].setValue(
+            this.dialogData?.data?.email
+          );
+          this.addArtistForm.controls['password'].disable();
+          this.addArtistForm.controls['role'].setValue(
+            this.dialogData?.data?.role
+          );
+        }
+
+        if (this.dialogData?.type == 'Calendar') {
           this.addArtistForm.controls['id'].setValue(this.dialogData?.data?.id);
 
           this.addArtistForm.controls['firstName'].setValue(

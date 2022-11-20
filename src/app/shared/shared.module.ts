@@ -24,6 +24,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { NgxDonutChartModule } from 'ngx-doughnut-chart';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       },
     }),
     HighchartsChartModule,
+    NgxDonutChartModule,
   ],
   exports: [
     MatTableModule,
@@ -88,6 +90,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HttpClientModule,
     TranslateModule,
     HighchartsChartModule,
+    NgxDonutChartModule
   ],
 })
 export class SharedModule {}

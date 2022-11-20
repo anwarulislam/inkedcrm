@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { AppointmentsComponent } from 'src/app/artists/components/appointments/appointments.component';
 import { Customer } from 'src/app/core/interface/customer';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
 import Swal from 'sweetalert2';
@@ -28,6 +29,7 @@ export class ClientsDashbaordComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
+    public _dialog: MatDialog,
     private sidenavService: SideNavService
   ) {
     const users: any = [
@@ -171,6 +173,20 @@ export class ClientsDashbaordComponent implements OnInit {
       ) {
         Swal.fire('Cancelled', 'Client Detail is safe :)', 'error');
       }
+    });
+  }
+
+  openDialog(artist:any): void {
+    const dialogRef = this._dialog.open(AppointmentsComponent, {
+      width: '650px',
+      height:'700px',
+      panelClass:'white-background-dialog',
+      data: {artist:artist},
+    });
+
+    dialogRef.afterClosed().subscribe((result:any) => {
+      console.log('The dialog was closed');
+      console.log(result)
     });
   }
 }
