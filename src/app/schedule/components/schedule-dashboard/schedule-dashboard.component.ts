@@ -4,6 +4,11 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
+import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
+import { GenericApiCallingService } from 'src/app/core/services/api.service';
+import { CreateScheduleComponent } from '../create-schedule/create-schedule.component';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-schedule-dashboard',
@@ -11,7 +16,15 @@ import { SideNavService } from 'src/app/core/services/side-nav.service';
   styleUrls: ['./schedule-dashboard.component.scss'],
 })
 export class ScheduleDashboardComponent implements OnInit {
-  constructor(private sidenavService: SideNavService) {}
+  events:any[]=[];
+  realEvents:any[]=[];
+  constructor(
+    private sidenavService: SideNavService,
+    private _toastr:SnackToastrService,
+    private _dialog:MatDialog,
+    private _authService:AuthService,
+    private _apiService:GenericApiCallingService
+    ) {}
 
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
@@ -32,20 +45,9 @@ export class ScheduleDashboardComponent implements OnInit {
       }
     ],
     
-    
     dateClick: this.handleDateClick.bind(this),
-    events: [
-      { 
-        title: 'BCH237',
-        start: '2022-10-12T10:30:00',
-        end: '2022-10-12T11:30:00',
-        allDay:true,
-        extendedProps: {
-          department: 'BioChemistry'
-        },
-        description: 'Lecture'
-      },
-    ],
+    // eventClick: this.handleDateClick.bind(this),
+    events:[],
     headerToolbar: {
       left: 'prev,next today addNewEventButton',
       center: 'title',
@@ -54,19 +56,85 @@ export class ScheduleDashboardComponent implements OnInit {
    
   };
 
-  handleDateClick(arg: { dateStr: string }) {
+  handleDateClick(arg:any) {
+    let date = arg.dateStr.split('-');
+    let todayEvents:any=[];
+    this.events.forEach((event:any) =>{
+      if(event.start.split('T')[0] == `${arg.dateStr}`){
+        todayEvents.push(event);
+      }
+    });
+
     const params = {
-      data: arg.dateStr,
+      data: todayEvents,
       type: 'Calendar',
     };
     this.sidenavService.$dynamicForm.next(params);
   }
 
   ngOnInit(): void {
-   
+    this.getEvents();
+  }
+
+  getEvents(){
+    this._apiService.GetData('event','allEvents','').subscribe((res:any)=>{ 
+      this.realEvents = res.result;
+      console.log(this.realEvents)
+      res.result.forEach((event:any)=>{
+        let startDate = event.startDateStr.split('/');
+        let endDate = event.endDateStr.split('/');
+        this.events.push(
+          {
+            title: `${event.comments}`,
+            start: `${startDate[2]}-${startDate[1]}-${startDate[0]}T${event.startTime}`,
+            end: `${endDate[2]}-${endDate[1]}-${endDate[0]}T${event.endTime}`,
+            // allDay:true,
+            extendedProps: {
+              cost: event.cost,
+              tattooLocation:event.tattooLocation,
+              cancelled:event.cancelled,
+              noShow:event.noShow,
+              reschedule:event.reschedule,
+              eventID:event.eventID,
+              artistID:event.artistID,
+              userDTO:event.userDTO,
+              customerID:event.customerID,
+              customerDTO:event.customerDTO,
+            },
+          }
+        );
+
+        console.log(this.events)
+      })
+      
+
+      this.calendarOptions.events = [...this.events];
+
+
+    },err=>{
+      if(err.status == 403){
+        this._toastr.warning('Please login again');
+        this._authService.logout();
+      }
+      else{
+        this._toastr.error('Connection Problem');
+      }
+    })
   }
 
   addEvent(){
-    alert('Add@@@@')
+    const dialogRef = this._dialog.open(CreateScheduleComponent, {
+      width: '650px',
+      height:'700px',
+      panelClass:'',
+      data: {edit:false,data:null},
+    });
+
+    dialogRef.afterClosed().subscribe((result:any) => {
+      console.log('The dialog was closed');
+      if(result){
+        this.getEvents();
+      }
+    });
   }
 }

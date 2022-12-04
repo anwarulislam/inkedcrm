@@ -135,9 +135,9 @@
           <div class="col-md-6">
             <mat-form-field class="w-100" appearance="outline">
               <mat-label>Contact Number</mat-label>
-              <input matInput formControlName="tel" />
+              <input matInput formControlName="telNumber" />
               <mat-error
-                *ngIf="addClientForm.controls['tel'].hasError('required')"
+                *ngIf="addClientForm.controls['telNumber'].hasError('required')"
               >
                 Contact Number is <strong>required</strong>
               </mat-error>
@@ -310,7 +310,7 @@
       <ng-template [ngIf]="dialogData?.type == 'Calendar'">
         <div class="row mt-3 align-items-center">
           <div class="col-md-9">
-            <h2 class="m-0">Selected Date: {{ dialogData?.data | date }}</h2>
+            <h2 class="m-0">Selected Date: {{ dialogData?.data[0].start | date }}</h2>
           </div>
           <div class="col-md-3 text-right">
             <mat-icon (click)="closeSidenav()" class="align-middle cursor"
@@ -323,8 +323,8 @@
           </div>
         </div>
         
-        <ng-container *ngFor="let i of iterator">
-          <mat-card class="artist-cards mb-3">
+        <ng-container *ngFor="let event of dialogData.data">
+          <mat-card class="artist-cards mb-3" (click)="eventDetails(event)">
               <mat-card-content>
                <div class="row">
                   <div class="col-1">
@@ -334,7 +334,7 @@
                       <span>Artist name</span>
                   </div>
                   <div class="col-7">
-                      <span class="float-right">30/10/2022</span>
+                      <span class="float-right">{{event.extendedProps.userDTO.firstName}} {{event.extendedProps.userDTO.lastName}}</span>
                   </div>
                </div>
 
@@ -346,7 +346,7 @@
                       <span>Customer Name</span>
                   </div>
                   <div class="col-7">
-                      <span class="float-right">Zen Donegan</span>
+                      <span class="float-right">{{event.extendedProps.customerDTO.firstName}} {{event.extendedProps.customerDTO.lastName}}</span>
                   </div>
                </div>
 
@@ -358,7 +358,7 @@
                       <span>Telephone</span>
                   </div>
                   <div class="col-7">
-                      <span class="float-right">030342342</span>
+                      <span class="float-right">{{event.extendedProps.customerDTO.telNumber}}</span>
                   </div>
                </div>
 
@@ -392,7 +392,7 @@
       <span class="example-spacer"></span>
 
       <span class="mr-4">
-        {{ "Hi, Zen" | translate }}
+        {{ 'Hi ' + user?.firstName | translate }}
       </span>
 
       <button

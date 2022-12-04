@@ -4,7 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from 'src/app/core/interface/user';
+import { GenericApiCallingService } from 'src/app/core/services/api.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
+import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
 import Swal from 'sweetalert2';
 import { AppointmentsComponent } from '../appointments/appointments.component';
 
@@ -23,109 +26,45 @@ export class ArtistDashboardComponent implements OnInit {
     'action',
   ];
   dataSource: MatTableDataSource<User>;
-
+  users:any=[];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private sidenavService: SideNavService,public _dialog: MatDialog) {
-    const users: any = [
-      {
-        firstName: 'joe',
-        image:'assets/images/profileImage.png',
-        lastName: 'murphy',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-      {
-        firstName: 'michael',
-        image:'assets/images/profileImage.png',
-        lastName: 'donegan',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-      {
-        firstName: 'francis',
-        image:'assets/images/profileImage.png',
-        lastName: 'greene',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-      {
-        firstName: 'paddy',
-        image:'assets/images/profileImage.png',
-        lastName: 'oneil',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-      {
-        firstName: 'darragh',
-        image:'assets/images/profileImage.png',
-        lastName: 'oshea',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-      {
-        firstName: 'ciaran',
-        image:'assets/images/profileImage.png',
-        lastName: 'ward',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-      {
-        firstName: 'cathal',
-        image:'assets/images/profileImage.png',
-        lastName: 'murphy',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-      {
-        firstName: 'cian',
-        image:'assets/images/profileImage.png',
-        lastName: 'donegan',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-      {
-        firstName: 'ciara',
-        image:'assets/images/profileImage.png',
-        lastName: 'oshea',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-      {
-        firstName: 'sara',
-        image:'assets/images/profileImage.png',
-        lastName: 'connor',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-      {
-        firstName: 'john',
-        image:'assets/images/profileImage.png',
-        lastName: 'donegan',
-        username: 'string',
-        email: 'string',
-        role: 'string',
-      },
-    ];
-    this.dataSource = new MatTableDataSource(users);
+  constructor(
+    private dialog: MatDialog,
+    public _dialog: MatDialog,
+    private sidenavService: SideNavService,
+    private _toastr:SnackToastrService,
+    private _apiService:GenericApiCallingService,
+    private _authService:AuthService
+  ) {
+    this.dataSource = new MatTableDataSource(this.users);
   }
 
+
   ngOnInit(): void {
+    this.getArtists();
     this.sidenavService.$dynamicForm.subscribe((res) => {
       if (res == 'close') {
+        this.getArtists();
       }
     });
+  }
+
+  getArtists(){
+    this._apiService.GetData('users','allUsers','').subscribe((res:any)=>{
+      this.users=res.result;
+      console.log(this.users)
+      this.dataSource = new MatTableDataSource(this.users);
+    },err=>{
+      if(err.status == 403){
+        this._toastr.warning("Please login again");
+        this._authService.logout();
+      }
+      else{
+        this._toastr.error("Connection Problem");
+      }
+    })
   }
 
   ngAfterViewInit() {
@@ -173,17 +112,37 @@ export class ArtistDashboardComponent implements OnInit {
     });
   }
 
-  openDialog(artist:any): void {
-    const dialogRef = this._dialog.open(AppointmentsComponent, {
-      width: '650px',
-      height:'700px',
-      panelClass:'white-background-dialog',
-      data: {artist:artist},
-    });
 
-    dialogRef.afterClosed().subscribe((result:any) => {
-      console.log('The dialog was closed');
-      console.log(result)
-    });
+  openDialog(artist:any): void {
+    this._apiService.GetData('event','allEvents','').subscribe((res:any)=>{ 
+      let events:any = [];
+      res.result.forEach((event:any)=>{
+        if(event.artistID == artist.artistID){
+          events.push(event);
+        }
+      });
+
+      const dialogRef = this._dialog.open(AppointmentsComponent, {
+        width: '650px',
+        height:'700px',
+        panelClass:'white-background-dialog',
+        data: {events:events},
+      });
+  
+      dialogRef.afterClosed().subscribe((result:any) => {
+        console.log('The dialog was closed');
+        console.log(result)
+      });
+
+    },err=>{
+      if(err.status == 403){
+        this._toastr.warning('Please login again');
+        this._authService.logout();
+      }
+      else{
+        this._toastr.error('Connection Problem');
+      }
+    })
+    
   }
 }

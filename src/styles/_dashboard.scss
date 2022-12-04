@@ -8,12 +8,17 @@
     border-radius: 50% !important;
     width: 200px !important;
     height: 200px !important;
-    border:5px solid white!important;
+    border:5px solid #36CD1F!important;
     display: flex !important;
     align-items: center !important;
 }
 
+#artist-table-card{
+    height: 330px !important;
+}
+
 .circle-text{
-    font-size: 45px !important;
+    font-size: 35px !important;
     margin:auto !important;
+    text-align:center !important;
 }

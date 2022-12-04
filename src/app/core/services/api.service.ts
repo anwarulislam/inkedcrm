@@ -13,7 +13,7 @@ export class GenericApiCallingService {
     this.baseUrl = environment.baseurl
   }
   GetData<T>(controllerName: any, methodName: any,options:any): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}${controllerName}/${methodName}${options}`);
+    return this.http.get<any>(`${this.baseUrl}/${controllerName}/${methodName}${options}`);
   }
 
   GetFile<T>(filePath:any):Observable<Blob>{
@@ -21,34 +21,15 @@ export class GenericApiCallingService {
   }
 
   PostData<T>(controllerName: any, methodName: any, data: any): Observable<any> {
-    return this.http.post<any>( `${this.baseUrl}${controllerName}/${methodName}`, data);
+    return this.http.post<any>(`${this.baseUrl}/${controllerName}/${methodName}`, data);
   }
 
   PutData<T>(controllerName: any, methodName: any, data: any): Observable<any> {
-    return this.http.put<any>( `${this.baseUrl}${controllerName}/${methodName}`, data);
+    return this.http.put<any>( `${this.baseUrl}/${controllerName}/${methodName}`, data);
   }
 
   DeleteData<T>(controllerName: any, methodName: any, opations: any): Observable<any> {
-    return this.http.delete<any>( `${this.baseUrl}${controllerName}/${methodName}${opations}`);
+    return this.http.delete<any>( `${this.baseUrl}/${controllerName}/${methodName}${opations}`);
   }
 
-  getUnsplashImage(url: any){
-    return this.http.get<any>(url);
-  }
-
-  getUserIpAddress(url: any){
-    return this.http.get<any>(url);
-  }
-
-  getUserLocationBasedOnIpAddress(url: any) {
-   
-
-    return this.http.get<any>(url, {
-      headers: 
-      new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'origin': '*'
-      })
-    });
-  }
 }

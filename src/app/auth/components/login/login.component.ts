@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { _countGroupLabelsBeforeOption } from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +16,15 @@ export class LoginComponent implements OnInit {
   showPassword = false;
 
   loginForm = new FormGroup({
-    userName: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
   constructor(
     private _router:Router,
-    private _authService:AuthService
+    private _authService:AuthService,
+    private _apiService:GenericApiCallingService,
+    private _snackBar: SnackToastrService
   ) {}
 
   ngOnInit(): void {}
@@ -28,7 +34,21 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this._authService.accessToken = 'Test token';
-    this._router.navigateByUrl('/dashboard')
+    console.log(this.loginForm.value)
+    this._apiService.PostData('users','sign-in',this.loginForm.value).subscribe((res:any)=>{
+      console.log(res);
+      this._authService.accessToken = res?.result?.accessToken;
+        this._authService.setUser(res.result);
+        this._router.navigateByUrl('/dashboard');
+    },err=>{
+      console.log(err)
+      if(err.status == 403){
+        this._snackBar.error('Incorrect credentials');
+      }
+      else if(err.status ==500){
+        this._snackBar.error('Internal Server Error');
+      }
+    })
+    
   }
 }

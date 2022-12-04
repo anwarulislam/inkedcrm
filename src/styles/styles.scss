@@ -2,6 +2,8 @@
 @include mat.core();
 
 /* You can add global styles to this file, and also import other style files */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
 
 @import "base";
 @import "wrapper";
@@ -13,6 +15,7 @@
 @import "appointment";
 @import "dashboard";
 @import "templates";
+@import "snackToastr";
 
 table {
   width: 100% !important;

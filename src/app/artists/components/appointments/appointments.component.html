@@ -5,27 +5,27 @@
             <mat-card-title>
                 <div class="row">
                     <div class="col-6">
-                        <h5 class="float-left margin0">29/10/2022</h5>
+                        <h5 class="float-left margin0">{{today | date:'medium'}}</h5>
                     </div>
                     <div class="col-6">
-                        <h5 class="float-right margin0">Apppointments This Month</h5>
+                        <h5 class="float-right margin0">Your Appointments</h5>
                     </div>
                 </div>
                 <hr class="margin0">
             </mat-card-title>
 
-            <ng-container *ngFor="let i of iterator">
-                <mat-card class="artist-cards mb-3" (click)="openDialog({})">
+            <ng-container *ngFor="let event of data.events">
+                <mat-card class="artist-cards mb-3" (click)="openDialog(event)">
                     <mat-card-content>
                      <div class="row">
                         <div class="col-1">
                             <img src="assets/images/profileImage.png" class="round-img" alt="">
                         </div>
                         <div class="col-4">
-                            <span>Artist name</span>
+                            <span>Appointment Date</span>
                         </div>
                         <div class="col-7">
-                            <span class="float-right">30/10/2022</span>
+                            <span class="float-right">{{event.startDateStr}} {{event.startTime}}</span>
                         </div>
                      </div>
     
@@ -37,7 +37,7 @@
                             <span>Customer Name</span>
                         </div>
                         <div class="col-7">
-                            <span class="float-right">Zen Donegan</span>
+                            <span class="float-right">{{event.customerDTO.firstName}} {{event.customerDTO.lastName}}</span>
                         </div>
                      </div>
     
@@ -49,7 +49,7 @@
                             <span>Telephone</span>
                         </div>
                         <div class="col-7">
-                            <span class="float-right">030342342</span>
+                            <span class="float-right">{{event.customerDTO.telNumber}}</span>
                         </div>
                      </div>
     

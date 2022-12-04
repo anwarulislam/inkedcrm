@@ -24,6 +24,18 @@ export class AuthService {
     return localStorage.getItem('accessToken') ?? '';
   }
 
+  setUser(user:any){
+    localStorage.setItem('user',JSON.stringify(user));
+  }
+
+  getUser(){
+    return JSON.parse(localStorage.getItem('user') || '{}');
+  }
+
+  getUserId(){
+    return JSON.parse(localStorage.getItem('user') || '{}')?.artistID;
+  }
+
   /**
    * Setter & getter for refresh token
    */
@@ -49,13 +61,7 @@ export class AuthService {
     this._router.navigateByUrl('/login');
   }
 
-  signIn(data: any) {
-    return this.http.post(environment.baseurl + 'api/v1/user/signIn', data);
-  }
 
-  login(data: any) {
-    return this.http.post(environment.baseurl + 'api/v1/user/login', data);
-  }
 
 
 

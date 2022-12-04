@@ -7,6 +7,9 @@ import { User } from 'src/app/core/interface/user';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
 import * as Highcharts from 'highcharts';
 import { AppointmentsComponent } from 'src/app/artists/components/appointments/appointments.component';
+import { GenericApiCallingService } from 'src/app/core/services/api.service';
+import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 
 @Component({
@@ -191,27 +194,24 @@ export class DashboardComponent implements OnInit {
     ]
   };
 
-  donutChartData:any = [
-    {
-      label: '',
-      value: 5,
-      color: 'red',
-    },
-    {
-      label: '	',
-      value: 13,
-      color: 'black',
-    },
-    {
-      label: '',
-      value: 5,
-      color: 'blue',
-    },
-  ];
+  // totalClients:any = [
+  //   {
+  //     label: 'Total Clients',
+  //     value: 100,
+  //     color: 'red',
+  //   },
+  //   {
+  //     label: '',
+  //     value: 100,
+  //     color: 'red',
+  //   }
+  // ];
+
+  
 
   lineOption: Highcharts.Options = {
     series: [{
-      data: [1, 2, 3],
+      data: [10],
       type: 'line'
     }]
   };
@@ -279,54 +279,116 @@ export class DashboardComponent implements OnInit {
         }]
     }]
   };
+
+  users:any=[];
+  events:any=[];
+  cancelledEvent:any=0;
+  totalClients:any=[];
+  totalTatoos:any=0;
+  clients:any=[];
   
-  constructor(private sidenavService: SideNavService,public _dialog: MatDialog) {
-    const users: any = [
-      {
-        artist: 'joe',
-        started:'16 10 2022',
-        hours: '455',
-        no_tat: '342',
-        earned: '$3400',
-      },
-      {
-        artist: 'joe',
-        started:'16 10 2022',
-        hours: '455',
-        no_tat: '342',
-        earned: '$3400',
-      },
-      {
-        artist: 'joe',
-        started:'16 10 2022',
-        hours: '455',
-        no_tat: '342',
-        earned: '$3400',
-      },
-      {
-        artist: 'joe',
-        started:'16 10 2022',
-        hours: '455',
-        no_tat: '342',
-        earned: '$3400',
-      },
-      {
-        artist: 'joe',
-        started:'16 10 2022',
-        hours: '455',
-        no_tat: '342',
-        earned: '$3400',
-      },
-    ];
-    this.dataSource = new MatTableDataSource(users);
+  constructor(
+    private sidenavService: SideNavService,
+    private _dialog: MatDialog,
+    private _toastr:SnackToastrService,
+    private _authService:AuthService,
+    private _apiService:GenericApiCallingService) {
+    
+    this.dataSource = new MatTableDataSource(this.users);
   
   }
 
   ngOnInit(): void {
+    this.getArtists();
     this.sidenavService.$dynamicForm.subscribe((res) => {
       if (res == 'close') {
+        this.getArtists();
       }
     });
+  }
+
+  getEvents(){
+    this._apiService.GetData('event','allEvents','').subscribe((res:any)=>{
+      this.events = res.result;
+      for(const event of this.events){
+        if(event.cancelled == "N"){
+          this.totalTatoos+=1;
+        }else{
+          this.cancelledEvent+=1;
+        }
+      }
+      this.getCustomers();
+    },err=>{
+      if(err.status == 403){
+        this._authService.logout();
+        this._toastr.warning('Please login again');
+        this._authService.logout();
+      }
+      else{
+        this._toastr.error('Connection Problem');
+      }
+    })
+  }
+
+  getCustomers(){
+    this._apiService.GetData('customer','allCustomers','').subscribe((res:any)=>{
+      this.clients = res.result;
+      this.calculateArtistHoursAndEarning();
+    },err=>{
+      if(err.status == 403){
+        this._toastr.warning('Please login again');
+        this._authService.logout();
+      }
+      else{
+        this._toastr.error('Connection Problem');
+      }
+    })
+  }
+
+  calculateArtistHoursAndEarning(){
+    for(const user of this.users){
+      for(const event of this.events){
+        if(user.artistID == event.artistID){
+          let startDate = new Date(`${event.startDateStr.split('/')[2]}-${event.startDateStr.split('/')[1]}-${event.startDateStr.split('/')[0]}T${event.startTime}:00`);
+          let endDate = new Date(`${event.endDateStr.split('/')[2]}-${event.endDateStr.split('/')[1]}-${event.endDateStr.split('/')[0]}T${event.endTime}:00`);
+          user.hours = user.hours + this.diff_hours(endDate,startDate);
+          user.earned = user.earned + event.cost;
+          user.no_tat +=1;
+        }
+      }
+
+      
+
+      this.totalClients = this.clients.length;
+      this.dataSource = new MatTableDataSource(this.users);
+      
+    }
+  }
+
+  diff_hours(dt2:any, dt1:any){
+    var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+    diff /= (60 * 60);
+    return Math.abs(Math.round(diff));
+ }
+
+  getArtists(){
+    this._apiService.GetData('users','allUsers','').subscribe((res:any)=>{
+      this.users = res.result;
+      for(const user of this.users){
+        user.hours = 0;
+        user.earned = 0;
+        user.no_tat = 0;
+      }
+      this.getEvents();
+    },err=>{
+      if(err.status == 403){
+        this._toastr.warning('Please login again');
+        this._authService.logout();
+      }
+      else{
+        this._toastr.error('Connection Problem');
+      }
+    })
   }
 
   ngAfterViewInit() {
@@ -339,11 +401,17 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog(artist:any): void {
+    let artistEvents=[];
+    for(const event of this.events){
+      if(event.artistID == artist.artistID){
+        artistEvents.push(event);
+      }
+    }
     const dialogRef = this._dialog.open(AppointmentsComponent, {
       width: '650px',
       height:'700px',
       panelClass:'white-background-dialog',
-      data: {artist:artist},
+      data: {events:artistEvents},
     });
 
     dialogRef.afterClosed().subscribe((result:any) => {

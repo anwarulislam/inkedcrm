@@ -20,17 +20,17 @@
                         <img src="assets/images/profileImage.png" class="round-img" alt="">
                     </div>
                     <div class="col-4">
-                        <span>Artist</span>
+                        <span>Artist : {{data.appointment.userDTO.firstName}} {{data.appointment.userDTO.lastName}}</span>
                     </div>
                     <div class="col-7 row">
                         <div class="col-12">
-                            <span class="float-right">12 10 22</span>
+                            <span class="float-right">Date : {{data.appointment.startDateStr}} - {{data.appointment.endDateStr}}</span>
                         </div>
                         <div class="col-12">
-                            <span class="float-right"> 16:30</span>
+                            <span class="float-right">Time : {{data.appointment.startTime}} - {{data.appointment.endTime}}</span>
                         </div>
                         <div class="col-12">
-                            <span class="float-right">3hrs 15 min</span>
+                            <span class="float-right">{{hoursDiff}} hours</span>
                         </div>
                     </div>
                 </div>
@@ -38,31 +38,31 @@
                 <!-- details -->
                 <div class="row mt-2">
                     <div class="col-6">
-                        <span>Client : Zen donegan</span>
+                        <span>Client : {{data.appointment.customerDTO.firstName}} {{data.appointment.customerDTO.lastName}}</span>
                     </div>
                 </div>
     
                 <div class="row mt-2">
                     <div class="col-6">
-                        <span>Tel : 034983457</span>
+                        <span>Tel : {{data.appointment.customerDTO.telNumber}}</span>
                     </div>
                 </div>
     
                 <div class="row mt-2">
                     <div class="col-6">
-                        <span>Email : xyz@gmail.com</span>
+                        <span>Email : {{data.appointment.customerDTO.email}}</span>
                     </div>
                 </div>
                 <!-- =======Break -->
                 <div class="row mt-5">
                     <div class="col-6">
-                        <span>Tattoo Location : Lower back</span>
+                        <span>Tattoo Location : {{data.appointment.tattooLocation}}</span>
                     </div>
                 </div>
     
                 <div class="row">
                     <div class="col-6">
-                        <span>Price : $ 450</span>
+                        <span>Price : $ {{data.appointment.cost}}</span>
                     </div>
                 </div>
 
@@ -102,10 +102,10 @@
 
 
                 <div class="row mt-5">
-                    <div class="col-6">
+                    <div class="col-4" (click)="reschedule()">
                         <button mat-button color="primary" class="float-left">Reschedule</button>
                     </div>
-                    <div class="col-6">
+                    <div class="col-8">
                         <button mat-button color="primary" class="float-right" (click)="closeDialog()">Close</button>
                     </div>
                 </div>

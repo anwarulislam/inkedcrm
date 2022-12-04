@@ -9,12 +9,13 @@ import { AppointmentDetailsComponent } from '../appointment-details/appointment-
 })
 export class AppointmentsComponent implements OnInit {
   iterator:any=[1,2,3,4,5,6,7,8,9,10];
+  today:any = new Date();
   constructor(
     public _dialogRef: MatDialogRef<AppointmentsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _dialog:MatDialog
     ){
-      console.log(this.data)
+      
     }
 
   ngOnInit(): void {
@@ -31,7 +32,7 @@ export class AppointmentsComponent implements OnInit {
       width: '650px',
       height:'600px',
       panelClass:'white-background-dialog',
-      data: {artist:appointment},
+      data: {appointment:appointment},
     });
 
     dialogRef.afterClosed().subscribe((result:any) => {

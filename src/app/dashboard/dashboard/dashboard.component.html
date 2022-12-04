@@ -1,8 +1,8 @@
 <div class="container-fluid">
 
-  <div class="row mt-3 align-items-center">
+  <div class="row mt-3">
     <div class="col-md-6">
-      <mat-card class="dashboard-cards">
+      <mat-card class="dashboard-cards" id="artist-table-card">
         <mat-card-content>
           <div class="mat-elevation-z8">
             <table aria-describedby="" mat-table [dataSource]="dataSource" matSort>
@@ -13,7 +13,7 @@
                   Artist
                 </th>
                 <td mat-cell *matCellDef="let row">
-                  {{ row.artist }}
+                  {{ row.firstName }}
                 </td>
               </ng-container>
     
@@ -22,7 +22,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>
                   Started
                 </th>
-                <td mat-cell *matCellDef="let row">{{ row.started }}</td>
+                <td mat-cell *matCellDef="let row">{{ row.createDate | date:'medium' }}</td>
               </ng-container>
     
               <!-- Hours -->
@@ -46,7 +46,7 @@
               <!-- View Column -->
               <ng-container matColumnDef="View">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>View</th>
-                <td mat-cell *matCellDef="let row" (click)="openDialog({})">
+                <td mat-cell *matCellDef="let row" (click)="openDialog(row)">
                   <mat-icon>remove_red_eye</mat-icon>
                 </td>
               </ng-container>
@@ -80,26 +80,40 @@
 
   <div class="row mt-5">
     <div class="col-4">
-      <mat-card class="dashboard-cards">
+      <div class="dashboard-circle">
+        <p class="circle-text">{{totalClients}} <br><br> Clients</p>
+        <!-- <p class="circle-text">Clients</p> -->
+      </div>
+      <!-- <mat-card class="dashboard-cards">
         <mat-card-content>
           <ngx-donut-chart
-              [data]="donutChartData"
+              [data]="totalClients"
               [title]="'Total Clients'"
-              [radius]="88"
-              [thickness]="10"
+              [radius]="100"
+              [thickness]="4"
               [margin]="80">
             </ngx-donut-chart>
         </mat-card-content>
-      </mat-card>
+      </mat-card> -->
     </div>
     <div class="col-4">
+      <div class="dashboard-circle">
+        <p class="circle-text">{{totalTatoos}} <br><br> Tattoos</p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="dashboard-circle">
+        <p class="circle-text">{{cancelledEvent}} <br><br> Canceled</p>
+      </div>
+    </div>
+    <!-- <div class="col-4">
       <mat-card class="dashboard-cards">
         <mat-card-content>
           <ngx-donut-chart
-              [data]="donutChartData"
+              [data]="totalClients"
               [title]="'Tattoos'"
               [radius]="88"
-              [thickness]="10"
+              [thickness]="4"
               [margin]="80">
             </ngx-donut-chart>
         </mat-card-content>
@@ -110,15 +124,15 @@
       <mat-card class="dashboard-cards">
         <mat-card-content>
           <ngx-donut-chart
-              [data]="donutChartData"
+              [data]="totalClients"
               [title]="'Cancellation No Shows'"
-              [radius]="88"
-              [thickness]="10"
+              [radius]="100"
+              [thickness]="4"
               [margin]="80">
             </ngx-donut-chart>
         </mat-card-content>
       </mat-card>
-    </div>
+    </div> -->
 
   </div>
 

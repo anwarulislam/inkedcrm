@@ -5,7 +5,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AppointmentsComponent } from 'src/app/artists/components/appointments/appointments.component';
 import { Customer } from 'src/app/core/interface/customer';
+import { GenericApiCallingService } from 'src/app/core/services/api.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
+import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,9 +22,10 @@ export class ClientsDashbaordComponent implements OnInit {
     'firstName',
     'lastName',
     'email',
-    'tel',
+    'telNumber',
     'action',
   ];
+  users:any=[];
   dataSource: MatTableDataSource<Customer>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -30,102 +34,37 @@ export class ClientsDashbaordComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     public _dialog: MatDialog,
-    private sidenavService: SideNavService
+    private sidenavService: SideNavService,
+    private _toastr:SnackToastrService,
+    private _apiService:GenericApiCallingService,
+    private _authService:AuthService
   ) {
-    const users: any = [
-      {
-        firstName: 'david',
-        lastName: 'donegan',
-        tel: '0833097183',
-        email: 'daviddonegan@gmail.com',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'francis',
-        lastName: 'greene',
-        tel: '088768443',
-        email: 'francis@gmail.com',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'zen',
-        lastName: 'donegan',
-        tel: 'number',
-        email: 'zendonegan@gmail.com',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'john',
-        lastName: 'murphy',
-        tel: '07773982485',
-        email: 'john@gmail.com',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'michael',
-        lastName: 'murphy',
-        tel: 'number',
-        email: 'string',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'string',
-        lastName: 'string',
-        tel: 'number',
-        email: 'string',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'string',
-        lastName: 'string',
-        tel: 'number',
-        email: 'string',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'string',
-        lastName: 'string',
-        tel: 'number',
-        email: 'string',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'string',
-        lastName: 'string',
-        tel: 'number',
-        email: 'string',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'string',
-        lastName: 'string',
-        tel: 'number',
-        email: 'string',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'string',
-        lastName: 'string',
-        tel: 'number',
-        email: 'string',
-        dateCreated: 'string',
-      },
-      {
-        firstName: 'francis',
-        lastName: 'greene',
-        tel: 'number',
-        email: 'francisgreene@gmail.com',
-        dateCreated: 'string',
-      },
-    ];
-    this.dataSource = new MatTableDataSource(users);
+    this.dataSource = new MatTableDataSource(this.users);
   }
 
   ngOnInit(): void {
+    this.getCustomers();
     this.sidenavService.$dynamicForm.subscribe((res) => {
       if (res == 'close') {
+        this.getCustomers();
       }
     });
+  }
+
+  getCustomers(){
+    this._apiService.GetData('customer','allCustomers','').subscribe((res:any)=>{
+      this.users=res.result;
+      console.log(this.users)
+      this.dataSource = new MatTableDataSource(this.users);
+    },err=>{
+      if(err.status == 403){
+        this._toastr.warning('Please login again');
+        this._authService.logout();
+      }
+      else{
+        this._toastr.error("Connection Problem");
+      }
+    })
   }
 
   ngAfterViewInit() {
@@ -149,6 +88,7 @@ export class ClientsDashbaordComponent implements OnInit {
       type: 'Client',
     };
     this.sidenavService.$dynamicForm.next(params);
+    
   }
 
   viewClientDetail(clientDetail: any) {
@@ -176,17 +116,37 @@ export class ClientsDashbaordComponent implements OnInit {
     });
   }
 
-  openDialog(artist:any): void {
-    const dialogRef = this._dialog.open(AppointmentsComponent, {
-      width: '650px',
-      height:'700px',
-      panelClass:'white-background-dialog',
-      data: {artist:artist},
-    });
+  openDialog(client:any): void {
+    this._apiService.GetData('event','allEvents','').subscribe((res:any)=>{
+      let events:any=[];
+      for(const event of res.result){
+        if(event.customerID == client.customerID){
+          events.push(event);
+        }
+      }
 
-    dialogRef.afterClosed().subscribe((result:any) => {
-      console.log('The dialog was closed');
-      console.log(result)
-    });
+      const dialogRef = this._dialog.open(AppointmentsComponent, {
+        width: '650px',
+        height:'700px',
+        panelClass:'white-background-dialog',
+        data: {events:events},
+      });
+  
+      dialogRef.afterClosed().subscribe((result:any) => {
+        console.log('The dialog was closed');
+        console.log(result)
+      });
+      
+    },err=>{
+      if(err.status == 403){
+        this._authService.logout();
+        this._toastr.warning('Please login again');
+        this._authService.logout();
+      }
+      else{
+        this._toastr.error('Connection Problem');
+      }
+    })
+   
   }
 }

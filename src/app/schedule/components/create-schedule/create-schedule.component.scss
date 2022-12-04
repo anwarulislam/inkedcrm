@@ -1,0 +1,18 @@
+::ng-deep.mat-dialog-container {
+    padding: 0px !important;
+}
+  
+::ng-deep.mat-dialog-container {
+    padding: 0px !important;
+}
+
+::ng-deep.mat-datepicker-content-container{
+    background-color: white !important;
+}
+
+/* CSS alternative */
+.mat-calendar-body-active > .mat-calendar-body-today {
+    color: red;
+    background-color: blue;
+}
+  

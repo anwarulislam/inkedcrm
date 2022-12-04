@@ -25,7 +25,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgxDonutChartModule } from 'ngx-doughnut-chart';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
+import { OwlModule } from 'ngx-owl-carousel';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -51,7 +57,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatTooltipModule,
     ReactiveFormsModule,
     FormsModule,
+    MatSelectModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatCardModule,
     MatCheckboxModule,
     FullCalendarModule,
@@ -65,6 +74,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     }),
     HighchartsChartModule,
     NgxDonutChartModule,
+
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    OwlModule
   ],
   exports: [
     MatTableModule,
@@ -72,6 +85,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatInputModule,
     MatFormFieldModule,
     MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
     MatGridListModule,
     MatButtonModule,
     MatIconModule,
@@ -79,6 +95,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatListModule,
     MatToolbarModule,
     MatDialogModule,
+    MatSnackBarModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    OwlModule,
+
+    
     RouterModule,
     SidenavComponent,
     MatTooltipModule,
