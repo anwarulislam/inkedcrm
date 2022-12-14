@@ -7,7 +7,7 @@ import { SideNavService } from 'src/app/core/services/side-nav.service';
 import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { CreateScheduleComponent } from '../create-schedule/create-schedule.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { _countGroupLabelsBeforeOption } from '@angular/material/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { _countGroupLabelsBeforeLegacyOption as _countGroupLabelsBeforeOption } from '@angular/material/legacy-core';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { Router } from '@angular/router';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';

@@ -16,7 +16,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
 import { CreateScheduleComponent } from 'src/app/schedule/components/create-schedule/create-schedule.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { AppointmentDetailsComponent } from 'src/app/artists/components/appointment-details/appointment-details.component';
 
 @Component({
