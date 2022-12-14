@@ -28,12 +28,12 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import { EventsService } from '../core/services/events.service';
 import { SharedModule } from '../shared/shared.module';
 
-FullCalendarModule.registerPlugins([
-  dayGridPlugin,
-  interactionPlugin,
-  listPlugin,
-  timeGridPlugin,
-]);
+// FullCalendarModule.registerPlugins([
+//   dayGridPlugin,
+//   interactionPlugin,
+//   listPlugin,
+//   timeGridPlugin,
+// ]);
 
 // @ts-ignore
 @NgModule({
