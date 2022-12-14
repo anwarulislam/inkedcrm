@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -14,12 +14,12 @@ export class RegisterComponent implements OnInit {
 
   showPassword = false;
 
-  regsiterForm = new FormGroup({
-    username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
+  regsiterForm = new UntypedFormGroup({
+    username: new UntypedFormControl('', Validators.required),
+    password: new UntypedFormControl('', Validators.required),
+    firstName: new UntypedFormControl('', Validators.required),
+    lastName: new UntypedFormControl('', Validators.required),
+    email: new UntypedFormControl('', Validators.required),
   });
 
   constructor(

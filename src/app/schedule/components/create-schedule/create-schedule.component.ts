@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -16,7 +16,7 @@ export class CreateScheduleComponent implements OnInit {
   user:any;
   constructor(
     public _dialogRef: MatDialogRef<CreateScheduleComponent>,
-    private _fb:FormBuilder,
+    private _fb:UntypedFormBuilder,
     private _apiService:GenericApiCallingService,
     private _authService:AuthService,
     private _toastr:SnackToastrService,

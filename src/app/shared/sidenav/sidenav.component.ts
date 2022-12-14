@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
 import { MatSidenav } from '@angular/material/sidenav';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
@@ -46,24 +46,24 @@ export class SidenavComponent implements OnInit {
       {name:'NL',value:'nl',},
   ]
 
-  addClientForm = new FormGroup({
-    id: new FormControl(),
-    firstName: new FormControl(),
-    lastName: new FormControl(),
-    telNumber: new FormControl(),
-    email: new FormControl(),
-    instagram: new FormControl(),
-    facebook: new FormControl(),
+  addClientForm = new UntypedFormGroup({
+    id: new UntypedFormControl(),
+    firstName: new UntypedFormControl(),
+    lastName: new UntypedFormControl(),
+    telNumber: new UntypedFormControl(),
+    email: new UntypedFormControl(),
+    instagram: new UntypedFormControl(),
+    facebook: new UntypedFormControl(),
   });
 
-  addArtistForm = new FormGroup({
-    id: new FormControl(),
-    firstName: new FormControl(),
-    lastName: new FormControl(),
-    username: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl(),
-    role: new FormControl(),
+  addArtistForm = new UntypedFormGroup({
+    id: new UntypedFormControl(),
+    firstName: new UntypedFormControl(),
+    lastName: new UntypedFormControl(),
+    username: new UntypedFormControl(),
+    email: new UntypedFormControl(),
+    password: new UntypedFormControl(),
+    role: new UntypedFormControl(),
   });
 
   isExpanded: any;
