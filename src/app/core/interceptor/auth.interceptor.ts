@@ -21,8 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
     let authReq = req;
     const token: any = this._authService.accessToken;
 
-    if (token && !AuthUtils.isTokenExpired(token) )
-    {
+    if (token && !AuthUtils.isTokenExpired(token)) {
       authReq = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
@@ -32,8 +31,6 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authReq);
   }
 }
-
-
 
 export const authInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

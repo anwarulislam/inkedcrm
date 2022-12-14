@@ -3,17 +3,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EventsService {
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   allEvents() {
     const options = {
-      headers: new HttpHeaders()
+      headers: new HttpHeaders(),
     };
-    return this.http.get(environment.baseurl + 'api/v1/events/allEvents', options);
+    return this.http.get(
+      environment.baseurl + 'api/v1/events/allEvents',
+      options
+    );
   }
 
   newEvent(data: any) {
@@ -21,10 +22,7 @@ export class EventsService {
   }
 
   updated() {
-    const params = {
-
-    };
+    const params = {};
     return this.http.put(environment.baseurl + 'api/v1/events/updated', params);
   }
-
 }

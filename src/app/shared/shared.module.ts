@@ -12,7 +12,10 @@ import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-c
 import { MatIconModule } from '@angular/material/icon';
 import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatLegacyDialogClose as MatDialogClose, MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
+import {
+  MatLegacyDialogClose as MatDialogClose,
+  MatLegacyDialogModule as MatDialogModule,
+} from '@angular/material/legacy-dialog';
 import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -24,10 +27,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { NgxDonutChartModule } from 'ngx-doughnut-chart';
 import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
-import { MatLegacySelectModule as MatSelectModule} from '@angular/material/legacy-select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
@@ -73,11 +75,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       },
     }),
     HighchartsChartModule,
-    NgxDonutChartModule,
 
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    OwlModule
+    OwlModule,
   ],
   exports: [
     MatTableModule,
@@ -100,7 +101,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     OwlNativeDateTimeModule,
     OwlModule,
 
-    
     RouterModule,
     SidenavComponent,
     MatTooltipModule,
@@ -112,7 +112,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HttpClientModule,
     TranslateModule,
     HighchartsChartModule,
-    NgxDonutChartModule
   ],
 })
 export class SharedModule {}

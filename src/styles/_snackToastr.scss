@@ -1,32 +1,32 @@
 .green-snackbar {
-    background: #147920;
-    color:white;
-  }
-  .green-snackbar .mat-simple-snackbar-action  {
-    color: #FFF !important;
-    background:#147920 !important;
-  }
-  .red-snackbar {
-    background: #D62726;
-    color:white;
-  }
-  .red-snackbar .mat-simple-snackbar-action  {
-    color: #FFF !important;
-    background:#D62726 !important;
-  }
-  .blue-snackbar {
-    background: #3281CA;
-    color:white;
-  }
-  .blue-snackbar .mat-simple-snackbar-action  {
-    color: #FFF !important;
-    background:#3281CA !important;
-  }
-  .yellow-snackbar {
-    background: #F1C40F;
-    color:black;
-  }
-  .yellow-snackbar .mat-simple-snackbar-action  {
-    color: #000 !important;
-    background:#F1C40F !important;
-  }
+  background: #147920;
+  color: white;
+}
+.green-snackbar .mat-simple-snackbar-action {
+  color: #fff !important;
+  background: #147920 !important;
+}
+.red-snackbar {
+  background: #d62726;
+  color: white;
+}
+.red-snackbar .mat-simple-snackbar-action {
+  color: #fff !important;
+  background: #d62726 !important;
+}
+.blue-snackbar {
+  background: #3281ca;
+  color: white;
+}
+.blue-snackbar .mat-simple-snackbar-action {
+  color: #fff !important;
+  background: #3281ca !important;
+}
+.yellow-snackbar {
+  background: #f1c40f;
+  color: black;
+}
+.yellow-snackbar .mat-simple-snackbar-action {
+  color: #000 !important;
+  background: #f1c40f !important;
+}

@@ -1,13 +1,12 @@
 {
-    "Hi, Zen": "Hallo Zen",
-    "Logout": "Ausloggen",
-    "Profile": "Profil",
-    "Dashboard": "Armaturenbrett",
-    "Schedule": "Zeitlicher Ablauf",
-    "Clients": "Kunden",
-    "Artists": "Künstler",
-    "Marketing": "Marketing",
-    "Templates": "Vorlagen",
-    "Sr. No": "Sr. Nr"
-  }
-  
+  "Hi, Zen": "Hallo Zen",
+  "Logout": "Ausloggen",
+  "Profile": "Profil",
+  "Dashboard": "Armaturenbrett",
+  "Schedule": "Zeitlicher Ablauf",
+  "Clients": "Kunden",
+  "Artists": "Künstler",
+  "Marketing": "Marketing",
+  "Templates": "Vorlagen",
+  "Sr. No": "Sr. Nr"
+}

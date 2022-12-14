@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient,private _router:Router) { }
+  constructor(private http: HttpClient, private _router: Router) {}
 
   // -----------------------------------------------------------------------------------------------------
   // @ Accessors
@@ -24,15 +24,15 @@ export class AuthService {
     return localStorage.getItem('accessToken') ?? '';
   }
 
-  setUser(user:any){
-    localStorage.setItem('user',JSON.stringify(user));
+  setUser(user: any) {
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
-  getUser(){
+  getUser() {
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
 
-  getUserId(){
+  getUserId() {
     return JSON.parse(localStorage.getItem('user') || '{}')?.artistID;
   }
 
@@ -51,19 +51,16 @@ export class AuthService {
     localStorage.clear();
   }
 
-  isLogin():boolean{
-    return (localStorage.getItem('accessToken') == null || localStorage.getItem('accessToken') == undefined || localStorage.getItem('accessToken') == '')
-     ? false :true;
+  isLogin(): boolean {
+    return localStorage.getItem('accessToken') == null ||
+      localStorage.getItem('accessToken') == undefined ||
+      localStorage.getItem('accessToken') == ''
+      ? false
+      : true;
   }
 
   logout() {
     localStorage.clear();
     this._router.navigateByUrl('/login');
   }
-
-
-
-
-
-
 }

@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <div class="row mt-3 align-items-center">
+  <div class="row align-items-center mt-3">
     <div *ngIf="clientDetail" class="col-12">
-      <mat-card class="border mt-3 mb-3">
+      <mat-card class="mt-3 mb-3 border">
         <div class="row">
           <div class="col-2">
             <img
@@ -43,7 +43,6 @@
     <div class="col-md-12">
       <div class="mat-elevation-z8">
         <table aria-describedby="" mat-table [dataSource]="dataSource" matSort>
-
           <!-- Firstname Column -->
           <ng-container matColumnDef="firstName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>

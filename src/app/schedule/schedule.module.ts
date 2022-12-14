@@ -8,7 +8,11 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateScheduleComponent } from './components/create-schedule/create-schedule.component';
 
 @NgModule({
-  declarations: [ScheduleComponent, ScheduleDashboardComponent, CreateScheduleComponent],
+  declarations: [
+    ScheduleComponent,
+    ScheduleDashboardComponent,
+    CreateScheduleComponent,
+  ],
   imports: [CommonModule, ScheduleRoutingModule, SharedModule],
 })
 export class ScheduleModule {}

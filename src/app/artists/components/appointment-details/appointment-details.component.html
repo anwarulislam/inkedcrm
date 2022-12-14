@@ -1,127 +1,149 @@
 <div class="container-fluid">
-    <div class="row mt-3 align-items-center">
-      <div class="col-md-12">
-        <div class="mat-elevation-z8">
+  <div class="row align-items-center mt-3">
+    <div class="col-md-12">
+      <div class="mat-elevation-z8">
+        <mat-card-title>
+          <div class="row">
+            <div class="col-6">
+              <h5 class="margin0 float-left">Appointment Details</h5>
+            </div>
+          </div>
+          <hr class="margin0" />
+        </mat-card-title>
 
-            <mat-card-title>
-                <div class="row">
-                    <div class="col-6">
-                        <h5 class="float-left margin0">Appointment Details</h5>
-                    </div> 
+        <mat-card class="artist-cards">
+          <mat-card-content>
+            <!-- Top Of Card -->
+            <div class="row mt-4">
+              <div class="col-1">
+                <img
+                  src="assets/images/profileImage.png"
+                  class="round-img"
+                  alt=""
+                />
+              </div>
+              <div class="col-4">
+                <span
+                  >Artist : {{ data.appointment.userDTO.firstName }}
+                  {{ data.appointment.userDTO.lastName }}</span
+                >
+              </div>
+              <div class="col-7 row">
+                <div class="col-12">
+                  <span class="float-right"
+                    >Date : {{ data.appointment.startDateStr }} -
+                    {{ data.appointment.endDateStr }}</span
+                  >
                 </div>
-                <hr class="margin0">
-            </mat-card-title>
+                <div class="col-12">
+                  <span class="float-right"
+                    >Time : {{ data.appointment.startTime }} -
+                    {{ data.appointment.endTime }}</span
+                  >
+                </div>
+                <div class="col-12">
+                  <span class="float-right">{{ hoursDiff }} hours</span>
+                </div>
+              </div>
+            </div>
 
-           <mat-card class="artist-cards">
-            <mat-card-content>
-                <!-- Top Of Card -->
-                <div class="row mt-4">
-                    <div class="col-1">
-                        <img src="assets/images/profileImage.png" class="round-img" alt="">
-                    </div>
-                    <div class="col-4">
-                        <span>Artist : {{data.appointment.userDTO.firstName}} {{data.appointment.userDTO.lastName}}</span>
-                    </div>
-                    <div class="col-7 row">
-                        <div class="col-12">
-                            <span class="float-right">Date : {{data.appointment.startDateStr}} - {{data.appointment.endDateStr}}</span>
-                        </div>
-                        <div class="col-12">
-                            <span class="float-right">Time : {{data.appointment.startTime}} - {{data.appointment.endTime}}</span>
-                        </div>
-                        <div class="col-12">
-                            <span class="float-right">{{hoursDiff}} hours</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- details -->
-                <div class="row mt-2">
-                    <div class="col-6">
-                        <span>Client : {{data.appointment.customerDTO.firstName}} {{data.appointment.customerDTO.lastName}}</span>
-                    </div>
-                </div>
-    
-                <div class="row mt-2">
-                    <div class="col-6">
-                        <span>Tel : {{data.appointment.customerDTO.telNumber}}</span>
-                    </div>
-                </div>
-    
-                <div class="row mt-2">
-                    <div class="col-6">
-                        <span>Email : {{data.appointment.customerDTO.email}}</span>
-                    </div>
-                </div>
-                <!-- =======Break -->
-                <div class="row mt-5">
-                    <div class="col-6">
-                        <span>Tattoo Location : {{data.appointment.tattooLocation}}</span>
-                    </div>
-                </div>
-    
-                <div class="row">
-                    <div class="col-6">
-                        <span>Price : $ {{data.appointment.cost}}</span>
-                    </div>
-                </div>
+            <!-- details -->
+            <div class="row mt-2">
+              <div class="col-6">
+                <span
+                  >Client : {{ data.appointment.customerDTO.firstName }}
+                  {{ data.appointment.customerDTO.lastName }}</span
+                >
+              </div>
+            </div>
 
-                <!-- Images -->
+            <div class="row mt-2">
+              <div class="col-6">
+                <span>Tel : {{ data.appointment.customerDTO.telNumber }}</span>
+              </div>
+            </div>
 
-                <div class="row mt-5">
-                    <div class="col-3">
-                        <img src="assets/images/tattoo1.png" class="square-img" alt="">
-                    </div>
-                    <div class="col-3">
-                        <img src="assets/images/tatoo2.png" class="square-img" alt="">
-                    </div>
-                    <div class="col-3">
-                        <img src="assets/images/tatoo3.png" class="square-img" alt="">
-                    </div>
-                    <div class="col-3">
-                        <img src="assets/images/tatoo4.png" class="square-img" alt="">
-                    </div>
-                </div>
+            <div class="row mt-2">
+              <div class="col-6">
+                <span>Email : {{ data.appointment.customerDTO.email }}</span>
+              </div>
+            </div>
+            <!-- =======Break -->
+            <div class="row mt-5">
+              <div class="col-6">
+                <span
+                  >Tattoo Location : {{ data.appointment.tattooLocation }}</span
+                >
+              </div>
+            </div>
 
+            <div class="row">
+              <div class="col-6">
+                <span>Price : $ {{ data.appointment.cost }}</span>
+              </div>
+            </div>
 
-                <div class="row mt-5">
-                    <div class="col-4">
-                        <form>
-                            <mat-checkbox>Hide required marker</mat-checkbox>
-                        </form>
-                    </div>
-                </div>
+            <!-- Images -->
 
-                <div class="row mt-2">
-                    <div class="col-4">
-                        <form>
-                            <mat-checkbox>Cancel</mat-checkbox>
-                        </form>
-                    </div>
-                </div>
+            <div class="row mt-5">
+              <div class="col-3">
+                <img
+                  src="assets/images/tattoo1.png"
+                  class="square-img"
+                  alt=""
+                />
+              </div>
+              <div class="col-3">
+                <img src="assets/images/tatoo2.png" class="square-img" alt="" />
+              </div>
+              <div class="col-3">
+                <img src="assets/images/tatoo3.png" class="square-img" alt="" />
+              </div>
+              <div class="col-3">
+                <img src="assets/images/tatoo4.png" class="square-img" alt="" />
+              </div>
+            </div>
 
+            <div class="row mt-5">
+              <div class="col-4">
+                <form>
+                  <mat-checkbox>Hide required marker</mat-checkbox>
+                </form>
+              </div>
+            </div>
 
-                <div class="row mt-5">
-                    <div class="col-4" (click)="reschedule()">
-                        <button mat-button color="primary" class="float-left">Reschedule</button>
-                    </div>
-                    <div class="col-8">
-                        <button mat-button color="primary" class="float-right" (click)="closeDialog()">Close</button>
-                    </div>
-                </div>
+            <div class="row mt-2">
+              <div class="col-4">
+                <form>
+                  <mat-checkbox>Cancel</mat-checkbox>
+                </form>
+              </div>
+            </div>
 
-            </mat-card-content>
-           </mat-card>
+            <div class="row mt-5">
+              <div class="col-4" (click)="reschedule()">
+                <button mat-button color="primary" class="float-left">
+                  Reschedule
+                </button>
+              </div>
+              <div class="col-8">
+                <button
+                  mat-button
+                  color="primary"
+                  class="float-right"
+                  (click)="closeDialog()"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
 
-            <!-- <mat-dialog-actions class="float-right">
+        <!-- <mat-dialog-actions class="float-right">
                 <button mat-button color="primary" (click)="closeDialog()" class="float-right">Close</button>
             </mat-dialog-actions> -->
-            
-        </div>
       </div>
     </div>
   </div>
-
-
-  
- 
+</div>

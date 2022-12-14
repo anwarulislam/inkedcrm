@@ -25,7 +25,7 @@ export class ClientsDashbaordComponent implements OnInit {
     'telNumber',
     'action',
   ];
-  users:any=[];
+  users: any = [];
   dataSource: MatTableDataSource<Customer>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -35,9 +35,9 @@ export class ClientsDashbaordComponent implements OnInit {
     private dialog: MatDialog,
     public _dialog: MatDialog,
     private sidenavService: SideNavService,
-    private _toastr:SnackToastrService,
-    private _apiService:GenericApiCallingService,
-    private _authService:AuthService
+    private _toastr: SnackToastrService,
+    private _apiService: GenericApiCallingService,
+    private _authService: AuthService
   ) {
     this.dataSource = new MatTableDataSource(this.users);
   }
@@ -51,20 +51,22 @@ export class ClientsDashbaordComponent implements OnInit {
     });
   }
 
-  getCustomers(){
-    this._apiService.GetData('customer','allCustomers','').subscribe((res:any)=>{
-      this.users=res.result;
-      console.log(this.users)
-      this.dataSource = new MatTableDataSource(this.users);
-    },err=>{
-      if(err.status == 403){
-        this._toastr.warning('Please login again');
-        this._authService.logout();
+  getCustomers() {
+    this._apiService.GetData('customer', 'allCustomers', '').subscribe(
+      (res: any) => {
+        this.users = res.result;
+        console.log(this.users);
+        this.dataSource = new MatTableDataSource(this.users);
+      },
+      (err) => {
+        if (err.status == 403) {
+          this._toastr.warning('Please login again');
+          this._authService.logout();
+        } else {
+          this._toastr.error('Connection Problem');
+        }
       }
-      else{
-        this._toastr.error("Connection Problem");
-      }
-    })
+    );
   }
 
   ngAfterViewInit() {
@@ -88,7 +90,6 @@ export class ClientsDashbaordComponent implements OnInit {
       type: 'Client',
     };
     this.sidenavService.$dynamicForm.next(params);
-    
   }
 
   viewClientDetail(clientDetail: any) {
@@ -116,37 +117,37 @@ export class ClientsDashbaordComponent implements OnInit {
     });
   }
 
-  openDialog(client:any): void {
-    this._apiService.GetData('event','allEvents','').subscribe((res:any)=>{
-      let events:any=[];
-      for(const event of res.result){
-        if(event.customerID == client.customerID){
-          events.push(event);
+  openDialog(client: any): void {
+    this._apiService.GetData('event', 'allEvents', '').subscribe(
+      (res: any) => {
+        let events: any = [];
+        for (const event of res.result) {
+          if (event.customerID == client.customerID) {
+            events.push(event);
+          }
+        }
+
+        const dialogRef = this._dialog.open(AppointmentsComponent, {
+          width: '650px',
+          height: '700px',
+          panelClass: 'white-background-dialog',
+          data: { events: events },
+        });
+
+        dialogRef.afterClosed().subscribe((result: any) => {
+          console.log('The dialog was closed');
+          console.log(result);
+        });
+      },
+      (err) => {
+        if (err.status == 403) {
+          this._authService.logout();
+          this._toastr.warning('Please login again');
+          this._authService.logout();
+        } else {
+          this._toastr.error('Connection Problem');
         }
       }
-
-      const dialogRef = this._dialog.open(AppointmentsComponent, {
-        width: '650px',
-        height:'700px',
-        panelClass:'white-background-dialog',
-        data: {events:events},
-      });
-  
-      dialogRef.afterClosed().subscribe((result:any) => {
-        console.log('The dialog was closed');
-        console.log(result)
-      });
-      
-    },err=>{
-      if(err.status == 403){
-        this._authService.logout();
-        this._toastr.warning('Please login again');
-        this._authService.logout();
-      }
-      else{
-        this._toastr.error('Connection Problem');
-      }
-    })
-   
+    );
   }
 }

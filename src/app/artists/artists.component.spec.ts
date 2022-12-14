@@ -8,9 +8,8 @@ describe('ArtistsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArtistsComponent ]
-    })
-    .compileComponents();
+      declarations: [ArtistsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

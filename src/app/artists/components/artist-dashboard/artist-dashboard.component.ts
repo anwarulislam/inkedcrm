@@ -26,7 +26,7 @@ export class ArtistDashboardComponent implements OnInit {
     'action',
   ];
   dataSource: MatTableDataSource<User>;
-  users:any=[];
+  users: any = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -34,13 +34,12 @@ export class ArtistDashboardComponent implements OnInit {
     private dialog: MatDialog,
     public _dialog: MatDialog,
     private sidenavService: SideNavService,
-    private _toastr:SnackToastrService,
-    private _apiService:GenericApiCallingService,
-    private _authService:AuthService
+    private _toastr: SnackToastrService,
+    private _apiService: GenericApiCallingService,
+    private _authService: AuthService
   ) {
     this.dataSource = new MatTableDataSource(this.users);
   }
-
 
   ngOnInit(): void {
     this.getArtists();
@@ -51,20 +50,22 @@ export class ArtistDashboardComponent implements OnInit {
     });
   }
 
-  getArtists(){
-    this._apiService.GetData('users','allUsers','').subscribe((res:any)=>{
-      this.users=res.result;
-      console.log(this.users)
-      this.dataSource = new MatTableDataSource(this.users);
-    },err=>{
-      if(err.status == 403){
-        this._toastr.warning("Please login again");
-        this._authService.logout();
+  getArtists() {
+    this._apiService.GetData('users', 'allUsers', '').subscribe(
+      (res: any) => {
+        this.users = res.result;
+        console.log(this.users);
+        this.dataSource = new MatTableDataSource(this.users);
+      },
+      (err) => {
+        if (err.status == 403) {
+          this._toastr.warning('Please login again');
+          this._authService.logout();
+        } else {
+          this._toastr.error('Connection Problem');
+        }
       }
-      else{
-        this._toastr.error("Connection Problem");
-      }
-    })
+    );
   }
 
   ngAfterViewInit() {
@@ -93,7 +94,7 @@ export class ArtistDashboardComponent implements OnInit {
   deleteArtistDetail(id: any) {
     Swal.fire({
       title: 'Are you sure?',
-      text: "You will not be able to undo this! We recommend changing their password",
+      text: 'You will not be able to undo this! We recommend changing their password',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
@@ -112,37 +113,36 @@ export class ArtistDashboardComponent implements OnInit {
     });
   }
 
+  openDialog(artist: any): void {
+    this._apiService.GetData('event', 'allEvents', '').subscribe(
+      (res: any) => {
+        let events: any = [];
+        res.result.forEach((event: any) => {
+          if (event.artistID == artist.artistID) {
+            events.push(event);
+          }
+        });
 
-  openDialog(artist:any): void {
-    this._apiService.GetData('event','allEvents','').subscribe((res:any)=>{ 
-      let events:any = [];
-      res.result.forEach((event:any)=>{
-        if(event.artistID == artist.artistID){
-          events.push(event);
+        const dialogRef = this._dialog.open(AppointmentsComponent, {
+          width: '650px',
+          height: '700px',
+          panelClass: 'white-background-dialog',
+          data: { events: events },
+        });
+
+        dialogRef.afterClosed().subscribe((result: any) => {
+          console.log('The dialog was closed');
+          console.log(result);
+        });
+      },
+      (err) => {
+        if (err.status == 403) {
+          this._toastr.warning('Please login again');
+          this._authService.logout();
+        } else {
+          this._toastr.error('Connection Problem');
         }
-      });
-
-      const dialogRef = this._dialog.open(AppointmentsComponent, {
-        width: '650px',
-        height:'700px',
-        panelClass:'white-background-dialog',
-        data: {events:events},
-      });
-  
-      dialogRef.afterClosed().subscribe((result:any) => {
-        console.log('The dialog was closed');
-        console.log(result)
-      });
-
-    },err=>{
-      if(err.status == 403){
-        this._toastr.warning('Please login again');
-        this._authService.logout();
       }
-      else{
-        this._toastr.error('Connection Problem');
-      }
-    })
-    
+    );
   }
 }

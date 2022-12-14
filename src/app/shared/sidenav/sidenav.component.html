@@ -1,7 +1,6 @@
 <mat-sidenav-container
   (backdropClick)="closeSidenav()"
   class="sidenav-container"
-  autosize
 >
   <mat-sidenav
     #drawer
@@ -13,11 +12,7 @@
     [ngClass]="isExpanded ? 'sidenav' : 'sidenav-1'"
   >
     <mat-nav-list>
-      <a
-        mat-list-item
-        class="menu-icon"
-        (click)="isExpanded = !isExpanded"
-      >
+      <a mat-list-item class="menu-icon" (click)="isExpanded = !isExpanded">
         <i class="fa-thin fa-bars"></i>
       </a>
 
@@ -27,7 +22,7 @@
         routerLink="/dashboard"
         routerLinkActive="active-link"
       >
-        <i class="fa-thin fa-house align-middle pr-2"></i> &nbsp;
+        <i class="fa-thin fa-house pr-2 align-middle"></i> &nbsp;
         <span *ngIf="isExpanded">{{ "Dashboard" | translate }}</span>
       </a>
 
@@ -36,7 +31,7 @@
         routerLink="/schedule/schedule-dashboard"
         routerLinkActive="active-link"
       >
-        <i class="fa-thin fa-calendar-range align-middle pr-2"></i> &nbsp;
+        <i class="fa-thin fa-calendar-range pr-2 align-middle"></i> &nbsp;
         <span *ngIf="isExpanded">{{ "Schedule" | translate }}</span>
       </a>
 
@@ -45,7 +40,7 @@
         routerLink="/client/client-dashboard"
         routerLinkActive="active-link"
       >
-        <i class="fa-thin fa-user-astronaut align-middle pr-2"></i> &nbsp;
+        <i class="fa-thin fa-user-astronaut pr-2 align-middle"></i> &nbsp;
         <span *ngIf="isExpanded">{{ "Clients" | translate }}</span>
       </a>
 
@@ -54,7 +49,7 @@
         routerLink="/artist/artists-dashboard"
         routerLinkActive="active-link"
       >
-        <i class="fa-thin fa-user-robot align-middle pr-2"></i> &nbsp;
+        <i class="fa-thin fa-user-robot pr-2 align-middle"></i> &nbsp;
         <span *ngIf="isExpanded">{{ "Artists" | translate }}</span>
       </a>
 
@@ -63,7 +58,7 @@
         routerLink="/dashboard/marketing"
         routerLinkActive="active-link"
       >
-        <i class="fa-thin fa-chart-simple align-middle pr-2"></i> &nbsp;
+        <i class="fa-thin fa-chart-simple pr-2 align-middle"></i> &nbsp;
         <span *ngIf="isExpanded">{{ "Marketing" | translate }}</span>
       </a>
 
@@ -91,7 +86,7 @@
         [formGroup]="addClientForm"
         action=""
       >
-        <div class="row mt-3 align-items-center">
+        <div class="row align-items-center mt-3">
           <div class="col-md-9">
             <ng-template [ngIf]="dialogData?.edit">
               <h2 class="m-0">Update {{ dialogData?.type }} Data</h2>
@@ -101,7 +96,7 @@
             </ng-template>
           </div>
           <div class="col-md-3 text-right">
-            <mat-icon (click)="closeSidenav()" class="align-middle cursor"
+            <mat-icon (click)="closeSidenav()" class="cursor align-middle"
               >close</mat-icon
             >
           </div>
@@ -179,7 +174,7 @@
         [formGroup]="addArtistForm"
         action=""
       >
-        <div class="row mt-3 align-items-center">
+        <div class="row align-items-center mt-3">
           <div class="col-md-9">
             <ng-template [ngIf]="dialogData?.edit">
               <h2 class="m-0">Update {{ dialogData?.type }} Data</h2>
@@ -189,7 +184,7 @@
             </ng-template>
           </div>
           <div class="col-md-3 text-right">
-            <mat-icon (click)="closeSidenav()" class="align-middle cursor"
+            <mat-icon (click)="closeSidenav()" class="cursor align-middle"
               >close</mat-icon
             >
           </div>
@@ -308,12 +303,14 @@
       </form>
 
       <ng-template [ngIf]="dialogData?.type == 'Calendar'">
-        <div class="row mt-3 align-items-center">
+        <div class="row align-items-center mt-3">
           <div class="col-md-9">
-            <h2 class="m-0">Selected Date: {{ dialogData?.data[0].start | date }}</h2>
+            <h2 class="m-0">
+              Selected Date: {{ dialogData?.data[0].start | date }}
+            </h2>
           </div>
           <div class="col-md-3 text-right">
-            <mat-icon (click)="closeSidenav()" class="align-middle cursor"
+            <mat-icon (click)="closeSidenav()" class="cursor align-middle"
               >close</mat-icon
             >
           </div>
@@ -322,51 +319,56 @@
             <mat-divider style="color: white"></mat-divider>
           </div>
         </div>
-        
+
         <ng-container *ngFor="let event of dialogData.data">
           <mat-card class="artist-cards mb-3" (click)="eventDetails(event)">
-              <mat-card-content>
-               <div class="row">
-                  <div class="col-1">
-                      <img src="assets/images/profileImage.png" class="round-img" alt="">
-                  </div>
-                  <div class="col-4">
-                      <span>Artist name</span>
-                  </div>
-                  <div class="col-7">
-                      <span class="float-right">{{event.extendedProps.userDTO.firstName}} {{event.extendedProps.userDTO.lastName}}</span>
-                  </div>
-               </div>
+            <mat-card-content>
+              <div class="row">
+                <div class="col-1">
+                  <img
+                    src="assets/images/profileImage.png"
+                    class="round-img"
+                    alt=""
+                  />
+                </div>
+                <div class="col-4">
+                  <span>Artist name</span>
+                </div>
+                <div class="col-7">
+                  <span class="float-right"
+                    >{{ event.extendedProps.userDTO.firstName }}
+                    {{ event.extendedProps.userDTO.lastName }}</span
+                  >
+                </div>
+              </div>
 
-               <div class="row mb-3">
-                  <div class="col-1">
-                      &nbsp;
-                  </div>
-                  <div class="col-4">
-                      <span>Customer Name</span>
-                  </div>
-                  <div class="col-7">
-                      <span class="float-right">{{event.extendedProps.customerDTO.firstName}} {{event.extendedProps.customerDTO.lastName}}</span>
-                  </div>
-               </div>
+              <div class="row mb-3">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-4">
+                  <span>Customer Name</span>
+                </div>
+                <div class="col-7">
+                  <span class="float-right"
+                    >{{ event.extendedProps.customerDTO.firstName }}
+                    {{ event.extendedProps.customerDTO.lastName }}</span
+                  >
+                </div>
+              </div>
 
-               <div class="row mb-2">
-                  <div class="col-1">
-                      &nbsp;
-                  </div>
-                  <div class="col-4">
-                      <span>Telephone</span>
-                  </div>
-                  <div class="col-7">
-                      <span class="float-right">{{event.extendedProps.customerDTO.telNumber}}</span>
-                  </div>
-               </div>
-
-              </mat-card-content>
-             
+              <div class="row mb-2">
+                <div class="col-1">&nbsp;</div>
+                <div class="col-4">
+                  <span>Telephone</span>
+                </div>
+                <div class="col-7">
+                  <span class="float-right">{{
+                    event.extendedProps.customerDTO.telNumber
+                  }}</span>
+                </div>
+              </div>
+            </mat-card-content>
           </mat-card>
-      </ng-container>
-
+        </ng-container>
       </ng-template>
     </div>
   </mat-sidenav>
@@ -383,7 +385,8 @@
           [value]="lang.value"
           [selected]="lang.value === translate.currentLang"
         >
-          {{ lang.name}}<!-- | uppercase  -->
+          {{ lang.name
+          }}<!-- | uppercase  -->
         </option>
       </select>
 
@@ -392,7 +395,7 @@
       <span class="example-spacer"></span>
 
       <span class="mr-4">
-        {{ 'Hi ' + user?.firstName | translate }}
+        {{ "Hi " + user?.firstName | translate }}
       </span>
 
       <button
@@ -416,5 +419,4 @@
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
-
 </mat-sidenav-container>

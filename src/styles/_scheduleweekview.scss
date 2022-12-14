@@ -1,20 +1,20 @@
-@import 'base';
+@import "base";
 
 //----------------------------------------- styling for the grid week view ---------------------------------------------
 
-.fc .fc-timegrid-slot-minor{
-  border: none!important;
+.fc .fc-timegrid-slot-minor {
+  border: none !important;
 }
 
 .fc .fc-timegrid-slot {
-  height: 2rem!important;
+  height: 2rem !important;
 }
 
 // colour for all three grids
 .fc-theme-standard td {
-  border-color: $table-line-colors!important;
+  border-color: $table-line-colors !important;
 }
 
 .fc .fc-timegrid-col.fc-day-today {
-  background-color: $card-color!important;
+  background-color: $card-color !important;
 }

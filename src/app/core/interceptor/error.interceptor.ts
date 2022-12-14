@@ -22,7 +22,7 @@ export class ErrorIntercept implements HttpInterceptor {
     private authService: AuthService,
     private router: Router,
     private _snackBar: MatSnackBar
-  ) { }
+  ) {}
 
   intercept(
     request: HttpRequest<any>,

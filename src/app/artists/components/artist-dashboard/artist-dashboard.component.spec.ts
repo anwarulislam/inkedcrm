@@ -8,9 +8,8 @@ describe('ArtistDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArtistDashboardComponent ]
-    })
-    .compileComponents();
+      declarations: [ArtistDashboardComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

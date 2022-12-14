@@ -9,7 +9,7 @@ import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { DatePipe } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SnackToastrService } from './core/services/snackToastr.service';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,10 +20,14 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     SharedModule,
     MatDatepickerModule,
     LayoutModule,
-    
   ],
 
   bootstrap: [AppComponent],
-  providers:[{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },DatePipe,SnackToastrService,MatDatepickerModule]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    DatePipe,
+    SnackToastrService,
+    MatDatepickerModule,
+  ],
 })
 export class AppModule {}

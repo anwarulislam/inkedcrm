@@ -11,11 +11,9 @@ $theme-color-4-10: rgba(128, 141, 110, 0.1);
 $theme-color-5-10: rgba(93, 148, 111, 0.1);
 $theme-color-6-10: rgba(126, 145, 114, 0.1);
 $font-icon-color: #8f8f8f;
-$back-color: #1A1B18;
+$back-color: #1a1b18;
 $card-color: #212220;
 $table-line-colors: #232b2b;
-
-
 
 *,
 ::before,
@@ -27,15 +25,14 @@ $table-line-colors: #232b2b;
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%;  // 10px/16px = 62.5% -> 1rem = 10px
+  font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
 }
 
 body {
-  font-family: 'Nunito','sans-serif' !important;
+  font-family: "Nunito", "sans-serif" !important;
   color: $font-icon-color;
   font-weight: 300;
   line-height: 1.6;
   font-size: 2rem;
   background-color: $back-color;
 }
-

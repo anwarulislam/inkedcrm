@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 
-
-
 const routes: Routes = [
   {
     path: '',
@@ -13,25 +11,25 @@ const routes: Routes = [
     path: 'client',
     loadChildren: () =>
       import('./client/client.module').then((m) => m.ClientModule),
-      canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'artist',
     loadChildren: () =>
       import('./artists/artists.module').then((m) => m.ArtistsModule),
-      canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'dashboard',
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-      canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'schedule',
     loadChildren: () =>
       import('./schedule/schedule.module').then((m) => m.ScheduleModule),
-    canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: '',

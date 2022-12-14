@@ -1,12 +1,15 @@
 <div class="container-fluid">
-
   <div class="row mt-3">
     <div class="col-md-6">
       <mat-card class="dashboard-cards" id="artist-table-card">
         <mat-card-content>
           <div class="mat-elevation-z8">
-            <table aria-describedby="" mat-table [dataSource]="dataSource" matSort>
-    
+            <table
+              aria-describedby=""
+              mat-table
+              [dataSource]="dataSource"
+              matSort
+            >
               <!-- Artist Column -->
               <ng-container matColumnDef="Artist">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -16,33 +19,39 @@
                   {{ row.firstName }}
                 </td>
               </ng-container>
-    
+
               <!-- Started Column -->
               <ng-container matColumnDef="Started">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>
                   Started
                 </th>
-                <td mat-cell *matCellDef="let row">{{ row.createDate | date:'medium' }}</td>
+                <td mat-cell *matCellDef="let row">
+                  {{ row.createDate | date : "medium" }}
+                </td>
               </ng-container>
-    
+
               <!-- Hours -->
               <ng-container matColumnDef="Hours">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Hours</th>
                 <td mat-cell *matCellDef="let row">{{ row.hours }}</td>
               </ng-container>
-    
+
               <!-- No Tat -->
               <ng-container matColumnDef="No tat">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>No tat</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  No tat
+                </th>
                 <td mat-cell *matCellDef="let row">{{ row.no_tat }}</td>
               </ng-container>
-    
+
               <!-- Earned Column -->
               <ng-container matColumnDef="Earned">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Earned</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Earned
+                </th>
                 <td mat-cell *matCellDef="let row">{{ row.earned }}</td>
               </ng-container>
-    
+
               <!-- View Column -->
               <ng-container matColumnDef="View">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>View</th>
@@ -50,12 +59,11 @@
                   <mat-icon>remove_red_eye</mat-icon>
                 </td>
               </ng-container>
-    
+
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    
+
               <!-- Row shown when there is no matching data. -->
-              
             </table>
           </div>
         </mat-card-content>
@@ -67,21 +75,24 @@
         <mat-card-content>
           <div class="chart" *ngIf="showCharts">
             <highcharts-chart
-            [Highcharts] = "highcharts" 
-            [options] = "monthlyOrders" 
-            style = "width: 100%; height: 295px; display: block;">
+              [Highcharts]="highcharts"
+              [options]="monthlyOrders"
+              style="width: 100%; height: 295px; display: block"
+            >
             </highcharts-chart>
-        </div>
+          </div>
         </mat-card-content>
       </mat-card>
-    
     </div>
   </div>
 
   <div class="row mt-5">
     <div class="col-4">
       <div class="dashboard-circle">
-        <p class="circle-text">{{totalClients}} <br><br> Clients</p>
+        <p class="circle-text">
+          {{ totalClients }} <br /><br />
+          Clients
+        </p>
         <!-- <p class="circle-text">Clients</p> -->
       </div>
       <!-- <mat-card class="dashboard-cards">
@@ -98,12 +109,18 @@
     </div>
     <div class="col-4">
       <div class="dashboard-circle">
-        <p class="circle-text">{{totalTatoos}} <br><br> Tattoos</p>
+        <p class="circle-text">
+          {{ totalTatoos }} <br /><br />
+          Tattoos
+        </p>
       </div>
     </div>
     <div class="col-4">
       <div class="dashboard-circle">
-        <p class="circle-text">{{cancelledEvent}} <br><br> Canceled</p>
+        <p class="circle-text">
+          {{ cancelledEvent }} <br /><br />
+          Canceled
+        </p>
       </div>
     </div>
     <!-- <div class="col-4">
@@ -133,7 +150,6 @@
         </mat-card-content>
       </mat-card>
     </div> -->
-
   </div>
 
   <div class="row mt-5">
@@ -142,15 +158,14 @@
         <mat-card-content>
           <div class="chart" *ngIf="showCharts">
             <highcharts-chart
-            [Highcharts] = "highcharts" 
-            [options] = "todayOrders" 
-            style = "width: 100%; height: 295px; display: block;">
+              [Highcharts]="highcharts"
+              [options]="todayOrders"
+              style="width: 100%; height: 295px; display: block"
+            >
             </highcharts-chart>
-        </div>
+          </div>
         </mat-card-content>
       </mat-card>
-    
     </div>
   </div>
-
 </div>

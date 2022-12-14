@@ -1,19 +1,19 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   MatLegacySnackBar as MatSnackBar,
   MatLegacySnackBarHorizontalPosition as MatSnackBarHorizontalPosition,
   MatLegacySnackBarVerticalPosition as MatSnackBarVerticalPosition,
-} from "@angular/material/legacy-snack-bar";
+} from '@angular/material/legacy-snack-bar';
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class SnackToastrService {
   private successOptions: any;
-  private errorOptions:any;
-  private warningOptions:any;
-  private infoOptions:any;
-  private horizontalPosition: MatSnackBarHorizontalPosition = "end";
-  private verticalPosition: MatSnackBarVerticalPosition = "top";
+  private errorOptions: any;
+  private warningOptions: any;
+  private infoOptions: any;
+  private horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  private verticalPosition: MatSnackBarVerticalPosition = 'top';
   constructor(private toastr: MatSnackBar) {
     this.successOptions = {
       panelClass: ['green-snackbar'],
@@ -41,16 +41,16 @@ export class SnackToastrService {
     };
   }
 
-  success(message:string){
-    this.toastr.open(message,'X',this.successOptions)
+  success(message: string) {
+    this.toastr.open(message, 'X', this.successOptions);
   }
-  error(message:string){
-    this.toastr.open(message,'X',this.errorOptions)
+  error(message: string) {
+    this.toastr.open(message, 'X', this.errorOptions);
   }
-  info(message:string){
-    this.toastr.open(message,'X',this.infoOptions)
+  info(message: string) {
+    this.toastr.open(message, 'X', this.infoOptions);
   }
-  warning(message:string){
-    this.toastr.open(message,'X',this.warningOptions)
+  warning(message: string) {
+    this.toastr.open(message, 'X', this.warningOptions);
   }
 }

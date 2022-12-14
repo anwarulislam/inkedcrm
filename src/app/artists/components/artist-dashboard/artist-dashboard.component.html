@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row mt-3 align-items-center">
+  <div class="row align-items-center mt-3">
     <div class="col-md-12">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Search </mat-label>
@@ -14,14 +14,17 @@
     <div class="col-md-12">
       <div class="mat-elevation-z8">
         <table aria-describedby="" mat-table [dataSource]="dataSource" matSort>
-
           <!-- Image Column -->
           <ng-container matColumnDef="image">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>
               <!-- Image -->
             </th>
             <td mat-cell *matCellDef="let row">
-              <img src="{{ row.image || 'assets/images/profileImage.png' }}" class="round-img" alt="">
+              <img
+                src="{{ row.image || 'assets/images/profileImage.png' }}"
+                class="round-img"
+                alt=""
+              />
             </td>
           </ng-container>
 
@@ -61,7 +64,8 @@
 
               <mat-menu #menu="matMenu">
                 <button (click)="openDialog(row)" mat-menu-item>
-                  <mat-icon class="align-middle">meeting_room</mat-icon> Appointments
+                  <mat-icon class="align-middle">meeting_room</mat-icon>
+                  Appointments
                 </button>
                 <button (click)="addArtist(true, row)" mat-menu-item>
                   <mat-icon class="align-middle">edit</mat-icon> Edit
