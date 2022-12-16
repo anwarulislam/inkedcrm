@@ -37,3 +37,7 @@ table {
 .cursor {
   cursor: pointer !important;
 }
+
+.card {
+  @apply rounded-2xl;
+}

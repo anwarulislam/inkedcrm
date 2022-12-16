@@ -3,7 +3,9 @@
 }
 
 .sidenav {
-  width: 200px;
+  max-width: 300px;
+  width: 100%;
+  @apply rounded-r-[10rem];
 }
 
 .sidenav-1 {
