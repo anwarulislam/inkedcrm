@@ -1,82 +1,110 @@
 <div class="container-fluid">
-  <div class="row mt-3">
-    <div class="col-md-6">
-      <mat-card class="dashboard-cards" id="artist-table-card">
-        <mat-card-content>
-          <div class="mat-elevation-z8">
-            <table
-              aria-describedby=""
-              mat-table
-              [dataSource]="dataSource"
-              matSort
-            >
-              <!-- Artist Column -->
-              <ng-container matColumnDef="Artist">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Artist
-                </th>
-                <td mat-cell *matCellDef="let row">
-                  {{ row.firstName }}
-                </td>
-              </ng-container>
+  <div class="grid gap-6 md:grid-cols-3">
+    <div class="col-span-2">
+      <div class="flex gap-6">
+        <mat-card *ngFor="let item of [1, 1, 1, 1]" class="flex-1">
+          <p>Clients</p>
+          <h2>40</h2>
+        </mat-card>
+      </div>
 
-              <!-- Started Column -->
-              <ng-container matColumnDef="Started">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Started
-                </th>
-                <td mat-cell *matCellDef="let row">
-                  {{ row.createDate | date : "medium" }}
-                </td>
-              </ng-container>
+      <div>
+        <mat-card class="dashboard-cards">
+          <mat-card-content>
+            <div class="chart" *ngIf="showCharts">
+              <highcharts-chart
+                [Highcharts]="highcharts"
+                [options]="monthlyOrders"
+                style="width: 100%; height: 295px; display: block"
+              >
+              </highcharts-chart>
+            </div>
+          </mat-card-content>
+        </mat-card>
 
-              <!-- Hours -->
-              <ng-container matColumnDef="Hours">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Hours</th>
-                <td mat-cell *matCellDef="let row">{{ row.hours }}</td>
-              </ng-container>
+        <mat-card class="dashboard-cards" id="artist-table-card">
+          <mat-card-content>
+            <div class="mat-elevation-z8">
+              <table
+                aria-describedby=""
+                mat-table
+                [dataSource]="dataSource"
+                matSort
+              >
+                <!-- Artist Column -->
+                <ng-container matColumnDef="Artist">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Artist
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    {{ row.firstName }}
+                  </td>
+                </ng-container>
 
-              <!-- No Tat -->
-              <ng-container matColumnDef="No tat">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  No tat
-                </th>
-                <td mat-cell *matCellDef="let row">{{ row.no_tat }}</td>
-              </ng-container>
+                <!-- Started Column -->
+                <ng-container matColumnDef="Started">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Started
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    {{ row.createDate | date : "medium" }}
+                  </td>
+                </ng-container>
 
-              <!-- Earned Column -->
-              <ng-container matColumnDef="Earned">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Earned
-                </th>
-                <td mat-cell *matCellDef="let row">{{ row.earned }}</td>
-              </ng-container>
+                <!-- Hours -->
+                <ng-container matColumnDef="Hours">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Hours
+                  </th>
+                  <td mat-cell *matCellDef="let row">{{ row.hours }}</td>
+                </ng-container>
 
-              <!-- View Column -->
-              <ng-container matColumnDef="View">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>View</th>
-                <td mat-cell *matCellDef="let row" (click)="openDialog(row)">
-                  <mat-icon>remove_red_eye</mat-icon>
-                </td>
-              </ng-container>
+                <!-- No Tat -->
+                <ng-container matColumnDef="No tat">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    No tat
+                  </th>
+                  <td mat-cell *matCellDef="let row">{{ row.no_tat }}</td>
+                </ng-container>
 
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                <!-- Earned Column -->
+                <ng-container matColumnDef="Earned">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Earned
+                  </th>
+                  <td mat-cell *matCellDef="let row">{{ row.earned }}</td>
+                </ng-container>
 
-              <!-- Row shown when there is no matching data. -->
-            </table>
-          </div>
-        </mat-card-content>
-      </mat-card>
+                <!-- View Column -->
+                <ng-container matColumnDef="View">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    View
+                  </th>
+                  <td mat-cell *matCellDef="let row" (click)="openDialog(row)">
+                    <mat-icon>remove_red_eye</mat-icon>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+
+                <!-- Row shown when there is no matching data. -->
+              </table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
-
-    <div class="col-md-6">
+    <div class="col-span-1">
       <mat-card class="dashboard-cards">
         <mat-card-content>
           <div class="chart" *ngIf="showCharts">
             <highcharts-chart
               [Highcharts]="highcharts"
-              [options]="monthlyOrders"
+              [options]="todayOrders"
               style="width: 100%; height: 295px; display: block"
             >
             </highcharts-chart>
@@ -95,17 +123,6 @@
         </p>
         <!-- <p class="circle-text">Clients</p> -->
       </div>
-      <!-- <mat-card class="dashboard-cards">
-        <mat-card-content>
-          <ngx-donut-chart
-              [data]="totalClients"
-              [title]="'Total Clients'"
-              [radius]="100"
-              [thickness]="4"
-              [margin]="80">
-            </ngx-donut-chart>
-        </mat-card-content>
-      </mat-card> -->
     </div>
     <div class="col-4">
       <div class="dashboard-circle">
@@ -122,50 +139,6 @@
           Canceled
         </p>
       </div>
-    </div>
-    <!-- <div class="col-4">
-      <mat-card class="dashboard-cards">
-        <mat-card-content>
-          <ngx-donut-chart
-              [data]="totalClients"
-              [title]="'Tattoos'"
-              [radius]="88"
-              [thickness]="4"
-              [margin]="80">
-            </ngx-donut-chart>
-        </mat-card-content>
-      </mat-card>
-    </div>
-
-    <div class="col-4">
-      <mat-card class="dashboard-cards">
-        <mat-card-content>
-          <ngx-donut-chart
-              [data]="totalClients"
-              [title]="'Cancellation No Shows'"
-              [radius]="100"
-              [thickness]="4"
-              [margin]="80">
-            </ngx-donut-chart>
-        </mat-card-content>
-      </mat-card>
-    </div> -->
-  </div>
-
-  <div class="row mt-5">
-    <div class="col-md-12">
-      <mat-card class="dashboard-cards">
-        <mat-card-content>
-          <div class="chart" *ngIf="showCharts">
-            <highcharts-chart
-              [Highcharts]="highcharts"
-              [options]="todayOrders"
-              style="width: 100%; height: 295px; display: block"
-            >
-            </highcharts-chart>
-          </div>
-        </mat-card-content>
-      </mat-card>
     </div>
   </div>
 </div>
