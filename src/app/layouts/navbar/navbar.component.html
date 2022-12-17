@@ -1,0 +1,39 @@
+<mat-toolbar class="pt-3 pb-3">
+  <select class="p-1" #langSelect (change)="translate.use(langSelect.value)">
+    <option
+      *ngFor="let lang of langs"
+      [value]="lang.value"
+      [selected]="lang.value === translate.currentLang"
+    >
+      {{ lang.name
+      }}<!-- | uppercase  -->
+    </option>
+  </select>
+
+  <span class="example-spacer"></span>
+  <span>InkedCRM</span>
+  <span class="example-spacer"></span>
+
+  <span class="mr-4">
+    {{ "Hi " + user?.firstName | translate }}
+  </span>
+
+  <button
+    mat-mini-fab
+    color="accent"
+    aria-label="Example icon button with a plus one icon"
+    [matMenuTriggerFor]="menu1"
+    matTooltipPosition="before"
+  >
+    <mat-icon>person</mat-icon>
+  </button>
+
+  <mat-menu #menu1="matMenu">
+    <button mat-menu-item>Profile</button>
+    <button mat-menu-item>Billing</button>
+    <button mat-menu-item>Support</button>
+    <button (click)="logout()" mat-menu-item>
+      &nbsp; {{ "Logout" | translate }}
+    </button>
+  </mat-menu>
+</mat-toolbar>

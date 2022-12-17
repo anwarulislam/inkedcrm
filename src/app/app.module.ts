@@ -10,14 +10,22 @@ import { DatePipe } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SnackToastrService } from './core/services/snackToastr.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { SidenavComponent } from './layouts/sidenav/sidenav.component';
+import { DefaultComponent } from './layouts/default/default.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    SidenavComponent,
+    DefaultComponent,
+  ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule,
     MatDatepickerModule,
     LayoutModule,
   ],

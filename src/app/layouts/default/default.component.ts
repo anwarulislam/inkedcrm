@@ -1,50 +1,27 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-  ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatSidenav } from '@angular/material/sidenav';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { SideNavService } from 'src/app/core/services/side-nav.service';
-import { MatSidenav } from '@angular/material/sidenav';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { GenericApiCallingService } from 'src/app/core/services/api.service';
-import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
-import { CreateScheduleComponent } from 'src/app/schedule/components/create-schedule/create-schedule.component';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { AppointmentDetailsComponent } from 'src/app/artists/components/appointment-details/appointment-details.component';
+import { GenericApiCallingService } from 'src/app/core/services/api.service';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { SideNavService } from 'src/app/core/services/side-nav.service';
+import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
 
 @Component({
-  selector: 'app-sidenav',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  selector: 'app-default',
+  templateUrl: './default.component.html',
+  styleUrls: ['./default.component.scss'],
 })
-export class SidenavComponent implements OnInit {
+export class DefaultComponent {
   dialogData: any;
-  user: any;
   iterator: any = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   @ViewChild('drawer1') drawer1!: MatSidenav;
   showPassword = false;
-  langs: any = [
-    { name: 'EN', value: 'en' },
-    { name: 'EL', value: 'el' },
-    { name: 'FR', value: 'fr' },
-    { name: 'ES', value: 'es' },
-    { name: 'PT', value: 'pt-PT' },
-    { name: 'IT', value: 'it' },
-    { name: 'DE', value: 'de' },
-    { name: 'SV', value: 'sv' },
-    { name: 'RU', value: 'ru' },
-    { name: 'HE', value: 'he' },
-    { name: 'NO', value: 'no' },
-    { name: 'NL', value: 'nl' },
-  ];
 
   addClientForm = new UntypedFormGroup({
     id: new UntypedFormControl(),
@@ -84,16 +61,7 @@ export class SidenavComponent implements OnInit {
     private _dialog: MatDialog,
     private _apiService: GenericApiCallingService,
     private _toastr: SnackToastrService
-  ) {
-    for (const lang of this.langs) {
-      translate.addLangs([lang.value]);
-    }
-    this.user = _authService.getUser();
-    translate.setDefaultLang('en');
-
-    const browserLang: any = translate.getBrowserLang();
-    // translate.use(browserLang.match(/english|gr/) ? browserLang : 'english');
-  }
+  ) {}
 
   ngOnInit(): void {
     this.isHandset$.subscribe((res) => {
@@ -186,10 +154,6 @@ export class SidenavComponent implements OnInit {
 
   toggleShow(): void {
     this.showPassword = !this.showPassword;
-  }
-
-  logout() {
-    this._authService.logout();
   }
 
   closeSidenav() {

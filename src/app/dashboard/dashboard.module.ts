@@ -11,7 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 // pages
-import { WrapperComponent } from './wrapper/wrapper.component';
 import { MarketingComponent } from './marketing/marketing.component';
 import { TemplatesComponent } from './templates/templates.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -37,12 +36,7 @@ import { SharedModule } from '../shared/shared.module';
 
 // @ts-ignore
 @NgModule({
-  declarations: [
-    WrapperComponent,
-    MarketingComponent,
-    TemplatesComponent,
-    DashboardComponent,
-  ],
+  declarations: [MarketingComponent, TemplatesComponent, DashboardComponent],
   imports: [
     CommonModule,
     RouterModule,

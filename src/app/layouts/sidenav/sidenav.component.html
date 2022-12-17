@@ -1,0 +1,17 @@
+<mat-nav-list>
+  <a mat-list-item class="menu-icon" (click)="isExpanded = !isExpanded">
+    <i class="fa-thin fa-bars"></i>
+  </a>
+
+  <a
+    *ngFor="let item of navItems"
+    mat-list-item
+    class="main-list-items"
+    [routerLink]="item.route"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <i class="{{ item.icon }} pr-2 align-middle"></i> &nbsp;
+    <span *ngIf="isExpanded">{{ item.name | translate }}</span>
+  </a>
+</mat-nav-list>
