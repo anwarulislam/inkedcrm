@@ -1,102 +1,101 @@
 <div class="container-fluid">
   <div class="grid gap-6 md:grid-cols-3">
     <div class="col-span-2">
-      <div class="flex gap-6">
-        <mat-card *ngFor="let item of [1, 1, 1, 1]" class="flex-1">
-          <p>Clients</p>
-          <h2>40</h2>
-        </mat-card>
+      <div class="mb-6 flex gap-6">
+        <div class="stat-card">
+          <p class="stat-title">Clients</p>
+          <p class="stat-number">{{ totalClients }}</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-title">Tattoos</p>
+          <p class="stat-number">{{ totalTatoos }}</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-title">Canceled</p>
+          <p class="stat-number">{{ cancelledEvent }}</p>
+        </div>
       </div>
 
-      <div>
-        <mat-card class="dashboard-cards">
-          <mat-card-content>
-            <div class="chart" *ngIf="showCharts">
-              <highcharts-chart
-                [Highcharts]="highcharts"
-                [options]="monthlyOrders"
-                style="width: 100%; height: 295px; display: block"
-              >
-              </highcharts-chart>
-            </div>
-          </mat-card-content>
-        </mat-card>
+      <mat-card class="dashboard-cards mb-6">
+        <mat-card-content>
+          <div class="chart" *ngIf="showCharts">
+            <highcharts-chart
+              [Highcharts]="highcharts"
+              [options]="monthlyOrders"
+              style="width: 100%; height: 295px; display: block"
+            >
+            </highcharts-chart>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-        <mat-card class="dashboard-cards" id="artist-table-card">
-          <mat-card-content>
-            <div class="mat-elevation-z8">
-              <table
-                aria-describedby=""
-                mat-table
-                [dataSource]="dataSource"
-                matSort
-              >
-                <!-- Artist Column -->
-                <ng-container matColumnDef="Artist">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Artist
-                  </th>
-                  <td mat-cell *matCellDef="let row">
-                    {{ row.firstName }}
-                  </td>
-                </ng-container>
+      <mat-card class="dashboard-cards mb-6" id="artist-table-card">
+        <mat-card-content>
+          <div class="mat-elevation-z8">
+            <table
+              aria-describedby=""
+              mat-table
+              [dataSource]="dataSource"
+              matSort
+            >
+              <!-- Artist Column -->
+              <ng-container matColumnDef="Artist">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Artist
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  {{ row.firstName }}
+                </td>
+              </ng-container>
 
-                <!-- Started Column -->
-                <ng-container matColumnDef="Started">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Started
-                  </th>
-                  <td mat-cell *matCellDef="let row">
-                    {{ row.createDate | date : "medium" }}
-                  </td>
-                </ng-container>
+              <!-- Started Column -->
+              <ng-container matColumnDef="Started">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Started
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  {{ row.createDate | date : "medium" }}
+                </td>
+              </ng-container>
 
-                <!-- Hours -->
-                <ng-container matColumnDef="Hours">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Hours
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.hours }}</td>
-                </ng-container>
+              <!-- Hours -->
+              <ng-container matColumnDef="Hours">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Hours</th>
+                <td mat-cell *matCellDef="let row">{{ row.hours }}</td>
+              </ng-container>
 
-                <!-- No Tat -->
-                <ng-container matColumnDef="No tat">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    No tat
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.no_tat }}</td>
-                </ng-container>
+              <!-- No Tat -->
+              <ng-container matColumnDef="No tat">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  No tat
+                </th>
+                <td mat-cell *matCellDef="let row">{{ row.no_tat }}</td>
+              </ng-container>
 
-                <!-- Earned Column -->
-                <ng-container matColumnDef="Earned">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Earned
-                  </th>
-                  <td mat-cell *matCellDef="let row">{{ row.earned }}</td>
-                </ng-container>
+              <!-- Earned Column -->
+              <ng-container matColumnDef="Earned">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Earned
+                </th>
+                <td mat-cell *matCellDef="let row">{{ row.earned }}</td>
+              </ng-container>
 
-                <!-- View Column -->
-                <ng-container matColumnDef="View">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    View
-                  </th>
-                  <td mat-cell *matCellDef="let row" (click)="openDialog(row)">
-                    <mat-icon>remove_red_eye</mat-icon>
-                  </td>
-                </ng-container>
+              <!-- View Column -->
+              <ng-container matColumnDef="View">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>View</th>
+                <td mat-cell *matCellDef="let row" (click)="openDialog(row)">
+                  <mat-icon>remove_red_eye</mat-icon>
+                </td>
+              </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr
-                  mat-row
-                  *matRowDef="let row; columns: displayedColumns"
-                ></tr>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
-                <!-- Row shown when there is no matching data. -->
-              </table>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
+              <!-- Row shown when there is no matching data. -->
+            </table>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
     <div class="col-span-1">
       <mat-card class="dashboard-cards">
@@ -111,34 +110,6 @@
           </div>
         </mat-card-content>
       </mat-card>
-    </div>
-  </div>
-
-  <div class="row mt-5">
-    <div class="col-4">
-      <div class="dashboard-circle">
-        <p class="circle-text">
-          {{ totalClients }} <br /><br />
-          Clients
-        </p>
-        <!-- <p class="circle-text">Clients</p> -->
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="dashboard-circle">
-        <p class="circle-text">
-          {{ totalTatoos }} <br /><br />
-          Tattoos
-        </p>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="dashboard-circle">
-        <p class="circle-text">
-          {{ cancelledEvent }} <br /><br />
-          Canceled
-        </p>
-      </div>
     </div>
   </div>
 </div>
