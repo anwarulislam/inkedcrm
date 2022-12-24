@@ -72,6 +72,12 @@
                     <input
                       matInput
                       formControlName="startTime"
+                      placeholder="Date Time"
+                    />
+
+                    <!-- <input
+                      matInput
+                      formControlName="startTime"
                       [owlDateTime]="startTime"
                       [owlDateTimeTrigger]="startTime"
                       placeholder="Date Time"
@@ -79,7 +85,7 @@
                     <owl-date-time
                       #startTime
                       [pickerType]="'timer'"
-                    ></owl-date-time>
+                    ></owl-date-time> -->
                     <mat-error
                       *ngIf="form.controls['startTime'].hasError('required')"
                       >Start Time <strong>required</strong></mat-error
@@ -93,6 +99,11 @@
                     <input
                       matInput
                       formControlName="endTime"
+                      placeholder="Date Time"
+                    />
+                    <!-- <input
+                      matInput
+                      formControlName="endTime"
                       [owlDateTime]="endTime"
                       [owlDateTimeTrigger]="endTime"
                       placeholder="Date Time"
@@ -100,7 +111,7 @@
                     <owl-date-time
                       #endTime
                       [pickerType]="'timer'"
-                    ></owl-date-time>
+                    ></owl-date-time> -->
                     <mat-error
                       *ngIf="form.controls['endTime'].hasError('required')"
                       >End Time <strong>required</strong></mat-error

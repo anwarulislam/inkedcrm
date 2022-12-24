@@ -5,7 +5,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import { User } from 'src/app/core/interface/user';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
-import * as Highcharts from 'highcharts';
 import { AppointmentsComponent } from 'src/app/artists/components/appointments/appointments.component';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
@@ -31,7 +30,6 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   showCharts: any = true;
-  highcharts = Highcharts;
 
   monthlyOrders: any = {
     chart: {
@@ -228,15 +226,6 @@ export class DashboardComponent implements OnInit {
   //     color: 'red',
   //   }
   // ];
-
-  lineOption: Highcharts.Options = {
-    series: [
-      {
-        data: [10],
-        type: 'line',
-      },
-    ],
-  };
 
   pieOptioon: any = {
     chart: {

@@ -26,8 +26,6 @@ import { RouterModule } from '@angular/router';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HighchartsChartModule } from 'highcharts-angular';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { OwlModule } from 'ngx-owl-carousel';
 
@@ -69,10 +67,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         deps: [HttpClient],
       },
     }),
-    HighchartsChartModule,
 
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
     OwlModule,
   ],
   exports: [
@@ -93,8 +88,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatToolbarModule,
     MatDialogModule,
     MatSnackBarModule,
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
+
     OwlModule,
 
     RouterModule,
@@ -106,7 +100,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FullCalendarModule,
     HttpClientModule,
     TranslateModule,
-    HighchartsChartModule,
   ],
 })
 export class SharedModule {}
