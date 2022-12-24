@@ -1,39 +1,77 @@
-<mat-toolbar class="pt-3 pb-3">
-  <select class="p-1" #langSelect (change)="translate.use(langSelect.value)">
-    <option
-      *ngFor="let lang of langs"
-      [value]="lang.value"
-      [selected]="lang.value === translate.currentLang"
+<nav class="flex justify-between border-b py-4 px-6">
+  <div class="flex items-center">
+    <h4 class="mb-0 text-xl font-bold text-white">Dashboard</h4>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <div class="relative w-96 text-gray-600 focus-within:text-gray-400">
+      <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+        <button
+          type="submit"
+          class="focus:shadow-outline p-1 focus:outline-none"
+          style="display: inherit"
+        >
+          <mat-icon class="text-primary">search</mat-icon>
+        </button>
+      </span>
+      <input
+        type="search"
+        name="q"
+        class="w-full rounded-full border bg-transparent py-3 pl-10 text-sm text-white focus:bg-white focus:text-gray-900 focus:outline-none"
+        placeholder="Search..."
+        autocomplete="off"
+      />
+    </div>
+
+    <button
+      class="button primary flex w-32 justify-between rounded-tr-none py-3 shadow-none"
     >
-      {{ lang.name
-      }}<!-- | uppercase  -->
-    </option>
-  </select>
-
-  <span class="example-spacer"></span>
-  <span>InkedCRM</span>
-  <span class="example-spacer"></span>
-
-  <span class="mr-4">
-    {{ "Hi " + user?.firstName | translate }}
-  </span>
-
-  <button
-    mat-mini-fab
-    color="accent"
-    aria-label="Example icon button with a plus one icon"
-    [matMenuTriggerFor]="menu1"
-    matTooltipPosition="before"
-  >
-    <mat-icon>person</mat-icon>
-  </button>
-
-  <mat-menu #menu1="matMenu">
-    <button mat-menu-item>Profile</button>
-    <button mat-menu-item>Billing</button>
-    <button mat-menu-item>Support</button>
-    <button (click)="logout()" mat-menu-item>
-      &nbsp; {{ "Logout" | translate }}
+      <span> Filter </span>
+      <mat-icon>expand_more</mat-icon>
     </button>
-  </mat-menu>
-</mat-toolbar>
+
+    <button
+      [matMenuTriggerFor]="langMenu"
+      matTooltipPosition="before"
+      class="flex items-center gap-2"
+    >
+      <mat-icon>public</mat-icon>
+      <span class="text-white"> {{ currentLang?.name }} </span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+
+    <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
+
+    <button
+      [matMenuTriggerFor]="profileMenu"
+      matTooltipPosition="before"
+      class="flex items-center gap-2"
+    >
+      <mat-icon>person</mat-icon>
+      <span class="text-white"> Hi, {{ "Zen" }} </span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </div>
+</nav>
+
+<mat-menu #langMenu="matMenu">
+  <ul>
+    <li
+      class="cursor-pointer"
+      *ngFor="let lang of langs"
+      (click)="translate.use(lang.value)"
+      [ngClass]="{ selected: lang.value === currentLang?.value }"
+    >
+      {{ lang.name }}
+    </li>
+  </ul>
+</mat-menu>
+
+<mat-menu #profileMenu="matMenu">
+  <button mat-menu-item>Profile</button>
+  <button mat-menu-item>Billing</button>
+  <button mat-menu-item>Support</button>
+  <button (click)="logout()" mat-menu-item>
+    &nbsp; {{ "Logout" | translate }}
+  </button>
+</mat-menu>

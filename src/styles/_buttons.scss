@@ -134,6 +134,7 @@
 .button {
   @include buttonBase;
   @apply rounded-full;
+  box-shadow: 0px 0px 10px #78ef30;
 
   &.white {
     @include button("white", "black", "white", "black");

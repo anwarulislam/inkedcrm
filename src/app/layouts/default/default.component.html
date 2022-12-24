@@ -315,10 +315,12 @@
     </div>
   </mat-sidenav>
 
-  <mat-sidenav-content class="px-6">
+  <mat-sidenav-content>
     <div class="mb-6">
       <app-navbar></app-navbar>
     </div>
-    <router-outlet></router-outlet>
+    <div class="px-6">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

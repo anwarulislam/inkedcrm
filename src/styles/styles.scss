@@ -3,10 +3,6 @@
 @include mat.all-legacy-component-typographies();
 @include mat.legacy-core();
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
 //  The following line adds:
 //    1. Default typography styles for all components
@@ -30,6 +26,22 @@
 @import "dashboard";
 @import "templates";
 @import "snackToastr";
+
+@layer components {
+  .border,
+  .border-r,
+  .border-l,
+  .border-t,
+  .border-b,
+  .border-x,
+  .border-y {
+    @apply border-gray-700;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 table {
   width: 100% !important;

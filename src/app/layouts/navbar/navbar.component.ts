@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class NavbarComponent {
   user: any;
-  langs: any = [
+  langs = [
     { name: 'EN', value: 'en' },
     { name: 'EL', value: 'el' },
     { name: 'FR', value: 'fr' },
@@ -23,6 +23,12 @@ export class NavbarComponent {
     { name: 'NO', value: 'no' },
     { name: 'NL', value: 'nl' },
   ];
+
+  currentLang: { name: string; value: string } | undefined = {
+    name: 'EN',
+    value: 'en',
+  };
+
   constructor(
     public translate: TranslateService,
     private _authService: AuthService
@@ -32,6 +38,15 @@ export class NavbarComponent {
     }
     this.user = _authService.getUser();
     translate.setDefaultLang('en');
+
+    this.currentLang = translate.currentLang
+      ? this.langs.find((l) => l.value === translate.currentLang)
+      : this.langs[0];
+    this.translate.onLangChange.subscribe((event) => {
+      this.currentLang = translate.currentLang
+        ? this.langs.find((l) => l.value === translate.currentLang)
+        : this.langs[0];
+    });
 
     const browserLang: any = translate.getBrowserLang();
   }

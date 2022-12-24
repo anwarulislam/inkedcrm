@@ -45,6 +45,7 @@ export class SnackToastrService {
     this.toastr.open(message, 'X', this.successOptions);
   }
   error(message: string) {
+    return console.log('error');
     this.toastr.open(message, 'X', this.errorOptions);
   }
   info(message: string) {

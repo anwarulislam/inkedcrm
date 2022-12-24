@@ -10,6 +10,10 @@ module.exports = {
         ...colors,
         primary: "#79ef31",
       },
+      borderWidth: {
+        // default
+        DEFAULT: "1px",
+      },
     },
   },
   plugins: [],
