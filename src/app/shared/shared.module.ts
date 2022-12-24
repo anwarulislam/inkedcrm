@@ -76,6 +76,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     OwlModule,
   ],
   exports: [
+    CommonModule,
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,

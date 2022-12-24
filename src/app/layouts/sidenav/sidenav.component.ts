@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { map, Observable, shareReplay } from 'rxjs';
 
 @Component({
-  selector: 'app-sidenavs',
+  selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
 })

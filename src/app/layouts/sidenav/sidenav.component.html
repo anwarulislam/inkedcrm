@@ -1,17 +1,30 @@
-<mat-nav-list>
-  <a mat-list-item class="menu-icon" (click)="isExpanded = !isExpanded">
-    <i class="fa-thin fa-bars"></i>
-  </a>
+<img
+  src="/assets/images/sidenav-bg.png"
+  class="pointer-events-none absolute h-full w-full object-cover opacity-[.3]"
+/>
 
-  <a
-    *ngFor="let item of navItems"
-    mat-list-item
-    class="main-list-items"
-    [routerLink]="item.route"
-    routerLinkActive="active-link"
-    [routerLinkActiveOptions]="{ exact: true }"
-  >
-    <i class="{{ item.icon }} pr-2 align-middle"></i> &nbsp;
-    <span *ngIf="isExpanded">{{ item.name | translate }}</span>
-  </a>
-</mat-nav-list>
+<div class="absolute px-6">
+  <div class="p-4">
+    <img src="/assets/images/logo.png" class="h-auto max-w-[105px]" />
+  </div>
+
+  <mat-nav-list class="!grid gap-8">
+    <!-- <a mat-list-item class="menu-icon" (click)="isExpanded = !isExpanded">
+      <i class="fa-thin fa-bars"></i>
+    </a> -->
+
+    <a
+      *ngFor="let item of navItems"
+      mat-list-item
+      class="main-list-items"
+      [routerLink]="item.route"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <span class="w-[50px]">
+        <i class="{{ item.icon }} align-middle"></i>
+      </span>
+      <span *ngIf="isExpanded">{{ item.name | translate }}</span>
+    </a>
+  </mat-nav-list>
+</div>

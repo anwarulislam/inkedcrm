@@ -12,7 +12,7 @@
     [opened]="true"
     [ngClass]="isExpanded ? 'sidenav' : 'sidenav-1'"
   >
-    <app-sidenavs [isExpanded]="isExpanded"> </app-sidenavs>
+    <app-sidenav [isExpanded]="isExpanded"> </app-sidenav>
   </mat-sidenav>
 
   <mat-sidenav
@@ -319,6 +319,6 @@
     <div class="mb-6">
       <app-navbar></app-navbar>
     </div>
-    <ng-content></ng-content>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
