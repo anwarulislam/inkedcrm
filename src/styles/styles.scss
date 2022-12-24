@@ -1,5 +1,8 @@
 @use "@angular/material" as mat;
 
+@include mat.all-legacy-component-typographies();
+@include mat.legacy-core();
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,8 +15,6 @@
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-@include mat.all-legacy-component-typographies();
-@include mat.legacy-core();
 
 /* You can add global styles to this file, and also import other style files */
 @import "~ng-pick-datetime/assets/style/picker.min.css";
@@ -40,4 +41,13 @@ table {
 
 .card {
   @apply rounded-2xl;
+}
+
+::ng-deep .mat-form-field-outline-start {
+  border-radius: 28px 0 0 28px !important;
+  min-width: 28px !important;
+}
+
+::ng-deep .mat-form-field-outline-end {
+  border-radius: 0 28px 28px 0 !important;
 }
