@@ -43,11 +43,17 @@ table {
   @apply rounded-2xl;
 }
 
-::ng-deep .mat-form-field-outline-start {
+.mat-form-field-outline-start {
   border-radius: 28px 0 0 28px !important;
   min-width: 28px !important;
 }
-
-::ng-deep .mat-form-field-outline-end {
+.mat-form-field-outline-end {
   border-radius: 0 28px 28px 0 !important;
+}
+
+.mat-button,
+.mat-flat-button,
+.mat-icon-button,
+.mat-stroked-button {
+  border-radius: 28px !important;
 }

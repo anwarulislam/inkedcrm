@@ -1,18 +1,15 @@
 .stat-card {
-    flex: 1;
-    padding: 1.5rem;
-    background-color: #333;
-    border-radius: 1rem;
+  flex: 1;
+  padding: 1.5rem;
+  background-color: #333;
+  border-radius: 1rem;
 
-    // -title
-    .stat-title {
-        font-size: 1.8rem;
-        color: white;
-    }
+  // -title
+  .stat-title {
+    @apply text-xl text-white;
+  }
 
-    .stat-number {
-        font-size: 3rem;
-        color: white;
-        font-weight: bold;
-    }
+  .stat-number {
+    @apply text-4xl font-medium text-primary;
+  }
 }
