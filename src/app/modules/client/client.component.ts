@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
 import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
 import Swal from 'sweetalert2';
+import { CommonService } from 'src/app/core/services/common.service';
 
 @Component({
   selector: 'app-client',
@@ -32,13 +33,14 @@ export class ClientComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private dialog: MatDialog,
     public _dialog: MatDialog,
     private sidenavService: SideNavService,
     private _toastr: SnackToastrService,
     private _apiService: GenericApiCallingService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    public common: CommonService
   ) {
+    this.common.page.next('Client');
     this.dataSource = new MatTableDataSource(this.users);
   }
 

@@ -1,1 +1,98 @@
-<router-outlet></router-outlet>
+<div class="dash-card mb-6">
+  <div class="mb-6 flex items-center justify-between">
+    <h4 class="font-bold text-white">Artists Listing</h4>
+
+    <div class="flex gap-4">
+      <button class="button primary" (click)="addArtist(false, null)">
+        <span> Add new artist </span>
+      </button>
+    </div>
+  </div>
+
+  <div class="custom-table">
+    <table aria-describedby="" mat-table [dataSource]="dataSource" matSort>
+      <!-- Image Column -->
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <!-- Image -->
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <img
+            src="{{ row.image || 'assets/images/profileImage.png' }}"
+            class="round-img"
+            alt=""
+          />
+        </td>
+      </ng-container>
+
+      <!-- Firstname Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.firstName }}</td>
+      </ng-container>
+
+      <!-- Lastname Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.lastName }}</td>
+      </ng-container>
+
+      <!-- username Column -->
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.username }}</td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+      </ng-container>
+
+      <!-- action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <td mat-cell *matCellDef="let row">
+          <mat-icon class="cursor align-middle" [matMenuTriggerFor]="menu"
+            >more_vert</mat-icon
+          >
+
+          <mat-menu #menu="matMenu">
+            <button (click)="openDialog(row)" mat-menu-item>
+              <mat-icon class="align-middle">meeting_room</mat-icon>
+              Appointments
+            </button>
+            <button (click)="addArtist(true, row)" mat-menu-item>
+              <mat-icon class="align-middle">edit</mat-icon> Edit
+            </button>
+            <!-- <button (click)="deleteArtistDetail(row.id)" mat-menu-item>
+              <mat-icon class="align-middle">delete</mat-icon> Delete
+            </button> -->
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="6">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[10, 25, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+</div>
+
+<div class="hidden">
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Search </mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input />
+  </mat-form-field>
+</div>
