@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { CommonService } from 'src/app/core/services/common.service';
 
 @Component({
   selector: 'app-navbar',
@@ -28,10 +29,12 @@ export class NavbarComponent {
     name: 'EN',
     value: 'en',
   };
+  currentPage: string;
 
   constructor(
     public translate: TranslateService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    public common: CommonService
   ) {
     for (const lang of this.langs) {
       translate.addLangs([lang.value]);
@@ -49,6 +52,10 @@ export class NavbarComponent {
     });
 
     const browserLang: any = translate.getBrowserLang();
+
+    this.common.page.subscribe((page) => {
+      this.currentPage = page;
+    });
   }
 
   logout() {

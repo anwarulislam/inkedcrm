@@ -29,6 +29,8 @@ import { SharedModule } from '../shared/shared.module';
 import { MonthlyChartComponent } from './dashboard/monthly-chart/monthly-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { OrderReportsComponent } from './dashboard/order-reports/order-reports.component';
+import { ClientReportsComponent } from './dashboard/client-reports/client-reports.component';
 
 // FullCalendarModule.registerPlugins([
 //   dayGridPlugin,
@@ -44,12 +46,15 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     TemplatesComponent,
     DashboardComponent,
     MonthlyChartComponent,
+    OrderReportsComponent,
+    ClientReportsComponent,
   ],
   imports: [
     SharedModule,
     HttpClientModule,
 
     NgxChartsModule,
+    NgApexchartsModule,
 
     // material imports
     MatIconModule,

@@ -1,9 +1,9 @@
 <div class="mb-6 flex items-center justify-between">
-  <h4 class="font-bold text-primary">Monthly Orders Report</h4>
+  <h4 class="font-bold text-white">Week's Client Report</h4>
 
   <div class="flex gap-4">
     <button class="button primary flex gap-1">
-      <span> Yearly </span>
+      <span> Weekly </span>
       <mat-icon>expand_more</mat-icon>
     </button>
     <button class="button white flex gap-1 shadow-none">
@@ -18,13 +18,8 @@
     <apx-chart
       [series]="chartOptions.series"
       [chart]="chartOptions.chart"
-      [dataLabels]="chartOptions.dataLabels"
-      [plotOptions]="chartOptions.plotOptions"
-      [yaxis]="chartOptions.yaxis"
-      [xaxis]="chartOptions.xaxis"
-      [legend]="chartOptions.legend"
-      [colors]="chartOptions.colors"
-      [grid]="chartOptions.grid"
+      [labels]="chartOptions.labels"
+      [responsive]="chartOptions.responsive"
     ></apx-chart>
   </div>
 </mat-card-content>

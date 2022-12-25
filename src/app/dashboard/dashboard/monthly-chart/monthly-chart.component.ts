@@ -1,4 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import {
+  ApexChart,
+  ApexAxisChartSeries,
+  ChartComponent,
+  ApexDataLabels,
+  ApexPlotOptions,
+  ApexYAxis,
+  ApexLegend,
+  ApexGrid,
+  ApexXAxis,
+} from 'ng-apexcharts';
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  yaxis: ApexYAxis;
+  xaxis: ApexXAxis;
+  grid: ApexGrid;
+  colors: string[];
+  legend: ApexLegend;
+};
 
 @Component({
   selector: 'app-monthly-chart',
@@ -6,104 +29,94 @@ import { Component } from '@angular/core';
   styleUrls: ['./monthly-chart.component.scss'],
 })
 export class MonthlyChartComponent {
-  single: any[] = [
-    {
-      name: 'Jan',
-      value: 847,
-    },
-    {
-      name: 'Feb',
-      value: 1024,
-    },
-    {
-      name: 'Mar',
-      value: 758,
-    },
-    {
-      name: 'Apr',
-      value: 930,
-    },
-    {
-      name: 'May',
-      value: 234,
-    },
-    {
-      name: 'Jun',
-      value: 123,
-    },
-    {
-      name: 'Jul',
-      value: 456,
-    },
-    {
-      name: 'Aug',
-      value: 789,
-    },
-    {
-      name: 'Sep',
-      value: 123,
-    },
-    {
-      name: 'Oct',
-      value: 456,
-    },
-    {
-      name: 'Nov',
-      value: 789,
-    },
-    {
-      name: 'Dec',
-      value: 123,
-    },
-  ];
-  multi: any[];
+  @ViewChild('chart') chart: ChartComponent;
+  public chartOptions: Partial<ChartOptions>;
 
-  view: any = [700, 400];
+  data = [240, 380, 300, 400, 510, 340, 200, 600, 405, 860, 1100, 450];
 
-  // options
-  showXAxis = false;
-  showYAxis = true;
-  gradient = false;
-  showLegend = false;
-  showXAxisLabel = false;
-  xAxisLabel = 'Country';
-  showYAxisLabel = false;
-  yAxisLabel = 'Population';
+  get dataColors() {
+    // get top 3 values index
+    const top3 = this.data
+      .map((value, index) => ({ value, index }))
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 3)
+      .map((item) => item.index);
 
-  colorScheme: any = {
-    domain: this.getIndexOfTop3(),
-    name: ['#fff'],
-  };
-
-  getIndexOfTop3() {
-    // fill an array with "#ddd" for 12 months
-    let colorArray = [];
-    colorArray.length = 12;
-    colorArray.fill('#737373');
-
-    // get the top index of the highest values from the single array
-    let top3 = this.single
-      .map((item) => item.value)
-      .sort((a, b) => b - a)
-      .slice(0, 3);
-
-    // get the index of the top 3 values
-    let top3Index = this.single
-      .map((item) => item.value)
-      .map((item, index) => (top3.includes(item) ? index : null))
-      .filter((item) => item !== null);
-
-    // fill the color array with the top 3 colors
-    top3Index.forEach((item) => (colorArray[item] = '#78EF30'));
-
-    return colorArray;
+    // set colors
+    return this.data.map((value, index) => {
+      if (top3.includes(index)) {
+        return '#78EF30';
+      } else {
+        return '#737373';
+      }
+    });
   }
 
   constructor() {
-    // Object.assign(this, { single });
-  }
-
-  onSelect(event) {
-    console.log(event);
+    this.chartOptions = {
+      series: [
+        {
+          name: 'Orders',
+          data: this.data,
+        },
+      ],
+      colors: this.dataColors,
+      plotOptions: {
+        bar: {
+          distributed: true,
+        },
+      },
+      chart: {
+        height: 350,
+        type: 'bar',
+        toolbar: {
+          show: false,
+        },
+        events: {
+          click: function (chart, w, e) {
+            // console.log(chart, w, e)
+          },
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      legend: {
+        show: false,
+      },
+      grid: {
+        show: true,
+      },
+      xaxis: {
+        categories: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
+        labels: {
+          style: {
+            colors: '#ddd',
+            fontSize: '12px',
+          },
+        },
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: '#ddd',
+            fontSize: '12px',
+          },
+        },
+      },
+    };
   }
 }
