@@ -1,5 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-templates',
@@ -7,14 +6,22 @@ import { SharedModule } from 'src/app/shared/shared.module';
   styleUrls: ['./templates.component.scss'],
 })
 export class TemplatesComponent implements OnInit {
+  templates = [
+    {
+      name: 'Template 1',
+      image: 'assets/images/tatoo2.png',
+    },
+    {
+      name: 'Template 2',
+      image: 'assets/images/tatoo2.png',
+    },
+    {
+      name: 'Template 3',
+      image: 'assets/images/tatoo2.png',
+    },
+  ];
+
   constructor() {}
 
   ngOnInit(): void {}
 }
-
-// make it module
-@NgModule({
-  declarations: [TemplatesComponent],
-  imports: [SharedModule],
-})
-export class TemplatesModule {}

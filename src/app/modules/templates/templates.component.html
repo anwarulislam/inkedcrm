@@ -1,57 +1,21 @@
 <div class="container-fluid">
-  <div class="row align-items-center mt-3">
-    <div class="col-md-4">
-      <mat-card class="template-cards">
-        <mat-card-header>
-          <h3 class="align-items-center">Template 1</h3>
-        </mat-card-header>
-
-        <mat-card-content>
-          <img class="template-img" src="assets/images/tatoo2.png" alt="" />
-        </mat-card-content>
-
-        <mat-card-footer>
-          <button class="edit-button mr-5" mat-button>Edit</button>
-          <button class="edit-button mr-5" mat-button>Delete</button>
-          <button mat-button>Deactivate</button>
-        </mat-card-footer>
-      </mat-card>
-    </div>
-
-    <div class="col-md-4">
-      <mat-card class="template-cards">
-        <mat-card-header>
-          <h3>Template 2</h3>
-        </mat-card-header>
-
-        <mat-card-content>
-          <img class="template-img" src="assets/images/tatoo2.png" alt="" />
-        </mat-card-content>
-
-        <mat-card-footer>
-          <button class="edit-button mr-5" mat-button>Edit</button>
-          <button class="edit-button mr-5" mat-button>Delete</button>
-          <button mat-button>Deactivate</button>
-        </mat-card-footer>
-      </mat-card>
-    </div>
-
-    <div class="col-md-4">
-      <mat-card class="template-cards">
-        <mat-card-header>
-          <h3>Template 3</h3>
-        </mat-card-header>
-
-        <mat-card-content>
-          <img class="template-img" src="assets/images/tatoo2.png" alt="" />
-        </mat-card-content>
-
-        <mat-card-footer>
-          <button class="edit-button mr-5" mat-button>Edit</button>
-          <button class="edit-button mr-5" mat-button>Delete</button>
-          <button mat-button>Deactivate</button>
-        </mat-card-footer>
-      </mat-card>
+  <div class="grid gap-6 md:grid-cols-3">
+    <div class="dash-card overflow-hidden p-0" *ngFor="let item of templates">
+      <h3 class="bg-primary py-4 px-6 text-2xl font-bold text-black">
+        {{ item.name }}
+      </h3>
+      <div class="p-6">
+        <img
+          class="template-img mb-6 rounded-2xl"
+          src="assets/images/tatoo2.png"
+          alt=""
+        />
+        <div class="flex justify-center gap-4">
+          <button class="button primary">Edit</button>
+          <button class="button secondary shadow-none">Delete</button>
+          <button class="button secondary shadow-none">Deactivate</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -99,11 +63,11 @@
             </div>
 
             <div class="col-8 float-right">
-              <button mat-button class="float-right mr-2">
+              <button class="button primary" class="float-right mr-2">
                 <mat-icon>edit</mat-icon>
               </button>
               &nbsp;
-              <button mat-button class="float-right mr-4">
+              <button class="button primary" class="float-right mr-4">
                 <mat-icon>delete</mat-icon>
               </button>
             </div>
@@ -129,17 +93,17 @@
             </div>
 
             <div class="col-8 float-right">
-                <button mat-button class="mr-2 float-right">
+                <button class="button primary" class="mr-2 float-right">
                     <mat-icon>edit</mat-icon>
                 </button>
                 &nbsp;
-                <button mat-button class="mr-4 float-right">
+                <button class="button primary" class="mr-4 float-right">
                     <mat-icon>delete</mat-icon>
                 </button>
 
             </div>
         </div>
-        
+
       </mat-card-content>
     </mat-card>
 </div> -->

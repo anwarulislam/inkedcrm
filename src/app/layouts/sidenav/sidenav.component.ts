@@ -36,11 +36,11 @@ export class SidenavComponent {
       route: '/artists',
       name: 'Artists',
     },
-    {
-      icon: 'fa-thin fa-chart-simple',
-      route: '/marketing',
-      name: 'Marketing',
-    },
+    // {
+    //   icon: 'fa-thin fa-chart-simple',
+    //   route: '/marketing',
+    //   name: 'Marketing',
+    // },
     {
       icon: 'fa-thin fa-files',
       route: '/templates',

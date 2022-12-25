@@ -11,7 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 // pages
-import { MarketingComponent } from '../marketing/marketing.component';
 import { DashboardComponent } from './dashboard.component';
 
 // scheduler imports to be made its own module
@@ -42,7 +41,6 @@ import { ArtistListComponent } from './artist-list/artist-list.component';
 // @ts-ignore
 @NgModule({
   declarations: [
-    MarketingComponent,
     DashboardComponent,
     MonthlyChartComponent,
     OrderReportsComponent,
