@@ -1,0 +1,70 @@
+<div class="mb-6 flex items-center justify-between">
+  <h4 class="font-bold text-white">Artists List</h4>
+
+  <div class="flex gap-4">
+    <button class="button primary flex gap-1">
+      <span> Monthly </span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+    <button class="button secondary flex gap-1 shadow-none">
+      <span> Yearly </span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </div>
+</div>
+
+<mat-card class="dash-card custom-table mb-6 max-h-80 overflow-y-auto">
+  <table aria-describedby="" mat-table [dataSource]="dataSource" matSort>
+    <!-- Artist Column -->
+    <ng-container matColumnDef="Artist">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Artist</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.firstName }}
+      </td>
+    </ng-container>
+
+    <!-- Started Column -->
+    <ng-container matColumnDef="Started">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Started</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.createDate | date : "medium" }}
+      </td>
+    </ng-container>
+
+    <!-- Hours -->
+    <ng-container matColumnDef="Hours">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Hours</th>
+      <td mat-cell *matCellDef="let row">{{ row.hours }}</td>
+    </ng-container>
+
+    <!-- No Tat -->
+    <ng-container matColumnDef="No tat">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>No tat</th>
+      <td mat-cell *matCellDef="let row">{{ row.no_tat }}</td>
+    </ng-container>
+
+    <!-- Earned Column -->
+    <ng-container matColumnDef="Earned">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Earned</th>
+      <td mat-cell *matCellDef="let row">{{ row.earned }}</td>
+    </ng-container>
+
+    <!-- View Column -->
+    <ng-container matColumnDef="View">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>View</th>
+      <td
+        mat-cell
+        *matCellDef="let row"
+        class="cursor-pointer"
+        (click)="openDialog(row)"
+      >
+        <mat-icon>remove_red_eye</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+  </table>
+</mat-card>

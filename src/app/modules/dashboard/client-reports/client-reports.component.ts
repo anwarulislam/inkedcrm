@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { ApexPlotOptions, ChartComponent } from 'ng-apexcharts';
+import { ApexLegend, ChartComponent } from 'ng-apexcharts';
 
 import {
+  ApexChart,
   ApexNonAxisChartSeries,
   ApexResponsive,
-  ApexChart,
 } from 'ng-apexcharts';
 
 export type ChartOptions = {
@@ -13,6 +13,7 @@ export type ChartOptions = {
   colors: string[];
   responsive: ApexResponsive[];
   labels: any;
+  legend: ApexLegend;
 };
 @Component({
   selector: 'app-client-reports',
@@ -29,21 +30,11 @@ export class ClientReportsComponent {
       chart: {
         type: 'donut',
       },
-      colors: ['#ffffff', '#737373', '#FF0000'],
-      labels: ['Team A', 'Team B', 'Team C'],
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200,
-            },
-            legend: {
-              position: 'bottom',
-            },
-          },
-        },
-      ],
+      colors: ['#ffffff', '#ffffff', '#ffffff'],
+      labels: ['Data A', 'Data B', 'Data C'],
+      legend: {
+        show: false,
+      },
     };
   }
 }

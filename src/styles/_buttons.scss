@@ -140,6 +140,10 @@
     @include button("white", "black", "white", "black");
   }
 
+  &.secondary {
+    @include button("secondary", "white", "secondary", "white");
+  }
+
   &.primary {
     @include button("primary", "black", "primary", "black");
   }

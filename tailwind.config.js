@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         ...colors,
         primary: "#79ef31",
+        secondary: "#737373",
       },
       borderWidth: {
         // default
