@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import { User } from 'src/app/core/interface/user';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
-import { AppointmentsComponent } from 'src/app/artists/components/appointments/appointments.component';
+import { AppointmentsComponent } from '@modules/artists/components/appointments/appointments.component';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
 import { AuthService } from 'src/app/core/services/auth.service';

@@ -6,7 +6,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { AppointmentDetailsComponent } from 'src/app/artists/components/appointment-details/appointment-details.component';
+import { AppointmentDetailsComponent } from '@modules/artists/components/appointment-details/appointment-details.component';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SideNavService } from 'src/app/core/services/side-nav.service';

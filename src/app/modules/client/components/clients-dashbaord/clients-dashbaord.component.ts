@@ -3,7 +3,7 @@ import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import { AppointmentsComponent } from 'src/app/artists/components/appointments/appointments.component';
+import { AppointmentsComponent } from '@modules/artists/components/appointments/appointments.component';
 import { Customer } from 'src/app/core/interface/customer';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { AuthService } from 'src/app/core/services/auth.service';

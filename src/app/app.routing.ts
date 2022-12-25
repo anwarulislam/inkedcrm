@@ -22,12 +22,14 @@ const routes: Routes = [
       {
         path: 'client',
         loadChildren: () =>
-          import('./client/client.module').then((m) => m.ClientModule),
+          import('@modules/client/client.module').then((m) => m.ClientModule),
       },
       {
         path: 'artists',
         loadChildren: () =>
-          import('./artists/artists.module').then((m) => m.ArtistsModule),
+          import('@modules/artists/artists.module').then(
+            (m) => m.ArtistsModule
+          ),
       },
       {
         path: 'dashboard',
