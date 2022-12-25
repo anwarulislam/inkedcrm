@@ -11,9 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 // pages
-import { MarketingComponent } from './marketing/marketing.component';
-import { TemplatesComponent } from './templates/templates.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { MarketingComponent } from '../marketing/marketing.component';
+import { DashboardComponent } from './dashboard.component';
 
 // scheduler imports to be made its own module
 
@@ -24,13 +23,13 @@ import listPlugin from '@fullcalendar/list';
 import timeGridPlugin from '@fullcalendar/timegrid';
 
 // events service
-import { EventsService } from '../core/services/events.service';
-import { SharedModule } from '../shared/shared.module';
-import { MonthlyChartComponent } from './dashboard/monthly-chart/monthly-chart.component';
+import { EventsService } from 'src/app/core/services/events.service';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MonthlyChartComponent } from './monthly-chart/monthly-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { OrderReportsComponent } from './dashboard/order-reports/order-reports.component';
-import { ClientReportsComponent } from './dashboard/client-reports/client-reports.component';
+import { OrderReportsComponent } from './order-reports/order-reports.component';
+import { ClientReportsComponent } from './client-reports/client-reports.component';
 
 // FullCalendarModule.registerPlugins([
 //   dayGridPlugin,
@@ -43,7 +42,6 @@ import { ClientReportsComponent } from './dashboard/client-reports/client-report
 @NgModule({
   declarations: [
     MarketingComponent,
-    TemplatesComponent,
     DashboardComponent,
     MonthlyChartComponent,
     OrderReportsComponent,

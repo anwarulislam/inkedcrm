@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <div class="grid gap-6 md:grid-cols-3">
+    <div class="col-span-2">
+      <div class="mb-6 flex gap-6">
+        <div class="stat-card">
+          <p class="stat-title">Clients</p>
+          <p class="stat-number">{{ totalClients }}</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-title">Tattoos</p>
+          <p class="stat-number">{{ totalTatoos }}</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-title">Canceled</p>
+          <p class="stat-number">{{ cancelledEvent }}</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-title">Total Earning</p>
+          <p class="stat-number">{{ "$3000" }}</p>
+        </div>
+      </div>
+
+      <mat-card class="dash-card mb-6">
+        <app-monthly-chart></app-monthly-chart>
+      </mat-card>
+
+      <mat-card class="dash-card mb-6" id="artist-table-card">
+        <table aria-describedby="" mat-table [dataSource]="dataSource" matSort>
+          <!-- Artist Column -->
+          <ng-container matColumnDef="Artist">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Artist</th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.firstName }}
+            </td>
+          </ng-container>
+
+          <!-- Started Column -->
+          <ng-container matColumnDef="Started">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Started</th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.createDate | date : "medium" }}
+            </td>
+          </ng-container>
+
+          <!-- Hours -->
+          <ng-container matColumnDef="Hours">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Hours</th>
+            <td mat-cell *matCellDef="let row">{{ row.hours }}</td>
+          </ng-container>
+
+          <!-- No Tat -->
+          <ng-container matColumnDef="No tat">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>No tat</th>
+            <td mat-cell *matCellDef="let row">{{ row.no_tat }}</td>
+          </ng-container>
+
+          <!-- Earned Column -->
+          <ng-container matColumnDef="Earned">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Earned</th>
+            <td mat-cell *matCellDef="let row">{{ row.earned }}</td>
+          </ng-container>
+
+          <!-- View Column -->
+          <ng-container matColumnDef="View">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>View</th>
+            <td mat-cell *matCellDef="let row" (click)="openDialog(row)">
+              <mat-icon>remove_red_eye</mat-icon>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+        </table>
+      </mat-card>
+    </div>
+    <div class="col-span-1">
+      <mat-card class="dash-card mb-6">
+        <app-order-reports></app-order-reports>
+      </mat-card>
+      <mat-card class="dash-card">
+        <app-client-reports></app-client-reports>
+      </mat-card>
+    </div>
+  </div>
+</div>

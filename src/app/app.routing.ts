@@ -25,14 +25,23 @@ const routes: Routes = [
           import('./client/client.module').then((m) => m.ClientModule),
       },
       {
-        path: 'artist',
+        path: 'artists',
         loadChildren: () =>
           import('./artists/artists.module').then((m) => m.ArtistsModule),
       },
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+          import('@modules/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
+      {
+        path: 'templates',
+        loadChildren: () =>
+          import('@modules/templates/templates.component').then(
+            (m) => m.TemplatesModule
+          ),
       },
       {
         path: 'schedule',

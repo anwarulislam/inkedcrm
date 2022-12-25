@@ -3,9 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 // page components
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MarketingComponent } from './marketing/marketing.component';
-import { TemplatesComponent } from './templates/templates.component';
+import { DashboardComponent } from './dashboard.component';
+import { MarketingComponent } from '../marketing/marketing.component';
 
 const routes: Routes = [
   {
@@ -16,10 +15,6 @@ const routes: Routes = [
   {
     path: 'marketing',
     component: MarketingComponent,
-  },
-  {
-    path: 'templates',
-    component: TemplatesComponent,
   },
 ];
 

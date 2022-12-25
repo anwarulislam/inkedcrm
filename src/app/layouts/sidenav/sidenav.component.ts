@@ -33,17 +33,17 @@ export class SidenavComponent {
     },
     {
       icon: 'fa-thin fa-user-robot',
-      route: '/artist/artists-dashboard',
+      route: '/artists',
       name: 'Artists',
     },
     {
       icon: 'fa-thin fa-chart-simple',
-      route: '/dashboard/marketing',
+      route: '/marketing',
       name: 'Marketing',
     },
     {
       icon: 'fa-thin fa-files',
-      route: '/dashboard/templates',
+      route: '/templates',
       name: 'Templates',
     },
   ];
