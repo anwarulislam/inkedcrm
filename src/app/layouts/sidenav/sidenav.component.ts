@@ -28,7 +28,7 @@ export class SidenavComponent {
     },
     {
       icon: 'fa-thin fa-user-astronaut',
-      route: '/client/client-dashboard',
+      route: '/clients',
       name: 'Clients',
     },
     {
