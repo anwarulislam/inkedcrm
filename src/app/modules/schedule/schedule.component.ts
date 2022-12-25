@@ -5,16 +5,16 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
 import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
 import { GenericApiCallingService } from 'src/app/core/services/api.service';
-import { CreateScheduleComponent } from '../create-schedule/create-schedule.component';
 import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { CreateScheduleComponent } from './components/create-schedule/create-schedule.component';
 
 @Component({
-  selector: 'app-schedule-dashboard',
-  templateUrl: './schedule-dashboard.component.html',
-  styleUrls: ['./schedule-dashboard.component.scss'],
+  selector: 'app-schedule',
+  templateUrl: './schedule.component.html',
+  styleUrls: ['./schedule.component.scss'],
 })
-export class ScheduleDashboardComponent implements OnInit {
+export class ScheduleComponent implements OnInit {
   events: any[] = [];
   realEvents: any[] = [];
   constructor(

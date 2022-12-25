@@ -4,7 +4,7 @@ import {
   MatLegacyDialogRef as MatDialogRef,
   MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
 } from '@angular/material/legacy-dialog';
-import { CreateScheduleComponent } from 'src/app/schedule/components/create-schedule/create-schedule.component';
+import { CreateScheduleComponent } from '@modules/schedule/components/create-schedule/create-schedule.component';
 
 @Component({
   selector: 'app-appointment-details',
