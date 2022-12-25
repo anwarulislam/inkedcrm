@@ -23,7 +23,7 @@ export class SidenavComponent {
     { icon: 'fa-thin fa-house', route: '/dashboard', name: 'Dashboard' },
     {
       icon: 'fa-thin fa-calendar-range',
-      route: '/schedule/schedule-dashboard',
+      route: '/schedule',
       name: 'Schedule',
     },
     {

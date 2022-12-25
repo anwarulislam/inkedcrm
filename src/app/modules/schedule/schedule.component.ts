@@ -8,6 +8,8 @@ import { GenericApiCallingService } from 'src/app/core/services/api.service';
 import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CreateScheduleComponent } from './components/create-schedule/create-schedule.component';
+import listPlugin from '@fullcalendar/list';
+import { CalendarOptions } from 'fullcalendar';
 
 @Component({
   selector: 'app-schedule',
@@ -17,16 +19,8 @@ import { CreateScheduleComponent } from './components/create-schedule/create-sch
 export class ScheduleComponent implements OnInit {
   events: any[] = [];
   realEvents: any[] = [];
-  constructor(
-    private sidenavService: SideNavService,
-    private _toastr: SnackToastrService,
-    private _dialog: MatDialog,
-    private _authService: AuthService,
-    private _apiService: GenericApiCallingService
-  ) {}
-
-  calendarOptions = {
-    plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
+  calendarOptions: CalendarOptions = {
+    plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin, listPlugin],
     initialView: 'dayGridMonth',
     titleFormat: { month: 'long', year: 'numeric', day: '2-digit' },
     dayHeaderFormat: { weekday: 'long' }, //weekday: 'short',omitCommas:false,day:'numeric',dayPeriod:'short',dateStyle:'long
@@ -53,6 +47,14 @@ export class ScheduleComponent implements OnInit {
       right: 'dayGridMonth,timeGridWeek,timeGridDay',
     },
   };
+
+  constructor(
+    private sidenavService: SideNavService,
+    private _toastr: SnackToastrService,
+    private _dialog: MatDialog,
+    private _authService: AuthService,
+    private _apiService: GenericApiCallingService
+  ) {}
 
   handleDateClick(arg: any) {
     let date = arg.dateStr.split('-');

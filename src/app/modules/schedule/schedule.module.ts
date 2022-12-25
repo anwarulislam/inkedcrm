@@ -5,19 +5,7 @@ import { CreateScheduleComponent } from './components/create-schedule/create-sch
 import { ScheduleRoutingModule } from './schedule-routing.module';
 import { ScheduleComponent } from './schedule.component';
 
-import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import listPlugin from '@fullcalendar/list';
-import timeGridPlugin from '@fullcalendar/timegrid';
-
 import { FullCalendarModule } from '@fullcalendar/angular';
-
-// FullCalendarModule.registerPlugins([
-//   dayGridPlugin,
-//   interactionPlugin,
-//   listPlugin,
-//   timeGridPlugin,
-// ]);
 
 @NgModule({
   declarations: [ScheduleComponent, CreateScheduleComponent],
