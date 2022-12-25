@@ -1,0 +1,34 @@
+<div class="mb-6 flex items-center justify-between">
+  <h4 class="font-bold text-primary">Monthly Orders Report</h4>
+
+  <div class="flex gap-4">
+    <button class="button primary flex gap-1">
+      <span> Yearly </span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+    <button class="button white flex gap-1 shadow-none">
+      <span> Monthly </span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </div>
+</div>
+
+<mat-card-content>
+  <div id="chart">
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="single"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      (select)="onSelect($event)"
+    >
+    </ngx-charts-bar-vertical>
+  </div>
+</mat-card-content>

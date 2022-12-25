@@ -26,6 +26,9 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 // events service
 import { EventsService } from '../core/services/events.service';
 import { SharedModule } from '../shared/shared.module';
+import { MonthlyChartComponent } from './dashboard/monthly-chart/monthly-chart.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 // FullCalendarModule.registerPlugins([
 //   dayGridPlugin,
@@ -36,12 +39,17 @@ import { SharedModule } from '../shared/shared.module';
 
 // @ts-ignore
 @NgModule({
-  declarations: [MarketingComponent, TemplatesComponent, DashboardComponent],
+  declarations: [
+    MarketingComponent,
+    TemplatesComponent,
+    DashboardComponent,
+    MonthlyChartComponent,
+  ],
   imports: [
-    CommonModule,
-    RouterModule,
+    SharedModule,
     HttpClientModule,
-    DashboardRoutingModule,
+
+    NgxChartsModule,
 
     // material imports
     MatIconModule,
@@ -52,8 +60,7 @@ import { SharedModule } from '../shared/shared.module';
     //schedule imports
     FullCalendarModule,
 
-    //shared Module
-    SharedModule,
+    DashboardRoutingModule,
   ],
   providers: [EventsService],
 })
