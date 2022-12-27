@@ -3,14 +3,11 @@ import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { MatSidenav } from '@angular/material/sidenav';
+import { AppointmentDetailsComponent } from '@modules/artists/components/appointment-details/appointment-details.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { AppointmentDetailsComponent } from '@modules/artists/components/appointment-details/appointment-details.component';
-import { GenericApiCallingService } from 'src/app/core/services/api.service';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { SideNavService } from 'src/app/core/services/side-nav.service';
-import { SnackToastrService } from 'src/app/core/services/snackToastr.service';
 
 @Component({
   selector: 'app-default',
@@ -47,10 +44,7 @@ export class DefaultComponent {
     private sidenavService: SideNavService,
     public translate: TranslateService,
     private cdr: ChangeDetectorRef,
-    private _authService: AuthService,
-    private _dialog: MatDialog,
-    private _apiService: GenericApiCallingService,
-    private _toastr: SnackToastrService
+    private _dialog: MatDialog
   ) {}
 
   ngOnInit(): void {

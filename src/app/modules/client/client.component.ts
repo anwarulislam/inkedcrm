@@ -18,7 +18,6 @@ import { CommonService } from 'src/app/core/services/common.service';
   styleUrls: ['./client.component.scss'],
 })
 export class ClientComponent implements OnInit {
-  clientDetail: any;
   displayedColumns: string[] = [
     'firstName',
     'lastName',
@@ -92,10 +91,6 @@ export class ClientComponent implements OnInit {
       type: 'Client',
     };
     this.sidenavService.$dynamicForm.next(params);
-  }
-
-  viewClientDetail(clientDetail: any) {
-    this.clientDetail = clientDetail;
   }
 
   deleteClientDetail(id: any) {

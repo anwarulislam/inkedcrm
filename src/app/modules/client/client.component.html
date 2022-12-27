@@ -46,10 +46,8 @@
           >
 
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-              <mat-icon (click)="viewClientDetail(row)" class="align-middle"
-                >visibility</mat-icon
-              >
+            <button mat-menu-item routerLink="view/client_id">
+              <mat-icon class="align-middle">visibility</mat-icon>
               View
             </button>
 
@@ -79,30 +77,6 @@
       aria-label="Select page of users"
     ></mat-paginator>
   </div>
-</div>
-
-<div *ngIf="clientDetail">
-  <mat-card class="mt-3 mb-3 border">
-    <div class="row">
-      <div class="col-2">
-        <img src="assets/images/profileImage.png" class="img-fluid" alt="" />
-      </div>
-      <div class="col-4">
-        <p>{{ clientDetail.firstName }} {{ clientDetail.lastName }}</p>
-        <p>{{ clientDetail.telNumber }}</p>
-        <p>{{ clientDetail.email }}</p>
-      </div>
-      <div class="col-6">
-        <p class="">Next Appoinment</p>
-        <p class="">10-10-2022</p>
-      </div>
-      <div class="col-12 mt-3 text-center">
-        <a (click)="openDialog(clientDetail)">
-          <div class="jumbotron">Client History</div>
-        </a>
-      </div>
-    </div>
-  </mat-card>
 </div>
 
 <div class="hidden">
