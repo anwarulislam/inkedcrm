@@ -1,10 +1,14 @@
 <nav class="flex justify-between border-b py-4 px-6">
   <div class="flex items-center">
+    <ng-content></ng-content>
+
     <h4 class="mb-0 text-xl font-bold text-white">{{ currentPage }}</h4>
   </div>
 
   <div class="flex items-center gap-4">
-    <div class="relative w-96 text-gray-600 focus-within:text-gray-400">
+    <div
+      class="relative hidden w-96 text-gray-600 focus-within:text-gray-400 md:block"
+    >
       <span class="absolute inset-y-0 left-0 flex items-center pl-2">
         <button
           type="submit"
@@ -24,7 +28,7 @@
     </div>
 
     <button
-      class="button primary flex w-32 justify-between rounded-tr-none py-3 shadow-none"
+      class="button primary hidden w-32 justify-between rounded-tr-none py-3 shadow-none md:flex"
     >
       <span> Filter </span>
       <mat-icon>expand_more</mat-icon>

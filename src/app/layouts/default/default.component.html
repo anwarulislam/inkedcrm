@@ -1,21 +1,15 @@
-<mat-sidenav-container
-  (backdropClick)="closeSidenav()"
-  class="sidenav-container"
-  autosize=""
->
-  <mat-sidenav
+<mat-drawer-container autosize>
+  <mat-drawer
     #drawer
-    class="sidenav"
     fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    class="sidenav"
     [mode]="'side'"
-    [opened]="true"
-    [ngClass]="isExpanded ? 'sidenav' : 'sidenav-1'"
+    [opened]="!(isHandset$ | async)"
   >
-    <app-sidenav [isExpanded]="isExpanded"> </app-sidenav>
-  </mat-sidenav>
+    <app-sidenav [isExpanded]="true"> </app-sidenav>
+  </mat-drawer>
 
-  <mat-sidenav
+  <mat-drawer
     fixedInViewport
     #drawer1
     class="side-drawer"
@@ -313,14 +307,23 @@
         </ng-container>
       </ng-template>
     </div>
-  </mat-sidenav>
+  </mat-drawer>
 
-  <mat-sidenav-content>
+  <mat-drawer-content>
     <div class="mb-6">
-      <app-navbar></app-navbar>
+      <app-navbar>
+        <button
+          type="button"
+          mat-button
+          (click)="drawer.toggle()"
+          class="!pl-0 md:!hidden"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </app-navbar>
     </div>
     <div class="px-6">
       <router-outlet></router-outlet>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-drawer-content>
+</mat-drawer-container>
