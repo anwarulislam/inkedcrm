@@ -6,12 +6,14 @@ import { ArtistsRoutingModule } from './artists.routing';
 import { ArtistsComponent } from './artists.component';
 import { AppointmentDetailsComponent } from './components/appointment-details/appointment-details.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
+import { ManageArtistComponent } from './manage-artist/manage-artist.component';
 
 @NgModule({
   declarations: [
     ArtistsComponent,
     AppointmentsComponent,
     AppointmentDetailsComponent,
+    ManageArtistComponent,
   ],
   imports: [SharedModule, ArtistsRoutingModule],
 })

@@ -1,0 +1,124 @@
+<div class="mx-auto max-w-[600px]">
+  <div class="dash-card">
+    <h2 class="m-0">{{ type === "update" ? "Update" : "Add" }} Artist Data</h2>
+    <form [formGroup]="addArtistForm">
+      <div class="row align-items-center mt-3">
+        <div class="col-md-9"></div>
+        <div class="col-md-3 text-right">
+          <mat-icon class="cursor align-middle">close</mat-icon>
+        </div>
+
+        <div class="col-12 mt-3 mb-5 p-0">
+          <mat-divider style="color: white"></mat-divider>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" />
+            <mat-error
+              *ngIf="addArtistForm.controls['firstName'].hasError('required')"
+            >
+              First Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" />
+            <mat-error
+              *ngIf="addArtistForm.controls['lastName'].hasError('required')"
+            >
+              Last Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>User Name</mat-label>
+            <input matInput formControlName="username" />
+            <mat-error
+              *ngIf="addArtistForm.controls['username'].hasError('required')"
+            >
+              User Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Role</mat-label>
+            <input matInput formControlName="role" />
+            <mat-error
+              *ngIf="addArtistForm.controls['role'].hasError('required')"
+            >
+              Role is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-error
+              *ngIf="
+                addArtistForm.controls['email'].hasError('email') &&
+                !addArtistForm.controls['email'].hasError('required')
+              "
+            >
+              Please enter a valid email address
+            </mat-error>
+            <mat-error
+              *ngIf="addArtistForm.controls['email'].hasError('required')"
+            >
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              matInput
+              placeholder="Password"
+              formControlName="password"
+            />
+
+            <ion-icon
+              *ngIf="!showPassword"
+              (click)="showPassword = !showPassword"
+              matSuffix
+              name="eye-outline"
+            ></ion-icon>
+            <ion-icon
+              *ngIf="showPassword"
+              (click)="showPassword = !showPassword"
+              name="eye-off-outline"
+              matSuffix
+            ></ion-icon>
+
+            <mat-error
+              *ngIf="addArtistForm.controls['password'].hasError('required')"
+            >
+              Password is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="text-right">
+          <button
+            (click)="type === 'update' ? updateArtist() : addArtist()"
+            class="button primary"
+          >
+            {{ type === "update" ? "Update" : "Add" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

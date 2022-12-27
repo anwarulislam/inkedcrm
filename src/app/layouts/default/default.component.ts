@@ -70,29 +70,6 @@ export class DefaultComponent {
         this.drawer1?.open();
         this.cdr.detectChanges();
 
-        if (this.dialogData?.type == 'Artist') {
-          this.addArtistForm.controls['id'].setValue(
-            this.dialogData?.data?.artistID
-          );
-
-          this.addArtistForm.controls['firstName'].setValue(
-            this.dialogData?.data?.firstName
-          );
-          this.addArtistForm.controls['lastName'].setValue(
-            this.dialogData?.data?.lastName
-          );
-          this.addArtistForm.controls['username'].setValue(
-            this.dialogData?.data?.username
-          );
-          this.addArtistForm.controls['email'].setValue(
-            this.dialogData?.data?.email
-          );
-          this.addArtistForm.controls['password'].setValue('');
-          this.addArtistForm.controls['role'].setValue(
-            this.dialogData?.data?.role
-          );
-        }
-
         if (this.dialogData?.type == 'Calendar') {
           this.addArtistForm.controls['id'].setValue(this.dialogData?.data?.id);
 
@@ -117,49 +94,7 @@ export class DefaultComponent {
     });
   }
 
-  toggleShow(): void {
-    this.showPassword = !this.showPassword;
-  }
-
   closeSidenav() {
-    this.sidenavService.$dynamicForm.next('close');
-    this.addArtistForm.reset();
-    this.drawer1.close();
-  }
-
-  addArtist() {
-    this.sidenavService.$dynamicForm.next('close');
-    this.addArtistForm.reset();
-    this.drawer1.close();
-  }
-  updateArtist() {
-    this._apiService
-      .PutData(
-        'users',
-        `updateUser/${this.addArtistForm.controls['id'].value}`,
-        this.addArtistForm.value
-      )
-      .subscribe(
-        (res: any) => {
-          console.log(res);
-          this._toastr.success('Artist updated successfully');
-          this.sidenavService.$dynamicForm.next('close');
-          this.drawer1.close();
-        },
-        (err) => {
-          console.log(err);
-          if (err.status == 403) {
-            this._toastr.warning('Please login again');
-            this._authService.logout();
-          } else {
-            let errors = err.error.appsErrorMessages;
-            console.log(errors);
-            for (const error of errors) {
-              this._toastr.error(`${error.errorMessage}`);
-            }
-          }
-        }
-      );
     this.sidenavService.$dynamicForm.next('close');
     this.addArtistForm.reset();
     this.drawer1.close();

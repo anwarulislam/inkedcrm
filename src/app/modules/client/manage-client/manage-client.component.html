@@ -1,15 +1,9 @@
 <div class="mx-auto max-w-[600px]">
   <div class="dash-card">
+    <h2 class="m-0">{{ type === "update" ? "Update" : "Add" }} Client Data</h2>
     <form [formGroup]="addClientForm" action="">
       <div class="row align-items-center mt-3">
-        <div class="col-md-9">
-          <ng-template [ngIf]="type === 'update'">
-            <h2 class="m-0">Update Client Data</h2>
-          </ng-template>
-          <ng-template [ngIf]="type === 'add'">
-            <h2 class="m-0">Add Client Data</h2>
-          </ng-template>
-        </div>
+        <div class="col-md-9"></div>
         <div class="col-md-3 text-right">
           <mat-icon class="cursor align-middle"> close </mat-icon>
         </div>
@@ -71,13 +65,13 @@
           </mat-form-field>
         </div>
 
-        <div class="col-md-12 text-right">
-          <ng-template [ngIf]="type === 'update'">
-            <button (click)="updateClient()" mat-raised-button>Update</button>
-          </ng-template>
-          <ng-template [ngIf]="type === 'add'">
-            <button (click)="addClient()" mat-raised-button>Submit</button>
-          </ng-template>
+        <div class="text-right">
+          <button
+            (click)="type === 'update' ? updateClient() : addClient()"
+            class="button primary"
+          >
+            {{ type === "update" ? "Update" : "Add" }}
+          </button>
         </div>
       </div>
     </form>
