@@ -3,6 +3,11 @@
 //-------------------------------------------------- start of grid month view styling ----------------------------------
 //----------------------------------------------------------------------------------------------------------------------
 
+// TITLE of the calendar. Date
+.fc-toolbar-title {
+  @apply text-lg font-bold;
+}
+
 // numbers inside the date boxes
 .fc-daygrid-day-frame {
   color: $main-color;

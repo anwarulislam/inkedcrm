@@ -1,0 +1,85 @@
+<div class="mx-auto max-w-[600px]">
+  <div class="dash-card">
+    <form [formGroup]="addClientForm" action="">
+      <div class="row align-items-center mt-3">
+        <div class="col-md-9">
+          <ng-template [ngIf]="type === 'update'">
+            <h2 class="m-0">Update Client Data</h2>
+          </ng-template>
+          <ng-template [ngIf]="type === 'add'">
+            <h2 class="m-0">Add Client Data</h2>
+          </ng-template>
+        </div>
+        <div class="col-md-3 text-right">
+          <mat-icon class="cursor align-middle"> close </mat-icon>
+        </div>
+
+        <div class="col-12 mt-3 mb-5 p-0">
+          <mat-divider style="color: white"></mat-divider>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" />
+            <mat-error
+              *ngIf="addClientForm.controls['firstName'].hasError('required')"
+            >
+              First Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" />
+            <mat-error
+              *ngIf="addClientForm.controls['lastName'].hasError('required')"
+            >
+              Last Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Contact Number</mat-label>
+            <input matInput formControlName="telNumber" />
+            <mat-error
+              *ngIf="addClientForm.controls['telNumber'].hasError('required')"
+            >
+              Contact Number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-error
+              *ngIf="
+                addClientForm.controls['email'].hasError('email') &&
+                !addClientForm.controls['email'].hasError('required')
+              "
+            >
+              Please enter a valid email address
+            </mat-error>
+            <mat-error
+              *ngIf="addClientForm.controls['email'].hasError('required')"
+            >
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12 text-right">
+          <ng-template [ngIf]="type === 'update'">
+            <button (click)="updateClient()" mat-raised-button>Update</button>
+          </ng-template>
+          <ng-template [ngIf]="type === 'add'">
+            <button (click)="addClient()" mat-raised-button>Submit</button>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

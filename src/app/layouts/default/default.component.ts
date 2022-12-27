@@ -23,16 +23,6 @@ export class DefaultComponent {
   @ViewChild('drawer1') drawer1!: MatSidenav;
   showPassword = false;
 
-  addClientForm = new UntypedFormGroup({
-    id: new UntypedFormControl(),
-    firstName: new UntypedFormControl(),
-    lastName: new UntypedFormControl(),
-    telNumber: new UntypedFormControl(),
-    email: new UntypedFormControl(),
-    instagram: new UntypedFormControl(),
-    facebook: new UntypedFormControl(),
-  });
-
   addArtistForm = new UntypedFormGroup({
     id: new UntypedFormControl(),
     firstName: new UntypedFormControl(),
@@ -79,31 +69,6 @@ export class DefaultComponent {
         this.dialogData = res;
         this.drawer1?.open();
         this.cdr.detectChanges();
-
-        if (this.dialogData?.type == 'Client') {
-          this.addClientForm.controls['id'].setValue(
-            this.dialogData?.data?.customerID
-          );
-
-          this.addClientForm.controls['firstName'].setValue(
-            this.dialogData?.data?.firstName
-          );
-          this.addClientForm.controls['lastName'].setValue(
-            this.dialogData?.data?.lastName
-          );
-          this.addClientForm.controls['telNumber'].setValue(
-            this.dialogData?.data?.telNumber
-          );
-          this.addClientForm.controls['email'].setValue(
-            this.dialogData?.data?.email
-          );
-          this.addClientForm.controls['instagram'].setValue(
-            this.dialogData?.data?.instagram
-          );
-          this.addClientForm.controls['facebook'].setValue(
-            this.dialogData?.data?.facebook
-          );
-        }
 
         if (this.dialogData?.type == 'Artist') {
           this.addArtistForm.controls['id'].setValue(
@@ -158,68 +123,10 @@ export class DefaultComponent {
 
   closeSidenav() {
     this.sidenavService.$dynamicForm.next('close');
-    this.addClientForm.reset();
     this.addArtistForm.reset();
     this.drawer1.close();
   }
 
-  addClient() {
-    this._apiService
-      .PostData('customer', 'saveCustomer', this.addClientForm.value)
-      .subscribe(
-        (res: any) => {
-          console.log(res);
-          this._toastr.success('Client added successfully');
-          this.sidenavService.$dynamicForm.next('close');
-          this.addClientForm.reset();
-          this.drawer1.close();
-        },
-        (err) => {
-          console.log(err);
-          if (err.status == 403) {
-            this._toastr.warning('Please login again');
-            this._authService.logout();
-          } else {
-            let errors = err.error.appsErrorMessages;
-            for (const error of errors) {
-              this._toastr.error(`${error.errorMessage}`);
-            }
-          }
-        }
-      );
-  }
-  updateClient() {
-    this._apiService
-      .PutData(
-        'customer',
-        `updateCustomer/${this.addClientForm.controls['id'].value}`,
-        this.addClientForm.value
-      )
-      .subscribe(
-        (res: any) => {
-          console.log(res);
-          this._toastr.success('Client updated successfully');
-          this.sidenavService.$dynamicForm.next('close');
-          this.addClientForm.reset();
-          this.drawer1.close();
-        },
-        (err) => {
-          console.log(err);
-          if (err.status == 403) {
-            this._toastr.warning('Please login again');
-            this._authService.logout();
-          } else {
-            let errors = err.error.appsErrorMessages;
-            for (const error of errors) {
-              this._toastr.error(`${error.errorMessage}`);
-            }
-          }
-        }
-      );
-    this.sidenavService.$dynamicForm.next('close');
-    this.addClientForm.reset();
-    this.drawer1.close();
-  }
   addArtist() {
     this.sidenavService.$dynamicForm.next('close');
     this.addArtistForm.reset();
@@ -237,7 +144,6 @@ export class DefaultComponent {
           console.log(res);
           this._toastr.success('Artist updated successfully');
           this.sidenavService.$dynamicForm.next('close');
-          this.addClientForm.reset();
           this.drawer1.close();
         },
         (err) => {
