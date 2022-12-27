@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="grid gap-6 md:grid-cols-3">
+  <div class="mb-6 grid gap-6 md:grid-cols-3">
     <div class="dash-card overflow-hidden p-0" *ngFor="let item of templates">
       <h3 class="bg-primary py-4 px-6 text-2xl font-bold text-black">
         {{ item.name }}
@@ -19,91 +19,51 @@
     </div>
   </div>
 
-  <div class="row mt-5">
-    <div class="col-md-6">
-      <mat-card class="dashboard-cards">
-        <mat-card-header>
-          <h3>SMS Center</h3>
-          <br />
-        </mat-card-header>
-        <div class="col-12 mt-3 mb-5 p-0">
-          <mat-divider style="color: white"></mat-divider>
+  <div class="grid gap-6 md:grid-cols-2">
+    <div class="dash-card">
+      <h4 class="font-bold text-white">SMS Center</h4>
+
+      <div class="my-4">
+        <mat-divider style="color: white"></mat-divider>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        <div>Select Client or group</div>
+        <div class="form-group">
+          <select class="form-control">
+            <option value="">Zen Donegen</option>
+            <option value="">Zen Donegen</option>
+            <option value="">Zen Donegen</option>
+          </select>
         </div>
-        <mat-card-content>
-          <div class="row ml-2 mr-2">
-            <div class="col-md-6">Select Client or group</div>
-            <div class="col-6 form-group">
-              <select class="form-control">
-                <option value="">Zen Donegen</option>
-                <option value="">Zen Donegen</option>
-                <option value="">Zen Donegen</option>
-              </select>
-            </div>
-            <div class="col-12 mb-4 mt-2">
-              <textarea class="form-control" rows="5" cols="5"></textarea>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
+        <div class="col-span-2">
+          <textarea class="form-control" rows="5"></textarea>
+        </div>
+      </div>
     </div>
 
-    <div class="col-md-6">
-      <mat-card class="dashboard-cards">
-        <mat-card-header>
-          <h3>Automated sms</h3>
-          <br />
-        </mat-card-header>
-        <div class="col-12 mt-3 mb-5 p-0">
-          <mat-divider style="color: white"></mat-divider>
+    <div class="dash-card">
+      <h4 class="font-bold text-white">Automated SMS</h4>
+
+      <div class="my-4">
+        <mat-divider style="color: white"></mat-divider>
+      </div>
+
+      <div class="row ml-4 mr-4 mb-4 bg-white">
+        <div class="col-4">
+          <span class="text-black">Session Reminder</span>
         </div>
-        <mat-card-content>
-          <div class="row ml-4 mr-4 mb-4 bg-white">
-            <div class="col-4">
-              <span class="text-black">Session Reminder</span>
-            </div>
 
-            <div class="col-8 float-right">
-              <button class="button primary" class="float-right mr-2">
-                <mat-icon>edit</mat-icon>
-              </button>
-              &nbsp;
-              <button class="button primary" class="float-right mr-4">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </div>
-          </div>
-
-          <div class="row ml-4 mr-4 bg-white"></div>
-        </mat-card-content>
-      </mat-card>
+        <div class="col-8 float-right">
+          <button class="button primary" class="float-right mr-2">
+            <mat-icon>edit</mat-icon>
+          </button>
+          &nbsp;
+          <button class="button primary" class="float-right mr-4">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-<!-- <div class="col-md-6">
-    <mat-card class="dashboard-cards">
-        <mat-card-header>
-            <h3>Automated sms</h3>
-        </mat-card-header>
-      <mat-card-content>
-        <div class="row ml-2 mr-2 bg-white">
-
-            <div class="col-4">
-                <span class="text-black">Session Reminder</span>
-            </div>
-
-            <div class="col-8 float-right">
-                <button class="button primary" class="mr-2 float-right">
-                    <mat-icon>edit</mat-icon>
-                </button>
-                &nbsp;
-                <button class="button primary" class="mr-4 float-right">
-                    <mat-icon>delete</mat-icon>
-                </button>
-
-            </div>
-        </div>
-
-      </mat-card-content>
-    </mat-card>
-</div> -->

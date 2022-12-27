@@ -2,7 +2,9 @@
   <div class="flex items-center">
     <ng-content></ng-content>
 
-    <h4 class="mb-0 text-xl font-bold text-white">{{ currentPage }}</h4>
+    <h4 class="mb-0 hidden text-xl font-bold text-white md:block">
+      {{ currentPage }}
+    </h4>
   </div>
 
   <div class="flex items-center gap-4">
